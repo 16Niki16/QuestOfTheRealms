@@ -1,0 +1,5 @@
+package sofia.sap.interview.project.game.inventory;
+
+public class IronDagger implements Item {
+
+}

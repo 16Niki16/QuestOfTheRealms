@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.characters;
 
+import sofia.sap.interview.project.game.characters.attack.AttackRange;
+
 public enum Type {
     MAGE(80, 120, new AttackRange(10, 20)),
     WARRIOR(100, 100, new AttackRange(10, 30)),
