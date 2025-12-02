@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.characters;
+package sofia.sap.interview.project.game.characters.ally.type;
 
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 

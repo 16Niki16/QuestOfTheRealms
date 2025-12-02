@@ -1,5 +1,6 @@
-package sofia.sap.interview.project.game.characters;
+package sofia.sap.interview.project.game.characters.ally;
 
+import sofia.sap.interview.project.game.characters.ally.type.Type;
 import sofia.sap.interview.project.game.inventory.Item;
 
 import java.util.HashMap;
