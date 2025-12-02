@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.inventory;
 
 public interface Gear {
-    void equip();
+    int equip();
 
-    void unequip();
+    int unequip();
 }

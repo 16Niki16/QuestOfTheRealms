@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.inventory;
 
+import sofia.sap.interview.project.game.exceptions.EquipException;
+
 public class IronDagger extends Item implements Gear {
     private boolean equipped;
 
@@ -9,12 +11,22 @@ public class IronDagger extends Item implements Gear {
     }
 
     @Override
-    public void equip() {
+    public int equip() {
+        if (this.equipped) {
+            throw new EquipException("The gear is already equipped!");
+        }
+
         this.equipped = true;
+        return getEffect();
     }
 
     @Override
-    public void unequip() {
+    public int unequip() {
+        if (!this.equipped) {
+            throw new EquipException("The gear is already unequipped!");
+        }
+
         this.equipped = false;
+        return getEffect();
     }
 }

@@ -6,4 +6,9 @@ public class Item implements Collectable {
     public Item(int effect) {
         this.effect = effect;
     }
+
+    @Override
+    public int getEffect() {
+        return this.effect;
+    }
 }

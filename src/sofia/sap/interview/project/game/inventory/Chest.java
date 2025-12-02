@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chest {
-    private List<Collectable> content;
+    private final List<Collectable> content;
 
     public Chest() {
         this.content = new ArrayList<>();
@@ -14,4 +14,7 @@ public class Chest {
         this.content = new ArrayList<>(content);
     }
 
+    public List<Collectable> collectItems() {
+        return this.content;
+    }
 }
