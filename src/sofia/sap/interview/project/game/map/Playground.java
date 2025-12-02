@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.map;
 
-public class Playground {
-    private Tile[][] map;
+import sofia.sap.interview.project.game.map.room.Room;
 
-    private
+public class Playground {
+    private Room[][] map;
 }

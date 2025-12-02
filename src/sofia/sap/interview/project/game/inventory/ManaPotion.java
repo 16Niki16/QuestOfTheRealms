@@ -1,4 +1,5 @@
 package sofia.sap.interview.project.game.inventory;
 
-public class ManaPotion {
+public class ManaPotion implements Item{
+
 }
