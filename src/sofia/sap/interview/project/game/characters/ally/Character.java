@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.Type;
-import sofia.sap.interview.project.game.inventory.Item;
+import sofia.sap.interview.project.game.inventory.Collectable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class Character {
     private Type type;
     private int health;
     private int mana;
-    private final Map<Item, Integer> inventory;
+    private final Map<Collectable, Integer> inventory;
 
     public Character(String name, Type type) {
         this.name = name;
