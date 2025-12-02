@@ -17,4 +17,20 @@ public enum Type {
         this.attackRange = attackRange;
         this.defense = defense;
     }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public int getMana() {
+        return this.mana;
+    }
+
+    public AttackRange getAttackRange() {
+        return this.attackRange;
+    }
+
+    public int getDefense() {
+        return this.defense;
+    }
 }
