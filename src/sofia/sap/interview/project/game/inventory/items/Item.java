@@ -1,16 +1,21 @@
 package sofia.sap.interview.project.game.inventory.items;
 
-import sofia.sap.interview.project.game.inventory.items.Collectable;
+import sofia.sap.interview.project.game.inventory.items.type.Type;
 
 public class Item implements Collectable {
-    private final int effect;
+    private final Type type;
 
-    public Item(int effect) {
-        this.effect = effect;
+    public Item(Type type) {
+        this.type = type;
     }
 
     @Override
     public int getEffect() {
-        return this.effect;
+        return this.type.getEffect();
+    }
+
+    @Override
+    public Type getType() {
+        return this.type;
     }
 }

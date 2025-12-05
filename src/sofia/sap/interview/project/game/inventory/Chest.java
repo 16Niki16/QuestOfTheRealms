@@ -19,4 +19,8 @@ public class Chest {
     public List<Collectable> collectItems() {
         return this.content;
     }
+
+    public List<Collectable> getChestContent() {
+        return this.content;
+    }
 }
