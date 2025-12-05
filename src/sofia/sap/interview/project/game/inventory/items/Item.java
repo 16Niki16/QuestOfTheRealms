@@ -1,4 +1,6 @@
-package sofia.sap.interview.project.game.inventory;
+package sofia.sap.interview.project.game.inventory.items;
+
+import sofia.sap.interview.project.game.inventory.items.Collectable;
 
 public class Item implements Collectable {
     private final int effect;

@@ -8,10 +8,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Enemy {
     private Type type;
-    private int health;
+    private final EnemyStatistics enemyStats;
 
     public Enemy(Type type) {
-        this.health = type.getHealth();
+        this.enemyStats = new EnemyStatistics(type);
+        this.type = type;
     }
 
     public AttackResult attack() {

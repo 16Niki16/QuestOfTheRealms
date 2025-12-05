@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.inventory;
 
+import sofia.sap.interview.project.game.inventory.items.Collectable;
+
 import java.util.ArrayList;
 import java.util.List;
 

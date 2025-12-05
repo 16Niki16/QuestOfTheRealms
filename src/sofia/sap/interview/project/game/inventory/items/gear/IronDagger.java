@@ -1,6 +1,7 @@
-package sofia.sap.interview.project.game.inventory;
+package sofia.sap.interview.project.game.inventory.items.gear;
 
 import sofia.sap.interview.project.game.exceptions.EquipException;
+import sofia.sap.interview.project.game.inventory.items.Item;
 
 public class IronDagger extends Item implements Gear {
     private boolean equipped;
