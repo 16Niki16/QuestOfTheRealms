@@ -2,13 +2,13 @@ package sofia.sap.interview.project.game.inventory.items.gear;
 
 import sofia.sap.interview.project.game.exceptions.EquipException;
 import sofia.sap.interview.project.game.inventory.items.Item;
-import sofia.sap.interview.project.game.inventory.items.type.Type;
+import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 public class IronDagger extends Item implements Gear {
     private boolean equipped;
 
     public IronDagger() {
-        super(Type.IRON_DAGGER);
+        super(ItemType.IRON_DAGGER);
         this.equipped = false;
     }
 

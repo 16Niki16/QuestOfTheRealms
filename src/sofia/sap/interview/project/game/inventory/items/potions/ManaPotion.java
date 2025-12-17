@@ -1,12 +1,12 @@
 package sofia.sap.interview.project.game.inventory.items.potions;
 
 import sofia.sap.interview.project.game.inventory.items.Item;
-import sofia.sap.interview.project.game.inventory.items.type.Type;
+import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 public class ManaPotion extends Item implements Potion {
 
     public ManaPotion() {
-        super(Type.MANA_POTION);
+        super(ItemType.MANA_POTION);
     }
 
     @Override
