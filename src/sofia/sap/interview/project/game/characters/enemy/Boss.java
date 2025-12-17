@@ -1,9 +1,9 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
-import sofia.sap.interview.project.game.characters.enemy.type.Type;
+import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
 public class Boss extends Enemy {
-    public Boss(Type type) {
+    public Boss(EnemyType type) {
         super(type);
     }
 

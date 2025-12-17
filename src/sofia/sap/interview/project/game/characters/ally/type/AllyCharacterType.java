@@ -2,7 +2,7 @@ package sofia.sap.interview.project.game.characters.ally.type;
 
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 
-public enum Type {
+public enum AllyCharacterType {
     MAGE(80, 120, new AttackRange(10, 20), 40),
     WARRIOR(100, 100, new AttackRange(10, 30), 70),
     ROGUE(110, 90, new AttackRange(5, 20), 90);
@@ -11,7 +11,7 @@ public enum Type {
     private final AttackRange attackRange;
     private final int defense;
 
-    Type(int health, int mana, AttackRange attackRange, int defense) {
+    AllyCharacterType(int health, int mana, AttackRange attackRange, int defense) {
         this.health = health;
         this.mana = mana;
         this.attackRange = attackRange;

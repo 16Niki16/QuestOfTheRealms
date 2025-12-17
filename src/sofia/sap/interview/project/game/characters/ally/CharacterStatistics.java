@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.characters.ally;
 
-import sofia.sap.interview.project.game.characters.ally.type.Type;
+import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.CharacterDeathException;
 
 public class CharacterStatistics {
@@ -9,7 +9,7 @@ public class CharacterStatistics {
     private int health;
     private int mana;
 
-    public CharacterStatistics(Type type) {
+    public CharacterStatistics(AllyCharacterType type) {
         this.health = type.getHealth();
         this.mana = type.getMana();
     }

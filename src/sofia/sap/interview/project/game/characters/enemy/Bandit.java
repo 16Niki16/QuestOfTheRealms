@@ -1,10 +1,10 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
-import sofia.sap.interview.project.game.characters.enemy.type.Type;
+import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
 public class Bandit extends Enemy {
 
-    public Bandit(Type type) {
+    public Bandit(EnemyType type) {
         super(type);
     }
 

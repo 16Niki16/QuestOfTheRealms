@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.characters.ally;
 
-import sofia.sap.interview.project.game.characters.ally.type.Type;
+import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
@@ -9,11 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {
     private final String name;
-    private final Type type;
+    private final AllyCharacterType type;
     private final CharacterStatistics characterStats;
     private final Inventory inventory;
 
-    public Character(String name, Type type) {
+    public Character(String name, AllyCharacterType type) {
         this.name = name;
         this.type = type;
         this.characterStats = new CharacterStatistics(type);
