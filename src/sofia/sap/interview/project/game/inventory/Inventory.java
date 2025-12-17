@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.inventory;
 
-import sofia.sap.interview.project.game.exceptions.HealingPotionNotAvailableException;
+import sofia.sap.interview.project.game.exceptions.PotionNotAvailableException;
 import sofia.sap.interview.project.game.inventory.items.Collectable;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Inventory {
     private static final int LAST_POTION = 1;
-    private Map<ItemType, Integer> items;
+    private final Map<ItemType, Integer> items;
 
     public Inventory() {
         this.items = new HashMap<>();
@@ -24,19 +24,18 @@ public class Inventory {
         return this.items;
     }
 
-    public ItemType getHealingPotion() {
-        if (!items.containsKey(ItemType.HEALING_HERB)) {
-            throw new HealingPotionNotAvailableException("There is not a healing potion in your inventory");
+    public ItemType getPotion(ItemType type) {
+        if (!items.containsKey(type)) {
+            throw new PotionNotAvailableException("The potion type you want to use is not available!");
         }
 
-        int numberOfPotions = items.get(ItemType.HEALING_HERB);
+        int numberOfPotions = items.get(type);
         if (numberOfPotions == LAST_POTION) {
-            removePotionTypeFromInventory(ItemType.HEALING_HERB);
+            removePotionTypeFromInventory(type);
         } else {
-            decrementPotionNumber(ItemType.HEALING_HERB, numberOfPotions);
+            decrementPotionNumber(type, numberOfPotions);
         }
-
-        return ItemType.HEALING_HERB;
+        return type;
     }
 
     private void removePotionTypeFromInventory(ItemType type) {
