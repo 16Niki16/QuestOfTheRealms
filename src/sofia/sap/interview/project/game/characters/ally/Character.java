@@ -1,6 +1,7 @@
 package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
@@ -36,21 +37,33 @@ public class Character {
     }
 
     public void applyHealingPotion() {
-        ItemType healingPotion = inventory.getPotion(ItemType.HEALING_HERB);
+        ItemType healingPotion = inventory.getItem(ItemType.HEALING_HERB);
         int potionEffect = healingPotion.getEffect();
         this.characterStats.increaseHealth(potionEffect);
     }
 
     public void applyManaPotion() {
-        ItemType manaPotion = inventory.getPotion(ItemType.MANA_POTION);
+        ItemType manaPotion = inventory.getItem(ItemType.MANA_POTION);
         int potionEffect = manaPotion.getEffect();
         this.characterStats.increaseMana(potionEffect);
     }
 
-    public void equipDagger() {
-        if (this.equipableItems.contains(ItemType.IRON_DAGGER)) {
+    public void equipItem(ItemType item) {
+        if (this.equipableItems.contains(item)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
 
+        ItemType equipItem = this.inventory.getItem(item);
+        this.equipableItems.add(equipItem);
+        this.characterStats.increaseAttackRange(item);
+    }
+
+    public void unequipItem(ItemType item) {
+        if (!this.equipableItems.contains(item)) {
+            throw new EquipmentNotEquippedException("The provided equipment is not equipped!");
+        }
+        this.inventory.addItem(item);
+        this.equipableItems.remove(item);
+        this.characterStats.decreaseDamage(item);
     }
 }

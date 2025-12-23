@@ -1,7 +1,6 @@
 package sofia.sap.interview.project.game.inventory;
 
 import sofia.sap.interview.project.game.exceptions.PotionNotAvailableException;
-import sofia.sap.interview.project.game.inventory.items.Collectable;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 import java.util.HashMap;
@@ -15,16 +14,15 @@ public class Inventory {
         this.items = new HashMap<>();
     }
 
-    public Collectable addItem(Collectable item) {
-        this.items.put(item.getType(), this.items.getOrDefault(item.getType(), 0) + 1);
-        return item;
+    public void addItem(ItemType item) {
+        this.items.put(item, this.items.getOrDefault(item, 0) + 1);
     }
 
     public Map<ItemType, Integer> getInventoryContent() {
         return this.items;
     }
 
-    public ItemType getPotion(ItemType type) {
+    public ItemType getItem(ItemType type) {
         if (!items.containsKey(type)) {
             throw new PotionNotAvailableException("The potion type you want to use is not available!");
         }
