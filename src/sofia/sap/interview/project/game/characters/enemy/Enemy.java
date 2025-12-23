@@ -7,7 +7,7 @@ import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Enemy {
-    private EnemyType type;
+    private final EnemyType type;
     private final EnemyStatistics enemyStats;
 
     public Enemy(EnemyType type) {

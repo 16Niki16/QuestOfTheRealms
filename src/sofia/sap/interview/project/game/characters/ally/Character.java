@@ -36,16 +36,13 @@ public class Character {
         this.characterStats.decreaseHealth(damage);
     }
 
-    public void applyHealingPotion() {
-        ItemType healingPotion = inventory.getItem(ItemType.HEALING_HERB);
-        int potionEffect = healingPotion.getEffect();
-        this.characterStats.increaseHealth(potionEffect);
-    }
+    public void applyPotion(ItemType item) {
+        int potionEffect = item.getEffect();
 
-    public void applyManaPotion() {
-        ItemType manaPotion = inventory.getItem(ItemType.MANA_POTION);
-        int potionEffect = manaPotion.getEffect();
-        this.characterStats.increaseMana(potionEffect);
+        switch (item) {
+            case HEALING_HERB -> this.characterStats.increaseHealth(potionEffect);
+            case MANA_POTION -> this.characterStats.increaseMana(potionEffect);
+        }
     }
 
     public void equipItem(ItemType item) {

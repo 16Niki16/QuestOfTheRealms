@@ -25,7 +25,7 @@ public class IronDagger extends Item implements Gear {
     @Override
     public int unequip() {
         if (!this.equipped) {
-            throw new EquipException("The gear is already unequipped!");
+            throw new EquipException("The gear is not equipped!");
         }
 
         this.equipped = false;
