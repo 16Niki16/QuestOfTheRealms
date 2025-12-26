@@ -1,7 +1,9 @@
 package sofia.sap.interview.project.game.inventory.items.gear;
 
-public interface Gear {
-    int equip();
+import sofia.sap.interview.project.game.characters.ally.Character;
 
-    int unequip();
+public interface Gear {
+    void equipGear(Character character);
+
+    void unequipGear(Character character);
 }

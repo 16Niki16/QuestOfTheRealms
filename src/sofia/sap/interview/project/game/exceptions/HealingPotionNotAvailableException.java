@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.exceptions;
 
-public class HealingPotionNotAvailableException extends PotionNotAvailableException {
+public class HealingPotionNotAvailableException extends ItemNotAvailableException {
     public HealingPotionNotAvailableException(String message) {
         super(message);
     }

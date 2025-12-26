@@ -1,51 +1,47 @@
 package sofia.sap.interview.project.game.inventory;
 
-import sofia.sap.interview.project.game.exceptions.PotionNotAvailableException;
-import sofia.sap.interview.project.game.inventory.items.Collectable;
+import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
+import sofia.sap.interview.project.game.inventory.items.Item;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-    private static final int LAST_POTION = 1;
-    private final Map<ItemType, Integer> items;
+    private static final int LAST_ITEM = 1;
+    private final Map<Item, Integer> items;
 
     public Inventory() {
         this.items = new HashMap<>();
     }
 
-    public void addItem(ItemType item) {
+    public void addItem(Item item) {
         this.items.put(item, this.items.getOrDefault(item, 0) + 1);
     }
 
-    public void addItem(Collectable item) {
-        this.items.put(item.getType(), this.items.getOrDefault(item.getType(), 0) + 1);
+    public void addItem(Item item) {
+        this.items.put(item, this.items.getOrDefault(item, 0) + 1);
     }
 
-    public Map<ItemType, Integer> getInventoryContent() {
-        return this.items;
-    }
-
-    public ItemType getItem(ItemType type) {
-        if (!items.containsKey(type)) {
-            throw new PotionNotAvailableException("The potion type you want to use is not available!");
+    public ItemType getItem(Item item) {
+        if (!items.containsKey(item)) {
+            throw new ItemNotAvailableException("The item type you want to use is not available!");
         }
 
-        int numberOfPotions = items.get(type);
-        if (numberOfPotions == LAST_POTION) {
-            removePotionTypeFromInventory(type);
+        int numberOfItemsByType = items.get(item);
+        if (numberOfItemsByType == LAST_ITEM) {
+            removeItemTypeFromInventory(type);
         } else {
-            decrementPotionNumber(type, numberOfPotions);
+            decrementItemNumber(type, numberOfItemsByType);
         }
         return type;
     }
 
-    private void removePotionTypeFromInventory(ItemType type) {
+    private void removeItemTypeFromInventory(ItemType type) {
         this.items.remove(type);
     }
 
-    private void decrementPotionNumber(ItemType type, int numberOfPotions) {
+    private void decrementItemNumber(ItemType type, int numberOfPotions) {
         this.items.put(type, --numberOfPotions);
     }
 }
