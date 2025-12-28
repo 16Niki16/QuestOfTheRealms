@@ -4,9 +4,9 @@ import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Inventory;
+import sofia.sap.interview.project.game.inventory.items.Collectable;
 import sofia.sap.interview.project.game.inventory.items.gear.Gear;
 import sofia.sap.interview.project.game.inventory.items.potions.Potion;
-import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,14 +43,16 @@ public class Character {
     }
 
     public void equipGear(Gear gear) {
-        if (this.equippedItems.contains(gear) || this.inventory.) {
+        if (this.equippedItems.contains(gear) || this.inventory.checkItemInInventory((Collectable) gear)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
+        this.equippedItems.add(gear);
+
         gear.equipGear(this);
     }
 
     public void unequipGear(Gear gear) {
-
+        gear.unequipGear(this);
     }
 
     public void heal(int amount) {
@@ -62,13 +64,10 @@ public class Character {
     }
 
     public void increaseAttackDamage(int amount) {
-
-        ItemType equipItem = this.inventory.getItem(item);
-        this.equippedItems.add(equipItem);
-        this.characterStats.increaseAttackRange(item);
+        this.characterStats.increaseAttackRange(amount);
     }
 
-    public void unequipItem(ItemType item) {
+    public void unequipItem(int amount) {
         if (!this.equippedItems.contains(item)) {
             throw new EquipmentNotEquippedException("The provided equipment is not equipped!");
         }

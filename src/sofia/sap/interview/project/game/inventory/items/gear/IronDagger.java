@@ -1,7 +1,6 @@
 package sofia.sap.interview.project.game.inventory.items.gear;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
-import sofia.sap.interview.project.game.exceptions.EquipException;
 import sofia.sap.interview.project.game.inventory.items.Item;
 import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
@@ -12,12 +11,12 @@ public class IronDagger extends Item implements Gear {
     }
 
     @Override
-    public void equipItem(Character character) {
+    public void equipGear(Character character) {
         character.increaseAttackDamage(getEffect());
     }
 
     @Override
-    public void unequipItem(Character character) {
-       c
+    public void unequipGear(Character character) {
+        character;
     }
 }

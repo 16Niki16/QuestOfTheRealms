@@ -4,7 +4,6 @@ import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 import sofia.sap.interview.project.game.exceptions.CharacterDeathException;
 import sofia.sap.interview.project.game.exceptions.NotEnoughManaException;
-import sofia.sap.interview.project.game.inventory.items.type.ItemType;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -59,16 +58,16 @@ public class CharacterStatistics {
         return ThreadLocalRandom.current().nextInt(attackRange.minDamage(), attackRange.maxDamage() + 1);
     }
 
-    public void increaseAttackRange(ItemType type) {
-        int minDamage = this.attackRange.minDamage() + type.getEffect();
-        int maxDamage = this.attackRange.maxDamage() + type.getEffect();
+    public void increaseAttackRange(int amount) {
+        int minDamage = this.attackRange.minDamage() + amount;
+        int maxDamage = this.attackRange.maxDamage() + amount;
 
         this.attackRange = new AttackRange(minDamage, maxDamage, this.attackRange.manaCost());
     }
 
-    public void decreaseDamage(ItemType type) {
-        int minDamage = this.attackRange.minDamage() - type.getEffect();
-        int maxDamage = this.attackRange.maxDamage() - type.getEffect();
+    public void decreaseDamage(int amount) {
+        int minDamage = this.attackRange.minDamage() - amount;
+        int maxDamage = this.attackRange.maxDamage() - amount;
 
         this.attackRange = new AttackRange(minDamage, maxDamage, this.attackRange.manaCost());
     }
