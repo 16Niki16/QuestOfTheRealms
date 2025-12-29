@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.map.room;
 
+import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.inventory.Chest;
 
@@ -10,23 +11,29 @@ public class Content {
     private final Chest chest;
     private final List<Enemy> enemies;
 
-    public Content(List<Enemy> enemies, Chest chest) {
+    private Content(List<Enemy> enemies, Chest chest) {
         this.chest = chest;
         this.enemies = enemies;
     }
 
-    public Content(List<Enemy> enemies) {
-        this.enemies = enemies;
-        this.chest = null;
+    public static Content emptyRoom() {
+        return new Content(Collections.emptyList(), Chest.createEmptyChest());
     }
 
-    public Content(Chest chest) {
-        this.chest = chest;
-        this.enemies = Collections.emptyList();
+    public static Content roomWithChest(Chest chest) {
+        return new Content(Collections.emptyList(), chest);
     }
 
-    public Content() {
-        this.chest = null;
-        this.enemies = Collections.emptyList();
+    public static Content roomWithEnemies(List<Enemy> enemies) {
+        return new Content(enemies, Chest.createEmptyChest());
+    }
+
+    public static Content roomWithChestAndEnemies(List<Enemy> enemies, Chest chest) {
+        return new Content(enemies, chest);
+    }
+
+    public void collectItems(Character character) {
+        character.collectItems(this.chest);
     }
 }
+

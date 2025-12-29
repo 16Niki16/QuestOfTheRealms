@@ -11,4 +11,8 @@ public class Room {
         this.content = content;
     }
 
+    public Content getRoomContent() {
+        return this.content;
+    }
+
 }

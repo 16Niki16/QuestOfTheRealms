@@ -3,11 +3,13 @@ package sofia.sap.interview.project.game.characters.ally;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
+import sofia.sap.interview.project.game.inventory.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.inventory.items.Collectable;
 import sofia.sap.interview.project.game.inventory.items.gear.Gear;
 import sofia.sap.interview.project.game.inventory.items.potions.Potion;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -63,6 +65,11 @@ public class Character {
         this.equippedItems.remove(gear);
         this.inventory.addItem((Collectable) gear);
         gear.unequipGear(this);
+    }
+
+    public void collectItems(Chest chest) {
+        Collection<Collectable> items = chest.collectItems();
+        this.inventory.addAllItems(items);
     }
 
     public void heal(int amount) {
