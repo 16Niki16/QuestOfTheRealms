@@ -30,6 +30,10 @@ public class Character {
         return this.name;
     }
 
+    public AllyCharacterType getCharacterType() {
+        return this.type;
+    }
+
     public int attackEnemy() {
         return this.characterStats.attackEnemy();
     }
