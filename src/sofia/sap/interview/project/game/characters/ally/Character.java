@@ -46,12 +46,18 @@ public class Character {
         if (this.equippedItems.contains(gear) || this.inventory.checkItemInInventory((Collectable) gear)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
-        this.equippedItems.add(gear);
 
+        this.equippedItems.add(gear);
+        this.inventory.removeItem((Collectable) gear);
         gear.equipGear(this);
     }
 
     public void unequipGear(Gear gear) {
+        if (!this.equippedItems.contains(gear)) {
+            throw new EquipmentNotEquippedException("The provided item is not equipped!");
+        }
+        this.equippedItems.remove(gear);
+        this.inventory.addItem((Collectable) gear);
         gear.unequipGear(this);
     }
 
@@ -67,12 +73,7 @@ public class Character {
         this.characterStats.increaseAttackRange(amount);
     }
 
-    public void unequipItem(int amount) {
-        if (!this.equippedItems.contains(item)) {
-            throw new EquipmentNotEquippedException("The provided equipment is not equipped!");
-        }
-        this.inventory.addItem(item);
-        this.equippedItems.remove(item);
-        this.characterStats.decreaseDamage(item);
+    public void decreaseAttackDamage(int amount) {
+        this.characterStats.decreaseDamage(amount);
     }
 }

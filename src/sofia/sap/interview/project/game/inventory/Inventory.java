@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.inventory;
 
 import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.inventory.items.Collectable;
-import sofia.sap.interview.project.game.inventory.items.Item;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,18 +22,14 @@ public class Inventory {
         this.items.put(item, this.items.getOrDefault(item, 0) + 1);
     }
 
-    public Collectable getItem(Collectable item) {
-        if (!items.containsKey(item)) {
-            throw new ItemNotAvailableException("The item type you want to use is not available!");
-        }
+    public void removeItem(Collectable item) {
+        int numberOfItems = this.items.get(item);
 
-        int numberOfItemsByType = items.get(item);
-        if (numberOfItemsByType == LAST_ITEM) {
-            removeItemTypeFromInventory(item);
+        if (numberOfItems > LAST_ITEM) {
+            decrementItemNumber(item, numberOfItems);
         } else {
-            decrementItemNumber(item, numberOfItemsByType);
+            removeItemTypeFromInventory(item);
         }
-        return item;
     }
 
     private void removeItemTypeFromInventory(Collectable item) {

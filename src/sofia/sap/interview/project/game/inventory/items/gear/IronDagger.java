@@ -17,6 +17,6 @@ public class IronDagger extends Item implements Gear {
 
     @Override
     public void unequipGear(Character character) {
-        character;
+        character.decreaseAttackDamage(getEffect());
     }
 }
