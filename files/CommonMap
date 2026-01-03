@@ -1,0 +1,12 @@
+{
+  "map": [
+    [
+      { "content": "EMPTY" },
+      { "content": "CHEST" }
+    ],
+    [
+      { "content": "ENEMIES" },
+      { "content": "EMPTY" }
+    ]
+  ]
+}
