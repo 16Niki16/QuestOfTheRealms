@@ -19,13 +19,11 @@ public abstract class Enemy {
     public static Enemy createEnemy(String type) {
         EnemyType enemy = EnemyType.getByName(type);
 
-        switch (enemy) {
+        return switch (enemy) {
             case GOBLIN -> new Goblin(enemy);
             case BOSS -> new Boss(enemy);
             case BANDIT -> new Bandit(enemy);
-        }
-
-        throw new EnemyTypeNotAvailableException("The provided enemy is not found!");
+        };
     }
 
     public AttackResult attackAllyCharacter() {

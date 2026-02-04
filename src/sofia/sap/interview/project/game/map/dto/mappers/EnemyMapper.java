@@ -6,12 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class EnemyMapper {
-    public List<Enemy> map(List<String> enemies) {
+    public static List<Enemy> map(List<String> enemies) {
         if (enemies == null || enemies.isEmpty()) {
             return Collections.emptyList();
         }
 
         return enemies.stream()
-            .map(Enem)
+            .map(Enemy::createEnemy)
+            .toList();
     }
 }
