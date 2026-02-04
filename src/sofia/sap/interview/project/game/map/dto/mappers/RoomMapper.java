@@ -4,7 +4,7 @@ import sofia.sap.interview.project.game.map.dto.RoomDTO;
 import sofia.sap.interview.project.game.map.room.Room;
 
 public class RoomMapper {
-    public Room map(RoomDTO content) {
+    public static Room map(RoomDTO content) {
         if (content == null) {
             return Room.emptyRoom();
         }
