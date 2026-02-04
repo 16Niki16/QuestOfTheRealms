@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.characters.enemy;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 import sofia.sap.interview.project.game.characters.attack.AttackResult;
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
+import sofia.sap.interview.project.game.exceptions.EnemyTypeNotAvailableException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,6 +14,18 @@ public abstract class Enemy {
     public Enemy(EnemyType type) {
         this.enemyStats = new EnemyStatistics(type);
         this.type = type;
+    }
+
+    public static Enemy createEnemy(String type) {
+        EnemyType enemy = EnemyType.getByName(type);
+
+        switch (enemy) {
+            case GOBLIN -> new Goblin(enemy);
+            case BOSS -> new Boss(enemy);
+            case BANDIT -> new Bandit(enemy);
+        }
+
+        throw new EnemyTypeNotAvailableException("The provided enemy is not found!");
     }
 
     public AttackResult attackAllyCharacter() {

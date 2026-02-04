@@ -11,6 +11,7 @@ public class ChestMapper {
         if (dto == null) {
             return Chest.createEmptyChest();
         }
+
         List<Collectable> items = dto.content.stream()
             .map(Collectable::createItem)
             .toList();
