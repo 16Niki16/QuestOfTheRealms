@@ -9,30 +9,43 @@ import java.util.Set;
 
 public class Playground {
     private final Room[][] rooms;
+    private Coordinates playerCoordinates;
 
     public Playground(Room[][] rooms) {
+        this.playerCoordinates = Coordinates.startingCoordinates();
         this.rooms = rooms;
     }
 
-    public Set<Direction> getPossibleDirections(Coordinates coordinates) {
+    /**
+     * (0,0) x -->
+     * y
+     * |
+     * raste nadolu
+     */
+
+    public Set<Direction> getPossibleDirections() {
         Set<Direction> directions = new HashSet<>();
 
-        if (coordinates.coordinateY() + 1 <= this.rooms.length) {
-            directions.add(Direction.SOUTH);
+        for (Direction direction : Direction.values()) {
+            Coordinates next = direction.move(playerCoordinates);
+            if (isInside(next)) {
+                directions.add(direction);
+            }
         }
-        if (coordinates.coordinateY() - 1 >= 0) {
-            directions.add(Direction.NORTH);
-        }
-        if (coordinates.coordinateX() + 1 <= this.rooms[coordinates.coordinateX()].length) {
-            directions.add(Direction.EAST);
-        }
-        if (coordinates.coordinateX() - 1 >= 0) {
-            directions.add(Direction.WEST);
-        }
+
         return directions;
     }
 
-    public Room[][] getRooms() {
-        return rooms;
+    public void changePlayerPosition(Direction direction) {
+        Coordinates next = direction.move(playerCoordinates);
+
+        if (isInside(next)) {
+            playerCoordinates = next;
+        }
+    }
+
+    private boolean isInside(Coordinates c) {
+        return c.y() >= 0 && c.y() < rooms.length
+            && c.x() >= 0 && c.x() < rooms[c.y()].length;
     }
 }

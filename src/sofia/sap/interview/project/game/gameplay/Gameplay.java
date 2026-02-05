@@ -3,14 +3,16 @@ package sofia.sap.interview.project.game.gameplay;
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.map.Playground;
+import sofia.sap.interview.project.game.map.directions.Direction;
 import sofia.sap.interview.project.game.map.dto.PlaygroundDTO;
 import sofia.sap.interview.project.game.map.dto.mappers.PlaygroundMapper;
 
 import java.io.FileReader;
+import java.util.Set;
 
 public class Gameplay {
     private Character character;
-    private Playground playground;
+    private final Playground playground;
 
     public Gameplay(Character character) {
         this.character = character;
@@ -32,7 +34,7 @@ public class Gameplay {
         }
     }
 
-    public Playground getPlayground() {
-        return this.playground;
+    public Set<Direction> getPossibleDirections() {
+        return this.playground.getPossibleDirections();
     }
 }
