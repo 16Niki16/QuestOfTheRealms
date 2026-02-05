@@ -13,9 +13,9 @@ public interface Collectable {
 
     static Collectable createItem(String itemName) {
         switch (itemName) {
-            case "Iron dagger" -> new IronDagger();
-            case "Healing herb" -> new HealingHerb();
-            case "Mana potion" -> new ManaPotion();
+            case "iron dagger" -> new IronDagger();
+            case "healing herb" -> new HealingHerb();
+            case "mana potion" -> new ManaPotion();
             default -> throw new ItemNotAvailableException("The provided item type is not available!");
         }
         return null;

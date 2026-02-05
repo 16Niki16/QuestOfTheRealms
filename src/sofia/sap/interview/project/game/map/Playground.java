@@ -31,4 +31,8 @@ public class Playground {
         }
         return directions;
     }
+
+    public Room[][] getRooms() {
+        return rooms;
+    }
 }

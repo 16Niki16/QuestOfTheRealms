@@ -1,9 +1,9 @@
 package sofia.sap.interview.project.game.inventory.items.type;
 
 public enum ItemType {
-    IRON_DAGGER("Iron dagger", 15),
-    HEALING_HERB("Healing herb", 10),
-    MANA_POTION("Mana potion", 10);
+    IRON_DAGGER("iron dagger", 15),
+    HEALING_HERB("healing herb", 10),
+    MANA_POTION("mana potion", 10);
 
     private final String name;
     private final int effect;

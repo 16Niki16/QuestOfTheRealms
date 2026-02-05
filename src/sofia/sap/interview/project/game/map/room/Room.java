@@ -28,4 +28,8 @@ public class Room {
         character.collectItems(this.chest);
     }
 
+    public List<Enemy> getEnemies() {
+        return this.enemies;
+    }
+
 }

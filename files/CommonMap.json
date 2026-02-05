@@ -1,12 +1,38 @@
 {
-  "map": [
+  "rooms": [
     [
-      { "content": "EMPTY" },
-      { "content": "CHEST" }
+      {
+        "chest": null,
+        "enemies": []
+      },
+      {
+        "chest": {
+          "items": ["healing herb", "iron dagger"]
+        },
+        "enemies": ["boss"]
+      },
+      {
+        "chest": null,
+        "enemies": ["goblin"]
+      }
     ],
     [
-      { "content": "ENEMIES" },
-      { "content": "EMPTY" }
+      {
+        "chest": null,
+        "enemies": ["boss"]
+      },
+      {
+        "chest": {
+          "items": ["iron dagger"]
+        },
+        "enemies": []
+      },
+      {
+        "chest": {
+          "items": ["mana potion", "healing herb"]
+        },
+        "enemies": ["bandit"]
+      }
     ]
   ]
 }

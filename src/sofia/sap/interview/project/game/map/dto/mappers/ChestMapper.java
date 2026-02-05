@@ -8,11 +8,11 @@ import java.util.List;
 
 public class ChestMapper {
     public static Chest map(ChestDTO dto) {
-        if (dto == null) {
+        if (dto == null || dto.items == null) {
             return Chest.createEmptyChest();
         }
 
-        List<Collectable> items = dto.content.stream()
+        List<Collectable> items = dto.items.stream()
             .map(Collectable::createItem)
             .toList();
 
