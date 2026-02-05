@@ -6,6 +6,6 @@ public class Main {
     public static void main(String[] args) {
         Character dummy = new Character("niki", AllyCharacterType.MAGE);
         Gameplay game = new Gameplay(dummy);
-
+        System.out.println(game.getPossibleDirections());
     }
 }

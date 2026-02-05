@@ -9,10 +9,8 @@ import java.util.Set;
 
 public class Playground {
     private final Room[][] rooms;
-    private Coordinates playerCoordinates;
 
     public Playground(Room[][] rooms) {
-        this.playerCoordinates = Coordinates.startingCoordinates();
         this.rooms = rooms;
     }
 
@@ -23,7 +21,12 @@ public class Playground {
      * raste nadolu
      */
 
-    public Set<Direction> getPossibleDirections() {
+    public boolean canMove(Coordinates playerPosition, Direction direction) {
+        Coordinates next = direction.move(playerPosition);
+        return isInside(next);
+    }
+
+    public Set<Direction> possibleDirections(Coordinates playerCoordinates) {
         Set<Direction> directions = new HashSet<>();
 
         for (Direction direction : Direction.values()) {
@@ -32,16 +35,7 @@ public class Playground {
                 directions.add(direction);
             }
         }
-
         return directions;
-    }
-
-    public void changePlayerPosition(Direction direction) {
-        Coordinates next = direction.move(playerCoordinates);
-
-        if (isInside(next)) {
-            playerCoordinates = next;
-        }
     }
 
     private boolean isInside(Coordinates c) {

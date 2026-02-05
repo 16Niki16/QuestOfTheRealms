@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.gameplay;
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.map.Playground;
+import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 import sofia.sap.interview.project.game.map.directions.Direction;
 import sofia.sap.interview.project.game.map.dto.PlaygroundDTO;
 import sofia.sap.interview.project.game.map.dto.mappers.PlaygroundMapper;
@@ -13,10 +14,12 @@ import java.util.Set;
 public class Gameplay {
     private Character character;
     private final Playground playground;
+    private Coordinates playerCoordinates;
 
     public Gameplay(Character character) {
         this.character = character;
         this.playground = loadPlayground();
+        this.playerCoordinates = Coordinates.startingCoordinates();
     }
 
     private Playground loadPlayground() {
@@ -34,7 +37,14 @@ public class Gameplay {
         }
     }
 
+    public void movePlayer(Direction direction) {
+        if (playground.canMove(this.playerCoordinates, direction)) {
+            this.playerCoordinates = direction.move(this.playerCoordinates);
+            //entering room
+        }
+    }
+
     public Set<Direction> getPossibleDirections() {
-        return this.playground.getPossibleDirections();
+        return this.playground.possibleDirections(this.playerCoordinates);
     }
 }
