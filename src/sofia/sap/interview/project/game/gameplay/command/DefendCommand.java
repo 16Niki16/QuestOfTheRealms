@@ -1,0 +1,20 @@
+package sofia.sap.interview.project.game.gameplay.command;
+
+import sofia.sap.interview.project.game.characters.ally.Character;
+import sofia.sap.interview.project.game.characters.enemy.Enemy;
+
+public class DefendCommand implements Command {
+    private Character character;
+    private Enemy enemy;
+
+    public DefendCommand(Character character, Enemy enemy) {
+        this.character = character;
+        this.enemy = enemy;
+    }
+
+    @Override
+    public void execute() {
+        int damage = enemy.attackDamage();
+        this.character.defendAgainstEnemy(damage);
+    }
+}
