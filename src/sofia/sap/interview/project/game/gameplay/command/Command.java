@@ -1,5 +1,5 @@
 package sofia.sap.interview.project.game.gameplay.command;
 
-public interface Command{
+public interface Command {
     void execute();
 }

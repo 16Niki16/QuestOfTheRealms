@@ -4,11 +4,12 @@ import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 
 public class AttackCommand implements Command {
-    private Character character;
-    private Enemy enemy;
+    private final Character character;
+    private final Enemy enemy;
 
     public AttackCommand(Character character, Enemy enemy) {
         this.character = character;
+        this.enemy = enemy;
     }
 
     @Override
