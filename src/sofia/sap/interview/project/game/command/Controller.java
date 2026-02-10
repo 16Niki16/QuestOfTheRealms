@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.command;
 
+import sofia.sap.interview.project.game.command.commands.Command;
+
 public class Controller {
     private Command command;
 

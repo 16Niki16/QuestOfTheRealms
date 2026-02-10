@@ -6,6 +6,7 @@ import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedExcept
 import sofia.sap.interview.project.game.inventory.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.inventory.items.Collectable;
+import sofia.sap.interview.project.game.inventory.items.Item;
 import sofia.sap.interview.project.game.inventory.items.gear.Gear;
 import sofia.sap.interview.project.game.inventory.items.potions.Potion;
 
@@ -90,5 +91,9 @@ public class Character {
 
     public String damageMessage(int damage) {
         return String.format("Your attack caused %d damage!", damage);
+    }
+
+    public String getItemEffectMessage(Item item) {
+        return String.format("Your item provided you with %d %s!", item.getEffect(), item.getType().getSource());
     }
 }

@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.command;
 
+import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
 
 public class CommandFactory {
@@ -13,7 +14,6 @@ public class CommandFactory {
         String command = commandSplit[0].toLowerCase();
         CombatOptions option = CombatOptions.getOption(command);
         switch (option) {
-            case ATTACK -> new AttackCommand(gameplay.)
         }
         return null;
     }

@@ -1,6 +1,7 @@
-package sofia.sap.interview.project.game.command;
+package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
+import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
 import sofia.sap.interview.project.game.map.directions.Direction;
 

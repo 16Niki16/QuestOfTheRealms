@@ -4,32 +4,29 @@ import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.inventory.Chest;
 
-import java.util.Collections;
-import java.util.List;
-
 public class Room {
     private final Chest chest;
-    private final List<Enemy> enemies;
+    private final Enemy enemy;
 
-    public Room(List<Enemy> enemies, Chest chest) {
+    public Room(Enemy enemy, Chest chest) {
         this.chest = chest == null ? Chest.createEmptyChest() : chest;
-        this.enemies = enemies == null ? Collections.emptyList() : enemies;
+        this.enemy = enemy;
     }
 
     public static Room emptyRoom() {
-        return new Room(Collections.emptyList(), Chest.createEmptyChest());
+        return new Room(null, Chest.createEmptyChest());
     }
 
-    public static Room roomCreator(List<Enemy> enemies, Chest chest) {
-        return new Room(enemies, chest);
+    public static Room roomCreator(Enemy enemy, Chest chest) {
+        return new Room(enemy, chest);
     }
 
     public void collectItems(Character character) {
         character.collectItems(this.chest);
     }
 
-    public List<Enemy> getEnemies() {
-        return this.enemies;
+    public Enemy getEnemy() {
+        return this.enemy;
     }
 
 }

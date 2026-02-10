@@ -3,35 +3,43 @@
     [
       {
         "chest": null,
-        "enemies": []
+        "enemy": null
       },
       {
         "chest": {
-          "items": ["healing herb", "iron dagger"]
+          "items": [
+            "healing herb",
+            "iron dagger"
+          ]
         },
-        "enemies": ["boss"]
+        "enemy": "boss"
       },
       {
         "chest": null,
-        "enemies": ["goblin"]
+        "enemy": "goblin"
       }
     ],
     [
       {
         "chest": null,
-        "enemies": ["boss"]
+        "enemy": "boss"
       },
       {
         "chest": {
-          "items": ["iron dagger"]
+          "items": [
+            "iron dagger"
+          ]
         },
-        "enemies": []
+        "enemy": null
       },
       {
         "chest": {
-          "items": ["mana potion", "healing herb"]
+          "items": [
+            "mana potion",
+            "healing herb"
+          ]
         },
-        "enemies": ["bandit"]
+        "enemy": "bandit"
       }
     ]
   ]
