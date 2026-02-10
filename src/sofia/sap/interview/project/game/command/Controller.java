@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.gameplay.command;
+package sofia.sap.interview.project.game.command;
 
 public class Controller {
     private Command command;

@@ -87,4 +87,8 @@ public class Character {
     public void decreaseAttackDamage(int amount) {
         this.characterStats.decreaseDamage(amount);
     }
+
+    public String damageMessage(int damage) {
+        return String.format("Your attack caused %d damage!", damage);
+    }
 }

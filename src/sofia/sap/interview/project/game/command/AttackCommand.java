@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.gameplay.command;
+package sofia.sap.interview.project.game.command;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
@@ -13,8 +13,9 @@ public class AttackCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public CommandResult execute() {
         int damage = character.attackEnemy();
         enemy.defendAgainstAllyCharacter(damage);
+        return new CommandResult(character.damageMessage(damage));
     }
 }

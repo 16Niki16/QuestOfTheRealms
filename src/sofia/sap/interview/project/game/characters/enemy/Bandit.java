@@ -10,6 +10,6 @@ public class Bandit extends Enemy {
 
     @Override
     public String getDamageMessage(int damage) {
-        return String.format("The bandit made %d damage!", damage);
+        return String.format("The bandit made %d damage to your character!", damage);
     }
 }

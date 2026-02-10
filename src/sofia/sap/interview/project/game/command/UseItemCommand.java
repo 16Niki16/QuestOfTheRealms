@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.gameplay.command;
+package sofia.sap.interview.project.game.command;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.inventory.items.Collectable;
