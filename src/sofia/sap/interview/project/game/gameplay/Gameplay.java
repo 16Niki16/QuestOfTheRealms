@@ -2,6 +2,7 @@ package sofia.sap.interview.project.game.gameplay;
 
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.ally.Character;
+import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 import sofia.sap.interview.project.game.map.directions.Direction;
@@ -46,5 +47,9 @@ public class Gameplay {
 
     public Set<Direction> getPossibleDirections() {
         return this.playground.possibleDirections(this.playerCoordinates);
+    }
+
+    public Enemy getEnemyOnCharacterCoordinates() {
+        return playground.getEnemyByPosition(playerCoordinates);
     }
 }
