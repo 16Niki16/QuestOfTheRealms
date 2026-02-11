@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.gameplay;
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
 import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 import sofia.sap.interview.project.game.map.directions.Direction;
@@ -41,7 +42,9 @@ public class Gameplay {
     public void movePlayer(Direction direction) {
         if (playground.canMove(this.playerCoordinates, direction)) {
             this.playerCoordinates = direction.move(this.playerCoordinates);
-            //entering room
+        } else {
+            throw new DirectionNotAvailableException(
+                "The provided direction is not correct, choose another direction!");
         }
     }
 

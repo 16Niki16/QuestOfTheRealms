@@ -1,25 +1,21 @@
 package sofia.sap.interview.project.game.command.commands;
 
-import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.Gameplay;
+import sofia.sap.interview.project.game.command.GameContext;
 import sofia.sap.interview.project.game.map.directions.Direction;
 
-import java.util.Set;
-
 public class RunCommand implements Command {
-    private Character character;
-    private Gameplay gameplay;
+    private final GameContext context;
+    private final Direction direction;
 
-    public RunCommand(Character character, Gameplay gameplay) {
-        this.character = character;
-        this.gameplay = gameplay;
+    public RunCommand(GameContext context, Direction direction) {
+        this.context = context;
+        this.direction = direction;
     }
 
     @Override
     public CommandResult execute() {
-        Set<Direction> possibleDirections = gameplay.getPossibleDirections();
-
-        return null;
+        this.context.gameplay().movePlayer(this.direction);
+        return new CommandResult("You successfully entered a new room!");
     }
 }
