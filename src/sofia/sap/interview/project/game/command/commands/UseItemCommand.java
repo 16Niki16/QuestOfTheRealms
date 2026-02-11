@@ -18,6 +18,10 @@ public class UseItemCommand implements Command {
     @Override
     public CommandResult execute() {
         this.context.character().applyPotion((Potion) this.item);
-        return new CommandResult(this.context.character().getItemEffectMessage((Item) this.item));
+        return new CommandResult(getItemEffectMessage((Item) this.item));
+    }
+
+    private String getItemEffectMessage(Item item) {
+        return String.format("Your item provided you with %d %s!", item.getEffect(), item.getType().getSource());
     }
 }

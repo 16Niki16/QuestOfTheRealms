@@ -14,12 +14,10 @@ import java.io.FileReader;
 import java.util.Set;
 
 public class Gameplay {
-    private Character character;
     private final Playground playground;
     private Coordinates playerCoordinates;
 
     public Gameplay(Character character) {
-        this.character = character;
         this.playground = loadPlayground();
         this.playerCoordinates = Coordinates.startingCoordinates();
     }

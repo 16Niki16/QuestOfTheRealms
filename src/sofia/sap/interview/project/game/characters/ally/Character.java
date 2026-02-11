@@ -88,12 +88,4 @@ public class Character {
     public void decreaseAttackDamage(int amount) {
         this.characterStats.decreaseDamage(amount);
     }
-
-    public String damageMessage(int damage) {
-        return String.format("Your attack caused %d damage!", damage);
-    }
-
-    public String getItemEffectMessage(Item item) {
-        return String.format("Your item provided you with %d %s!", item.getEffect(), item.getType().getSource());
-    }
 }

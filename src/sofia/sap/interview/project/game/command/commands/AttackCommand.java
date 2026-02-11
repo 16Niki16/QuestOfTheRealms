@@ -14,6 +14,10 @@ public class AttackCommand implements Command {
     public CommandResult execute() {
         int damage = context.character().attackEnemy();
         context.gameplay().getEnemyOnCharacterCoordinates().defendAgainstAllyCharacter(damage);
-        return new CommandResult(context.character().damageMessage(damage));
+        return new CommandResult(damageMessage(damage));
+    }
+
+    private String damageMessage(int damage) {
+        return String.format("Your attack caused %d damage!", damage);
     }
 }
