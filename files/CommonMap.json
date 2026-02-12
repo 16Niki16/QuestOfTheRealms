@@ -2,7 +2,12 @@
   "rooms": [
     [
       {
-        "chest": null,
+        "chest": {
+          "items": [
+            "healing herb",
+            "iron dagger"
+          ]
+        },
         "enemy": null
       },
       {

@@ -60,6 +60,7 @@ public class Character {
 
         this.equippedItems.add(gear);
         this.inventory.removeItem(gear);
+        increaseAttackDamage(gear.getEffect());
     }
 
     public void unequipGear(Item gear) {
@@ -68,6 +69,7 @@ public class Character {
         }
         this.equippedItems.remove(gear);
         this.inventory.addItem(gear);
+        decreaseAttackDamage(gear.getEffect());
     }
 
     public void collectItems(Chest chest) {

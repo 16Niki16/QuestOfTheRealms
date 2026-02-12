@@ -1,10 +1,12 @@
 package sofia.sap.interview.project.game.command.commands;
 
+import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.inventory.Chest;
 
 public class LookCommand implements Command {
-    private GameContext context;
+    private final GameContext context;
 
     public LookCommand(GameContext context) {
         this.context = context;
@@ -12,7 +14,16 @@ public class LookCommand implements Command {
 
     @Override
     public CommandResult execute() {
+        Chest chest = this.context.gameplay().getChestOnCharacterCoordinates();
+        Enemy enemy = this.context.gameplay().getEnemyOnCharacterCoordinates();
 
-        return null;
+        StringBuilder contain = new StringBuilder("The room contains:\n");
+        if (chest != null) {
+            contain.append("- Chest\n");
+        }
+        if (enemy != null) {
+            contain.append("- Enemy");
+        }
+        return new CommandResult(contain.toString());
     }
 }

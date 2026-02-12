@@ -9,12 +9,12 @@ public class Room {
     private final Enemy enemy;
 
     public Room(Enemy enemy, Chest chest) {
-        this.chest = chest == null ? Chest.createEmptyChest() : chest;
+        this.chest = chest;
         this.enemy = enemy;
     }
 
     public static Room emptyRoom() {
-        return new Room(null, Chest.createEmptyChest());
+        return new Room(null, null);
     }
 
     public static Room roomCreator(Enemy enemy, Chest chest) {
@@ -27,6 +27,10 @@ public class Room {
 
     public Enemy getEnemy() {
         return this.enemy;
+    }
+
+    public Chest getChest() {
+        return this.chest;
     }
 
 }

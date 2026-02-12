@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
+import sofia.sap.interview.project.game.inventory.Chest;
 import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 import sofia.sap.interview.project.game.map.directions.Direction;
@@ -52,5 +53,9 @@ public class Gameplay {
 
     public Enemy getEnemyOnCharacterCoordinates() {
         return playground.getEnemyByPosition(playerCoordinates);
+    }
+
+    public Chest getChestOnCharacterCoordinates() {
+        return playground.getChestByPosition(playerCoordinates);
     }
 }

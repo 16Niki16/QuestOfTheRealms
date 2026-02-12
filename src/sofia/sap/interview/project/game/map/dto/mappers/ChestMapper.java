@@ -9,7 +9,7 @@ import java.util.List;
 public class ChestMapper {
     public static Chest map(ChestDTO dto) {
         if (dto == null || dto.items == null) {
-            return Chest.createEmptyChest();
+            return null;
         }
 
         List<Item> items = dto.items.stream()

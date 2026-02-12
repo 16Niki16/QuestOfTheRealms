@@ -1,6 +1,7 @@
 package sofia.sap.interview.project.game.map;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.inventory.Chest;
 import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 import sofia.sap.interview.project.game.map.directions.Direction;
 import sofia.sap.interview.project.game.map.room.Room;
@@ -46,5 +47,9 @@ public class Playground {
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {
         return rooms[coordinates.x()][coordinates.y()].getEnemy();
+    }
+
+    public Chest getChestByPosition(Coordinates coordinates) {
+        return rooms[coordinates.x()][coordinates.y()].getChest();
     }
 }

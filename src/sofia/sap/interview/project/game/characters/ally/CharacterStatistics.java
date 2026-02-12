@@ -32,7 +32,7 @@ public class CharacterStatistics {
         this.health -= amount;
 
         if (this.health <= MIN_STAT) {
-            throw new CharacterDeathException("Character health dead");
+            throw new CharacterDeathException("Your character died!");
         }
 
     }
