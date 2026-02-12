@@ -54,7 +54,7 @@ public class Character {
     }
 
     public void equipGear(Item gear) {
-        if (this.equippedItems.contains(gear) || this.inventory.checkItemInInventory(gear)) {
+        if (this.equippedItems.contains(gear) || !this.inventory.checkItemInInventory(gear)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
 
