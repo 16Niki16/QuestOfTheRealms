@@ -16,8 +16,8 @@ public class UseItemCommand implements Command {
     @Override
     public CommandResult execute() {
         Item itemType = Item.getItem(item);
-
         this.context.character().applyPotion(itemType);
+
         return new CommandResult(getItemEffectMessage(itemType));
     }
 

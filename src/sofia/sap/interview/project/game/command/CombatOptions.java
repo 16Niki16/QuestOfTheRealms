@@ -6,7 +6,6 @@ public enum CombatOptions {
     ATTACK("attack"),
     DEFEND("defend"),
     USE_ITEM("use"),
-    RUN("run"),
     LOOK("look"),
     MOVE("move");
     private final String command;

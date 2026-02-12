@@ -36,4 +36,7 @@ public enum Item {
         throw new ItemNotAvailableException("The provided item is not available!");
     }
 
+    public boolean isEquip() {
+        return this.equip;
+    }
 }
