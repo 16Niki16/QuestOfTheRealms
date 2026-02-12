@@ -1,34 +1,33 @@
 package sofia.sap.interview.project.game.inventory;
 
-import sofia.sap.interview.project.game.inventory.items.Collectable;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Inventory {
     private static final int LAST_ITEM = 1;
-    private final Map<Collectable, Integer> items;
+    private final Map<Item, Integer> items;
 
     public Inventory() {
         this.items = new HashMap<>();
     }
 
-    public boolean checkItemInInventory(Collectable item) {
+    public boolean checkItemInInventory(Item item) {
         return this.items.containsKey(item);
     }
 
-    public void addItem(Collectable item) {
+    public void addItem(Item item) {
         this.items.put(item, this.items.getOrDefault(item, 0) + 1);
     }
 
-    public void addAllItems(Collection<Collectable> items) {
-        for (Collectable item : items) {
+    public void addAllItems(Collection<Item> items) {
+        for (Item item : items) {
             addItem(item);
         }
     }
 
-    public void removeItem(Collectable item) {
+    public void removeItem(Item item) {
         int numberOfItems = this.items.get(item);
 
         if (numberOfItems > LAST_ITEM) {
@@ -38,11 +37,11 @@ public class Inventory {
         }
     }
 
-    private void removeItemTypeFromInventory(Collectable item) {
+    private void removeItemTypeFromInventory(Item item) {
         this.items.remove(item);
     }
 
-    private void decrementItemNumber(Collectable type, int numberOfPotions) {
+    private void decrementItemNumber(Item type, int numberOfPotions) {
         this.items.put(type, --numberOfPotions);
     }
 }

@@ -2,13 +2,11 @@ package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
+import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
-import sofia.sap.interview.project.game.inventory.items.Collectable;
-import sofia.sap.interview.project.game.inventory.items.Item;
-import sofia.sap.interview.project.game.inventory.items.gear.Gear;
-import sofia.sap.interview.project.game.inventory.items.potions.Potion;
+import sofia.sap.interview.project.game.inventory.Item;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,7 +17,7 @@ public class Character {
     private final AllyCharacterType type;
     private final CharacterStatistics characterStats;
     private final Inventory inventory;
-    private final Set<Gear> equippedItems;
+    private final Set<Item> equippedItems;
 
     public Character(String name, AllyCharacterType type) {
         this.name = name;
@@ -45,31 +43,35 @@ public class Character {
         this.characterStats.decreaseHealth(damage);
     }
 
-    public void applyPotion(Potion item) {
-        item.applyPotion(this);
+    public void applyPotion(Item item) {
+        int amount = item.getEffect();
+
+        switch (item) {
+            case MANA_POTION -> restoreMana(amount);
+            case HEALING_HERB -> heal(amount);
+            default -> throw new ItemNotAvailableException("The provided item is not in the potion list!");
+        }
     }
 
-    public void equipGear(Gear gear) {
-        if (this.equippedItems.contains(gear) || this.inventory.checkItemInInventory((Collectable) gear)) {
+    public void equipGear(Item gear) {
+        if (this.equippedItems.contains(gear) || this.inventory.checkItemInInventory(gear)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
 
         this.equippedItems.add(gear);
-        this.inventory.removeItem((Collectable) gear);
-        gear.equipGear(this);
+        this.inventory.removeItem(gear);
     }
 
-    public void unequipGear(Gear gear) {
+    public void unequipGear(Item gear) {
         if (!this.equippedItems.contains(gear)) {
             throw new EquipmentNotEquippedException("The provided item is not equipped!");
         }
         this.equippedItems.remove(gear);
-        this.inventory.addItem((Collectable) gear);
-        gear.unequipGear(this);
+        this.inventory.addItem(gear);
     }
 
     public void collectItems(Chest chest) {
-        Collection<Collectable> items = chest.collectItems();
+        Collection<Item> items = chest.collectItems();
         this.inventory.addAllItems(items);
     }
 

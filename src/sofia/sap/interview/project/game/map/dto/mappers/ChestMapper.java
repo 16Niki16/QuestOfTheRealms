@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.map.dto.mappers;
 
 import sofia.sap.interview.project.game.inventory.Chest;
-import sofia.sap.interview.project.game.inventory.items.Collectable;
+import sofia.sap.interview.project.game.inventory.Item;
 import sofia.sap.interview.project.game.map.dto.ChestDTO;
 
 import java.util.List;
@@ -12,8 +12,8 @@ public class ChestMapper {
             return Chest.createEmptyChest();
         }
 
-        List<Collectable> items = dto.items.stream()
-            .map(Collectable::createItem)
+        List<Item> items = dto.items.stream()
+            .map(Item::getItem)
             .toList();
 
         return Chest.createChestWithItems(items);
