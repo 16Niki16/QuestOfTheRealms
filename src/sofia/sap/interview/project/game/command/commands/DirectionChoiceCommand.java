@@ -7,7 +7,7 @@ import sofia.sap.interview.project.game.map.directions.Direction;
 import java.util.Set;
 
 public class DirectionChoiceCommand implements Command {
-    private GameContext context;
+    private final GameContext context;
 
     public DirectionChoiceCommand(GameContext context) {
         this.context = context;

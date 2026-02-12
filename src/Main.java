@@ -9,6 +9,8 @@ import sofia.sap.interview.project.game.command.commands.EquipGearCommand;
 import sofia.sap.interview.project.game.command.commands.LookCommand;
 import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
+import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
+import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
 import sofia.sap.interview.project.game.map.directions.Direction;
 
@@ -30,6 +32,14 @@ public class Main {
         Command command68 = new EquipGearCommand(context, "iron dagger");
         CommandResult result68 = command68.execute();
         System.out.println(result68.resultMessage());
+        //unequip gear
+        Command command67 = new UnequipGearCommand(context, "iron dagger");
+        CommandResult result67 = command67.execute();
+        System.out.println(result67.resultMessage());
+        //use item
+        Command command66 = new UseItemCommand(context, "healing herb");
+        CommandResult result66 = command66.execute();
+        System.out.println(result66.resultMessage());
         //move
         Command command = new MoveCommand(context, Direction.EAST);
         CommandResult result = command.execute();
