@@ -16,7 +16,7 @@ import sofia.sap.interview.project.game.map.directions.Direction;
 
 public class Main {
     public static void main(String[] args) {
-        Character dummy = new Character("niki", AllyCharacterType.MAGE);
+        Character dummy = new Character("niki", AllyCharacterType.MAGE, null);
         Gameplay game = new Gameplay(dummy);
         System.out.println(game.getPossibleDirections());
         GameContext context = new GameContext(game, dummy);

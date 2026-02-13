@@ -46,10 +46,10 @@ public class Playground {
     }
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()].getEnemy();
+        return rooms[coordinates.x()][coordinates.y()].enemy();
     }
 
     public Chest getChestByPosition(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()].getChest();
+        return rooms[coordinates.x()][coordinates.y()].chest();
     }
 }

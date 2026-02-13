@@ -4,14 +4,7 @@ import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.inventory.Chest;
 
-public class Room {
-    private final Chest chest;
-    private final Enemy enemy;
-
-    public Room(Enemy enemy, Chest chest) {
-        this.chest = chest;
-        this.enemy = enemy;
-    }
+public record Room(Enemy enemy, Chest chest) {
 
     public static Room emptyRoom() {
         return new Room(null, null);
@@ -23,14 +16,6 @@ public class Room {
 
     public void collectItems(Character character) {
         character.collectItems(this.chest);
-    }
-
-    public Enemy getEnemy() {
-        return this.enemy;
-    }
-
-    public Chest getChest() {
-        return this.chest;
     }
 
 }

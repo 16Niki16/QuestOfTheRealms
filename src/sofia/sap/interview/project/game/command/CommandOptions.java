@@ -2,20 +2,23 @@ package sofia.sap.interview.project.game.command;
 
 import sofia.sap.interview.project.game.exceptions.CommandNotAvailableException;
 
-public enum CombatOptions {
+public enum CommandOptions {
     ATTACK("attack"),
     DEFEND("defend"),
     USE_ITEM("use"),
     LOOK("look"),
-    MOVE("move");
+    MOVE("move"),
+    EQUIP("equip"),
+    UNEQUIP("unequip"),
+    HELP("help");
     private final String command;
 
-    CombatOptions(String command) {
+    CommandOptions(String command) {
         this.command = command;
     }
 
-    public static CombatOptions getOption(String command) {
-        for (CombatOptions option : values()) {
+    public static CommandOptions getOption(String command) {
+        for (CommandOptions option : values()) {
             if (option.command.equals(command)) {
                 return option;
             }

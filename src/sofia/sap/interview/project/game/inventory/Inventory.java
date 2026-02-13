@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Inventory {
     private static final int LAST_ITEM = 1;
     private final Map<Item, Integer> items;

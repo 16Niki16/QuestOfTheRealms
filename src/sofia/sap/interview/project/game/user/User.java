@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.user;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
+import sofia.sap.interview.project.game.quests.Quest;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +25,7 @@ public class User {
         return new User(username, new HashSet<>());
     }
 
-    public void createCharacter(String characterName, AllyCharacterType type) {
-        Character character = new Character(characterName, type);
+    public void createCharacter(String characterName, AllyCharacterType type, Set<Quest> activeQuests) {
+        Character character = new Character(characterName, type, activeQuests);
     }
 }
