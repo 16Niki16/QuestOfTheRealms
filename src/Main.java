@@ -12,14 +12,16 @@ import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
-import sofia.sap.interview.project.game.map.directions.Direction;
+import sofia.sap.interview.project.game.map.Direction;
+import sofia.sap.interview.project.game.quests.QuestLog;
 
 public class Main {
     public static void main(String[] args) {
         Character dummy = new Character("niki", AllyCharacterType.MAGE, null);
-        Gameplay game = new Gameplay(dummy);
+        Gameplay game = new Gameplay();
         System.out.println(game.getPossibleDirections());
-        GameContext context = new GameContext(game, dummy);
+        QuestLog log = new QuestLog(null);
+        GameContext context = new GameContext(game, dummy, log);
         //look
         Command command1 = new LookCommand(context);
         CommandResult result1 = command1.execute();

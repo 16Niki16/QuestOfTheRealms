@@ -8,7 +8,8 @@ public enum EnemyType {
 
     BOSS("boss", 40, new AttackRange(10, 15, 0)),
 
-    GOBLIN("goblin", 20, new AttackRange(3, 8, 0));
+    GOBLIN("goblin", 20, new AttackRange(3, 8, 0)),
+    GOBLIN_KING("goblin king", 100, new AttackRange(10, 20, 0));
     private final String type;
     private final int health;
     private final AttackRange attackRange;
@@ -17,6 +18,10 @@ public enum EnemyType {
         this.attackRange = attackRange;
         this.health = health;
         this.type = type;
+    }
+
+    public String getName() {
+        return this.type;
     }
 
     public int getHealth() {

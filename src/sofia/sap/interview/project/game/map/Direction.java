@@ -1,7 +1,6 @@
-package sofia.sap.interview.project.game.map.directions;
+package sofia.sap.interview.project.game.map;
 
 import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
-import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
 
 public enum Direction {
     SOUTH(0, 1, "south"),

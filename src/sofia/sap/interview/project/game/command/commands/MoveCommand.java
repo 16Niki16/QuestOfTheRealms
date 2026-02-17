@@ -2,7 +2,7 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
-import sofia.sap.interview.project.game.map.directions.Direction;
+import sofia.sap.interview.project.game.map.Direction;
 
 public class MoveCommand implements Command {
     private final GameContext context;

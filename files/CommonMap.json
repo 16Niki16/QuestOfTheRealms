@@ -18,7 +18,7 @@
             "iron dagger"
           ]
         },
-        "enemy": "boss",
+        "enemy": "goblin king",
         "specialItem": "IRON_KEY"
       },
       {
@@ -31,7 +31,7 @@
       {
         "chest": null,
         "enemy": "boss",
-        "specialItem": null
+        "specialItem": "IRON_KEY"
       },
       {
         "chest": {
@@ -40,7 +40,7 @@
           ]
         },
         "enemy": null,
-        "specialItem": null
+        "specialItem": "IRON_KEY"
       },
       {
         "chest": {

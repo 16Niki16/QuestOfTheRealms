@@ -2,8 +2,6 @@ package sofia.sap.interview.project.game.map;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.map.room.Chest;
-import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
-import sofia.sap.interview.project.game.map.directions.Direction;
 import sofia.sap.interview.project.game.map.room.Room;
 
 import java.util.HashSet;

@@ -1,15 +1,14 @@
 package sofia.sap.interview.project.game.gameplay;
 
 import com.google.gson.Gson;
-import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.Playground;
-import sofia.sap.interview.project.game.map.cooridnates.Coordinates;
-import sofia.sap.interview.project.game.map.directions.Direction;
-import sofia.sap.interview.project.game.map.dto.PlaygroundDTO;
-import sofia.sap.interview.project.game.map.dto.mappers.PlaygroundMapper;
+import sofia.sap.interview.project.game.map.Coordinates;
+import sofia.sap.interview.project.game.map.Direction;
+import sofia.sap.interview.project.game.dto.PlaygroundDTO;
+import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
 
 import java.io.FileReader;
 import java.util.Set;
@@ -18,7 +17,7 @@ public class Gameplay {
     private final Playground playground;
     private Coordinates playerCoordinates;
 
-    public Gameplay(Character character) {
+    public Gameplay() {
         this.playground = loadPlayground();
         this.playerCoordinates = Coordinates.startingCoordinates();
     }

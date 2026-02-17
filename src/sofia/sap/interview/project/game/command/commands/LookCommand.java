@@ -22,7 +22,8 @@ public class LookCommand implements Command {
             contain.append("- Chest\n");
         }
         if (enemy != null) {
-            contain.append("- Enemy");
+            contain.append("- Enemy: ");
+            contain.append(enemy.getType().getName());
         }
         return new CommandResult(contain.toString());
     }

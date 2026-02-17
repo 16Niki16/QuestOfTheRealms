@@ -22,6 +22,7 @@ public abstract class Enemy {
             case GOBLIN -> new Goblin(enemy);
             case BOSS -> new Boss(enemy);
             case BANDIT -> new Bandit(enemy);
+            case GOBLIN_KING -> new GoblinKing(enemy);
         };
     }
 
