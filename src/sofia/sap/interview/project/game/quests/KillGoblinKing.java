@@ -7,9 +7,13 @@ import sofia.sap.interview.project.game.events.KillEnemyEvent;
 public class KillGoblinKing extends QuestBase {
     private final EnemyType target;
 
-    public KillGoblinKing(String message) {
-        super(message);
+    public KillGoblinKing() {
         this.target = EnemyType.GOBLIN;
+    }
+
+    @Override
+    public String questDescription() {
+        return "Kill one goblin!";
     }
 
     @Override

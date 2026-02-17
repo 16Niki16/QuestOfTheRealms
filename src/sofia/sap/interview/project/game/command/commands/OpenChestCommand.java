@@ -3,7 +3,7 @@ package sofia.sap.interview.project.game.command.commands;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
 import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
-import sofia.sap.interview.project.game.inventory.Chest;
+import sofia.sap.interview.project.game.map.room.Chest;
 
 public class OpenChestCommand implements Command {
     private final GameContext context;

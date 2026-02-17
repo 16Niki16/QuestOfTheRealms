@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.map.dto.mappers;
 
-import sofia.sap.interview.project.game.inventory.Chest;
+import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.inventory.Item;
 import sofia.sap.interview.project.game.map.dto.ChestDTO;
 

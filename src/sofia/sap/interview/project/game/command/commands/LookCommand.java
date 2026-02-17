@@ -3,7 +3,7 @@ package sofia.sap.interview.project.game.command.commands;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
-import sofia.sap.interview.project.game.inventory.Chest;
+import sofia.sap.interview.project.game.map.room.Chest;
 
 public class LookCommand implements Command {
     private final GameContext context;

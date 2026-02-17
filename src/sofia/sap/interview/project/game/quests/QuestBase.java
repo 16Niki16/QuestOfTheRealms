@@ -3,18 +3,14 @@ package sofia.sap.interview.project.game.quests;
 import sofia.sap.interview.project.game.events.GameEvent;
 
 public abstract class QuestBase implements Quest {
-    private final String description;
     private boolean completed;
 
-    public QuestBase(String description) {
-        this.description = description;
+    public QuestBase() {
         this.completed = false;
     }
 
     @Override
-    public String questDescription() {
-        return this.description;
-    }
+    public abstract String questDescription();
 
     @Override
     public boolean isCompleted() {

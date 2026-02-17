@@ -9,6 +9,7 @@ public class RoomMapper {
             return Room.emptyRoom();
         }
 
-        return Room.roomCreator(EnemyMapper.map(content.enemy), ChestMapper.map(content.chest));
+        return Room.roomCreator(EnemyMapper.map(content.enemy), ChestMapper.map(content.chest),
+            SpecialItemMapper.map(content.specialItem));
     }
 }

@@ -8,7 +8,8 @@
             "iron dagger"
           ]
         },
-        "enemy": null
+        "enemy": null,
+        "specialItem": null
       },
       {
         "chest": {
@@ -17,17 +18,20 @@
             "iron dagger"
           ]
         },
-        "enemy": "boss"
+        "enemy": "boss",
+        "specialItem": "IRON_KEY"
       },
       {
         "chest": null,
-        "enemy": "goblin"
+        "enemy": "goblin",
+        "specialItem": null
       }
     ],
     [
       {
         "chest": null,
-        "enemy": "boss"
+        "enemy": "boss",
+        "specialItem": null
       },
       {
         "chest": {
@@ -35,7 +39,8 @@
             "iron dagger"
           ]
         },
-        "enemy": null
+        "enemy": null,
+        "specialItem": null
       },
       {
         "chest": {
@@ -44,7 +49,8 @@
             "healing herb"
           ]
         },
-        "enemy": "bandit"
+        "enemy": "bandit",
+        "specialItem": "TORCH"
       }
     ]
   ]

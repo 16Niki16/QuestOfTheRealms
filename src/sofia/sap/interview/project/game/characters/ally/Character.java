@@ -4,7 +4,7 @@ import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
-import sofia.sap.interview.project.game.inventory.Chest;
+import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.inventory.Item;
 import sofia.sap.interview.project.game.quests.Quest;
