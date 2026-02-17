@@ -25,6 +25,10 @@ public abstract class Enemy {
         };
     }
 
+    public EnemyType getType() {
+        return this.type;
+    }
+
     public AttackResult attackAllyCharacter() {
         int damage = attackDamage();
         return new AttackResult(damage, this.getDamageMessage(damage));
