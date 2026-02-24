@@ -19,17 +19,13 @@ public class Character {
     private final CharacterStatistics characterStats;
     private final Inventory inventory;
     private final Set<Item> equippedItems;
-    private final Set<Quest> activeQuests;
-    private final Set<Quest> completedQuests;
 
-    public Character(String name, AllyCharacterType type, Set<Quest> activeQuests) {
+    public Character(String name, AllyCharacterType type) {
         this.name = name;
         this.type = type;
         this.characterStats = new CharacterStatistics(type);
         this.inventory = new Inventory();
         this.equippedItems = new HashSet<>();
-        this.activeQuests = activeQuests;
-        this.completedQuests = new HashSet<>();
     }
 
     public String getCharacterName() {

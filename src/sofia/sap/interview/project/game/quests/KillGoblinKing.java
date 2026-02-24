@@ -8,12 +8,12 @@ public class KillGoblinKing extends QuestBase {
     private final EnemyType target;
 
     public KillGoblinKing() {
-        this.target = EnemyType.GOBLIN;
+        this.target = EnemyType.GOBLIN_KING;
     }
 
     @Override
     public String questDescription() {
-        return "Kill one goblin!";
+        return "Kill the goblin king!";
     }
 
     @Override

@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
-import sofia.sap.interview.project.game.exceptions.EnemyDeathException;
+import sofia.sap.interview.project.game.exceptions.EnemyDeadException;
 
 public class EnemyStatistics {
     private static final int MAX_STAT = 100;
@@ -16,7 +16,7 @@ public class EnemyStatistics {
         this.health -= amount;
 
         if (this.health <= MIN_STAT) {
-            throw new EnemyDeathException("The enemy is dead");
+            throw new EnemyDeadException("The enemy is dead");
         }
     }
 

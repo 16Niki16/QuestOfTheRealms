@@ -1,11 +1,11 @@
 package sofia.sap.interview.project.game.events;
 
-import sofia.sap.interview.project.game.map.room.items.SpecialItem;
+import sofia.sap.interview.project.game.map.room.SpecialItem;
 
-public class CollectItemEvent implements GameEvent {
+public class CollectSpecialItemEvent implements GameEvent {
     private final SpecialItem item;
 
-    public CollectItemEvent(SpecialItem item) {
+    public CollectSpecialItemEvent(SpecialItem item) {
         this.item = item;
     }
 

@@ -13,14 +13,21 @@ import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
 import sofia.sap.interview.project.game.map.Direction;
+import sofia.sap.interview.project.game.quests.FindIronKey;
+import sofia.sap.interview.project.game.quests.KillGoblinKing;
+import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.QuestLog;
+import sofia.sap.interview.project.game.quests.Reward;
+
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        Character dummy = new Character("niki", AllyCharacterType.MAGE, null);
+        Character dummy = new Character("niki", AllyCharacterType.MAGE);
         Gameplay game = new Gameplay();
         System.out.println(game.getPossibleDirections());
-        QuestLog log = new QuestLog(null);
+        Map<Quest, Reward> quests = Map.of(new KillGoblinKing(), Reward.BIG, new FindIronKey(), Reward.MEDIUM);
+        QuestLog log = new QuestLog(quests);
         GameContext context = new GameContext(game, dummy, log);
         //look
         Command command1 = new LookCommand(context);

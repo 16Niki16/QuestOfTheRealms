@@ -11,4 +11,7 @@ public enum Reward {
         this.rewardXP = rewardXP;
     }
 
+    public int getRewardXP() {
+        return rewardXP;
+    }
 }

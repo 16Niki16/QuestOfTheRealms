@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.map.room;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
-import sofia.sap.interview.project.game.map.room.items.SpecialItem;
 
 public record Room(Enemy enemy, Chest chest, SpecialItem item) {
 

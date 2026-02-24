@@ -1,8 +1,8 @@
 package sofia.sap.interview.project.game.quests;
 
-import sofia.sap.interview.project.game.events.CollectItemEvent;
+import sofia.sap.interview.project.game.events.CollectSpecialItemEvent;
 import sofia.sap.interview.project.game.events.GameEvent;
-import sofia.sap.interview.project.game.map.room.items.SpecialItem;
+import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class FindIronKey extends QuestBase {
     @Override
@@ -12,7 +12,7 @@ public class FindIronKey extends QuestBase {
 
     @Override
     public void update(GameEvent event) {
-        if (event instanceof CollectItemEvent e && e.getItemCollected().equals(SpecialItem.IRON_KEY)) {
+        if (event instanceof CollectSpecialItemEvent e && e.getItemCollected().equals(SpecialItem.IRON_KEY)) {
             completeQuest();
         }
     }

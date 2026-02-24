@@ -11,6 +11,7 @@ import sofia.sap.interview.project.game.dto.PlaygroundDTO;
 import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Set;
 
 public class Gameplay {
@@ -23,16 +24,13 @@ public class Gameplay {
     }
 
     private Playground loadPlayground() {
-        try {
-            Gson gson = new Gson();
+        Gson gson = new Gson();
 
-            FileReader reader = new FileReader("files\\CommonMap.json");
-
+        try (FileReader reader = new FileReader("files\\CommonMap.json");) {
             PlaygroundDTO dto = gson.fromJson(reader, PlaygroundDTO.class);
-
             return PlaygroundMapper.map(dto);
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException("Failed to load playground", e);
         }
     }
