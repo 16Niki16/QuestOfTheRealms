@@ -1,7 +1,5 @@
 package sofia.sap.interview.project.game.map.room;
 
-import sofia.sap.interview.project.game.inventory.Item;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

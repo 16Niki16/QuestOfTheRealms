@@ -1,7 +1,6 @@
 package sofia.sap.interview.project.game.dto.mappers;
 
 import sofia.sap.interview.project.game.map.room.Chest;
-import sofia.sap.interview.project.game.inventory.Item;
 import sofia.sap.interview.project.game.dto.ChestDTO;
 
 import java.util.List;

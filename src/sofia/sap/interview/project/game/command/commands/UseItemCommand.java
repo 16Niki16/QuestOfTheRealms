@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
-import sofia.sap.interview.project.game.inventory.Item;
 
 public class UseItemCommand implements Command {
     private final GameContext context;

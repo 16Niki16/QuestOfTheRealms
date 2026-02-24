@@ -1,13 +1,12 @@
 package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
-import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
+import sofia.sap.interview.project.game.items.Consumable;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
-import sofia.sap.interview.project.game.inventory.Item;
-import sofia.sap.interview.project.game.quests.Quest;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -36,22 +35,18 @@ public class Character {
         return this.type;
     }
 
-    public int attackEnemy() {
-        return this.characterStats.attackEnemy();
+    public void attackEnemy(Enemy enemy) {
+        int damage = this.characterStats.attackEnemy();
+        enemy.defendAgainstAllyCharacter(damage);
     }
 
     public void defendAgainstEnemy(int damage) {
         this.characterStats.decreaseHealth(damage);
     }
 
-    public void applyPotion(Item item) {
-        int amount = item.getEffect();
-
-        switch (item) {
-            case MANA_POTION -> restoreMana(amount);
-            case HEALING_HERB -> heal(amount);
-            default -> throw new ItemNotAvailableException("The provided item is not in the potion list!");
-        }
+    public void applyPotion(Consumable item) {
+        this.inventory.removeItem(item);
+        item.consume(this);
     }
 
     public void equipGear(Item gear) {

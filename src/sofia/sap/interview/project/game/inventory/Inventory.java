@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.inventory;
 
+import sofia.sap.interview.project.game.items.Item;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
