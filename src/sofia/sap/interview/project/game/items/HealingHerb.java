@@ -6,7 +6,13 @@ public class HealingHerb implements Consumable {
     private static final int EFFECT = 15;
 
     @Override
+    public ItemType getType() {
+        return ItemType.HEALING_HERB;
+    }
+
+    @Override
     public void consume(Character character) {
         character.heal(EFFECT);
     }
+
 }

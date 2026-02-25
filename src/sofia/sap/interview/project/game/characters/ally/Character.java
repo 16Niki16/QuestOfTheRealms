@@ -4,9 +4,11 @@ import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
-import sofia.sap.interview.project.game.items.Consumable;
-import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.inventory.Inventory;
+import sofia.sap.interview.project.game.items.Consumable;
+import sofia.sap.interview.project.game.items.Gear;
+import sofia.sap.interview.project.game.items.Item;
+import sofia.sap.interview.project.game.map.room.Chest;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,7 +19,7 @@ public class Character {
     private final AllyCharacterType type;
     private final CharacterStatistics characterStats;
     private final Inventory inventory;
-    private final Set<Item> equippedItems;
+    private final Set<Gear> equippedItems;
 
     public Character(String name, AllyCharacterType type) {
         this.name = name;
@@ -49,23 +51,23 @@ public class Character {
         item.consume(this);
     }
 
-    public void equipGear(Item gear) {
+    public void equipGear(Gear gear) {
         if (this.equippedItems.contains(gear) || !this.inventory.checkItemInInventory(gear)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
 
         this.equippedItems.add(gear);
         this.inventory.removeItem(gear);
-        increaseAttackDamage(gear.getEffect());
+        gear.equip(this);
     }
 
-    public void unequipGear(Item gear) {
+    public void unequipGear(Gear gear) {
         if (!this.equippedItems.contains(gear)) {
             throw new EquipmentNotEquippedException("The provided item is not equipped!");
         }
         this.equippedItems.remove(gear);
         this.inventory.addItem(gear);
-        decreaseAttackDamage(gear.getEffect());
+        gear.unequip(this);
     }
 
     public void collectItems(Chest chest) {

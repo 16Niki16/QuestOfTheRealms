@@ -1,5 +1,7 @@
 package sofia.sap.interview.project.game.map.room;
 
+import sofia.sap.interview.project.game.items.Item;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +13,7 @@ public class Chest {
         this.content = new ArrayList<>(content);
     }
 
-    public static Chest createChestWithItems(List<Item> content) {
+    public static Chest createChest(List<Item> content) {
         return new Chest(content);
     }
 

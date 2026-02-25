@@ -1,7 +1,10 @@
 package sofia.sap.interview.project.game.dto.mappers;
 
-import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.dto.ChestDTO;
+import sofia.sap.interview.project.game.items.Item;
+import sofia.sap.interview.project.game.items.ItemFactory;
+import sofia.sap.interview.project.game.items.ItemType;
+import sofia.sap.interview.project.game.map.room.Chest;
 
 import java.util.List;
 
@@ -12,9 +15,10 @@ public class ChestMapper {
         }
 
         List<Item> items = dto.items.stream()
-            .map(Item::getItem)
-            .toList();
+                .map(ItemType::valueOf)
+                .map(ItemFactory::create)
+                .toList();
 
-        return Chest.createChestWithItems(items);
+        return Chest.createChest(items);
     }
 }

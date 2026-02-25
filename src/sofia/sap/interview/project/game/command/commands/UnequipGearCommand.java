@@ -2,20 +2,20 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.items.Gear;
 
 public class UnequipGearCommand implements Command {
     private final GameContext context;
-    private final String gear;
+    private final Gear gear;
 
-    public UnequipGearCommand(GameContext context, String gear) {
+    public UnequipGearCommand(GameContext context, Gear gear) {
         this.context = context;
         this.gear = gear;
     }
 
     @Override
     public CommandResult execute() {
-        Item item = Item.getItem(gear);
-        this.context.character().unequipGear(item);
+        this.context.character().unequipGear(gear);
 
         return new CommandResult(String.format("The %s is successfully unequipped!", gear));
     }

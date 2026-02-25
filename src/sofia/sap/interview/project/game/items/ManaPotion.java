@@ -6,6 +6,11 @@ public class ManaPotion implements Consumable {
     private static final int EFFECT = 10;
 
     @Override
+    public ItemType getType() {
+        return ItemType.MANA_POTION;
+    }
+
+    @Override
     public void consume(Character character) {
         character.restoreMana(EFFECT);
     }

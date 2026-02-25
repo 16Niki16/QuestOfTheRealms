@@ -4,8 +4,8 @@
       {
         "chest": {
           "items": [
-            "healing herb",
-            "iron dagger"
+            "HEALING_HERB",
+            "IRON_DAGGER"
           ]
         },
         "enemy": null,
@@ -14,8 +14,8 @@
       {
         "chest": {
           "items": [
-            "healing herb",
-            "iron dagger"
+            "HEALING_HERB",
+            "IRON_DAGGER"
           ]
         },
         "enemy": "goblin king",
@@ -36,7 +36,7 @@
       {
         "chest": {
           "items": [
-            "iron dagger"
+            "IRON_DAGGER"
           ]
         },
         "enemy": null,
@@ -45,8 +45,8 @@
       {
         "chest": {
           "items": [
-            "mana potion",
-            "healing herb"
+            "MANA_POTION",
+            "HEALING_HERB"
           ]
         },
         "enemy": "bandit",
