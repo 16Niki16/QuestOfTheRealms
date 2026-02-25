@@ -5,7 +5,7 @@ import sofia.sap.interview.project.game.command.CommandResult;
 public class HelpCommand implements Command {
     @Override
     public CommandResult execute() {
-        return new CommandResult("""
+        return CommandResult.withoutEvent("""
                 Available commands:
                 - move [north | south | east | west]
                 - look

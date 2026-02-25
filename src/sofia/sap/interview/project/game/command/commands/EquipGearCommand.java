@@ -17,6 +17,6 @@ public class EquipGearCommand implements Command {
     public CommandResult execute() {
         this.context.character().equipGear(gear);
 
-        return new CommandResult(String.format("The %s is successfully equipped!", gear));
+        return CommandResult.withoutEvent(this.gear.equipMessage());
     }
 }

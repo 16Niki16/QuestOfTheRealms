@@ -1,7 +1,6 @@
 package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
-import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Inventory;
@@ -37,13 +36,12 @@ public class Character {
         return this.type;
     }
 
-    public void attackEnemy(Enemy enemy) {
-        int damage = this.characterStats.attackEnemy();
-        enemy.defendAgainstAllyCharacter(damage);
+    public int attackEnemy() {
+        return this.characterStats.attackEnemy();
     }
 
-    public void defendAgainstEnemy(int damage) {
-        this.characterStats.decreaseHealth(damage);
+    public boolean defendAgainstEnemy(int damage) {
+        return this.characterStats.decreaseHealth(damage);
     }
 
     public void applyPotion(Consumable item) {

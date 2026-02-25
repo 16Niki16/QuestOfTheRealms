@@ -15,4 +15,9 @@ public class HealingHerb implements Consumable {
         character.heal(EFFECT);
     }
 
+    @Override
+    public String itemMessage() {
+        return String.format("You have been healed for %d health!", EFFECT);
+    }
+
 }

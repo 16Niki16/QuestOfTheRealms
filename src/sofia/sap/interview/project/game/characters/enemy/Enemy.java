@@ -40,8 +40,8 @@ public abstract class Enemy {
         return ThreadLocalRandom.current().nextInt(attackRange.minDamage(), attackRange.maxDamage() + 1);
     }
 
-    public void defendAgainstAllyCharacter(int damage) {
-        this.enemyStats.decreaseHealth(damage);
+    public boolean defendAgainstAllyCharacter(int damage) {
+        return this.enemyStats.decreaseHealth(damage);
     }
 
     public abstract String getDamageMessage(int damage);

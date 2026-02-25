@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
-import sofia.sap.interview.project.game.exceptions.CharacterDeathException;
 import sofia.sap.interview.project.game.exceptions.NotEnoughManaException;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -28,13 +27,10 @@ public class CharacterStatistics {
         }
     }
 
-    public void decreaseHealth(int amount) {
+    public boolean decreaseHealth(int amount) {
         this.health -= amount;
 
-        if (this.health <= MIN_STAT) {
-            throw new CharacterDeathException("Your character died!");
-        }
-
+        return this.health <= MIN_STAT;
     }
 
     public void increaseMana(int amount) {

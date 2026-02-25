@@ -41,4 +41,8 @@ public class QuestLog {
     public int getCollectedXP() {
         return this.collectedXP;
     }
+
+    public String questsStatus() {
+        return QuestLogStatus.parser(this.completedQuests, this.activeQuests.keySet());
+    }
 }

@@ -17,6 +17,6 @@ public class UnequipGearCommand implements Command {
     public CommandResult execute() {
         this.context.character().unequipGear(gear);
 
-        return new CommandResult(String.format("The %s is successfully unequipped!", gear));
+        return CommandResult.withoutEvent(this.gear.unequipMessage());
     }
 }

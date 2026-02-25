@@ -6,4 +6,8 @@ public interface Gear extends Item {
     void equip(Character character);
 
     void unequip(Character character);
+
+    String equipMessage();
+
+    String unequipMessage();
 }

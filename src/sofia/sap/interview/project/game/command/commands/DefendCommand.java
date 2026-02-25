@@ -1,6 +1,5 @@
 package sofia.sap.interview.project.game.command.commands;
 
-import sofia.sap.interview.project.game.characters.attack.AttackResult;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.command.GameContext;
@@ -14,10 +13,8 @@ public class DefendCommand implements Command {
 
     @Override
     public CommandResult execute() {
-        Enemy enemy = context.gameplay().getEnemyOnCharacterCoordinates();
-        AttackResult attackResult = enemy.attackAllyCharacter();
-        this.context.character().defendAgainstEnemy(attackResult.damage());
+        Enemy enemy = this.context.gameplay().getEnemyOnCharacterCoordinates();
 
-        return new CommandResult(attackResult.message());
+        return this.context.combat().defend(this.context.character(), enemy);
     }
 }
