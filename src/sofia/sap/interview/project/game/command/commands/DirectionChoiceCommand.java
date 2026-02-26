@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.map.Direction;
 
 import java.util.Set;
@@ -22,6 +22,6 @@ public class DirectionChoiceCommand implements Command {
             outputBuilder.append(direction).append(",");
         }
 
-        return new CommandResult(outputBuilder.substring(0, outputBuilder.length() - 1));
+        return CommandResult.withoutEvent(outputBuilder.substring(0, outputBuilder.length() - 1));
     }
 }

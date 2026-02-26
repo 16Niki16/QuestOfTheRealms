@@ -9,6 +9,7 @@ import sofia.sap.interview.project.game.command.commands.LookCommand;
 import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.map.Direction;
 
 public class CommandFactory {

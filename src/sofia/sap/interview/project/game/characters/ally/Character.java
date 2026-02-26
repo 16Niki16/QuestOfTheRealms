@@ -36,6 +36,10 @@ public class Character {
         return this.type;
     }
 
+    public Inventory getInventory() {
+        return this.inventory;
+    }
+
     public int attackEnemy() {
         return this.characterStats.attackEnemy();
     }

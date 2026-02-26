@@ -3,8 +3,11 @@ package sofia.sap.interview.project.game.gameplay;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
+import sofia.sap.interview.project.game.events.CharacterDiedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.exceptions.CharacterDeathException;
+import sofia.sap.interview.project.game.inventory.Inventory;
+import sofia.sap.interview.project.game.items.Item;
 
 public class CombatActions {
     public CommandResult attack(Character character, Enemy enemy) {
@@ -22,8 +25,13 @@ public class CombatActions {
         boolean dead = character.defendAgainstEnemy(damage);
 
         if (dead) {
-            throw new CharacterDeathException("Your character died!");
+            return CommandResult.withEvent(enemy.getDamageMessage(damage), new CharacterDiedEvent(character));
         }
         return CommandResult.withoutEvent(enemy.getDamageMessage(damage));
+    }
+
+    public CommandResult useItem(Character character, String itemName) {
+        Inventory inventory = character.getInventory();
+        Item item = inventory.getItem(itemName);
     }
 }

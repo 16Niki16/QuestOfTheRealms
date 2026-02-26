@@ -1,7 +1,7 @@
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.command.commands.AttackCommand;
 import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.command.commands.DefendCommand;

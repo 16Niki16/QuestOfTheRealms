@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.map.Direction;
 
 public class MoveCommand implements Command {
@@ -16,6 +16,6 @@ public class MoveCommand implements Command {
     @Override
     public CommandResult execute() {
         this.context.gameplay().movePlayer(this.direction);
-        return new CommandResult("You successfully entered a new room!");
+        return CommandResult.withoutEvent("You successfully entered a new room!");
     }
 }

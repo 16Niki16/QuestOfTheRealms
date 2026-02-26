@@ -2,7 +2,7 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.map.room.Chest;
 
 public class LookCommand implements Command {
@@ -25,6 +25,6 @@ public class LookCommand implements Command {
             contain.append("- Enemy: ");
             contain.append(enemy.getType().getName());
         }
-        return new CommandResult(contain.toString());
+        return CommandResult.withoutEvent(contain.toString());
     }
 }

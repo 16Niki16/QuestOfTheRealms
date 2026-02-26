@@ -2,7 +2,7 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.command.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameContext;
 
 public class DefendCommand implements Command {
     private final GameContext context;
