@@ -10,6 +10,7 @@ import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
 
 public class CommandFactory {
@@ -25,12 +26,16 @@ public class CommandFactory {
         return switch (option) {
             case ATTACK -> new AttackCommand(context);
             case DEFEND -> new DefendCommand(context);
-            case USE_ITEM -> new UseItemCommand(context, commandSplit[1]);
+            case USE_ITEM -> new UseItemCommand(context, itemType(commandSplit[1]));
             case MOVE -> new MoveCommand(context, Direction.getDirection(commandSplit[1]));
             case LOOK -> new LookCommand(context);
-            case EQUIP -> new EquipGearCommand(context, commandSplit[1]);
-            case UNEQUIP -> new UnequipGearCommand(context, commandSplit[1]);
+            case EQUIP -> new EquipGearCommand(context, itemType(commandSplit[1]));
+            case UNEQUIP -> new UnequipGearCommand(context, itemType(commandSplit[1]));
             case HELP -> new HelpCommand();
         };
+    }
+
+    private static ItemType itemType(String itemName) {
+        return ItemType.getByName(itemName);
     }
 }

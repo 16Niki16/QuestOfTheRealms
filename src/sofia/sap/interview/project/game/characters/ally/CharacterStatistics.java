@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
-import sofia.sap.interview.project.game.exceptions.NotEnoughManaException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -19,12 +18,13 @@ public class CharacterStatistics {
         this.attackRange = type.getAttackRange();
     }
 
-    public void decreaseMana(int amount) {
+    public boolean decreaseMana(int amount) {
         if (this.mana - amount < MIN_STAT) {
-            throw new NotEnoughManaException("The attack can not be executed, because the mana is not enough!");
-        } else {
-            this.mana -= amount;
+            return false;
         }
+
+        this.mana -= amount;
+        return true;
     }
 
     public boolean decreaseHealth(int amount) {

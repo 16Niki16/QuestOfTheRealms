@@ -2,11 +2,14 @@ package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
+import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Inventory;
 import sofia.sap.interview.project.game.items.Consumable;
 import sofia.sap.interview.project.game.items.Gear;
 import sofia.sap.interview.project.game.items.Item;
+import sofia.sap.interview.project.game.items.ItemFactory;
+import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.room.Chest;
 
 import java.util.Collection;
@@ -18,7 +21,7 @@ public class Character {
     private final AllyCharacterType type;
     private final CharacterStatistics characterStats;
     private final Inventory inventory;
-    private final Set<Gear> equippedItems;
+    private final Set<ItemType> equippedItems;
 
     public Character(String name, AllyCharacterType type) {
         this.name = name;
@@ -36,10 +39,6 @@ public class Character {
         return this.type;
     }
 
-    public Inventory getInventory() {
-        return this.inventory;
-    }
-
     public int attackEnemy() {
         return this.characterStats.attackEnemy();
     }
@@ -48,27 +47,42 @@ public class Character {
         return this.characterStats.decreaseHealth(damage);
     }
 
-    public void applyPotion(Consumable item) {
-        this.inventory.removeItem(item);
-        item.consume(this);
+    public void applyPotion(ItemType itemType) {
+        Item item = inventory.getItem(itemType);
+
+        if (!(item instanceof Consumable consumable)) {
+            throw new ItemNotAvailableException("The provided item is not consumable!");
+        }
+
+        this.inventory.removeItem(itemType);
+        consumable.consume(this);
     }
 
-    public void equipGear(Gear gear) {
-        if (this.equippedItems.contains(gear) || !this.inventory.checkItemInInventory(gear)) {
+    public void equipGear(ItemType itemType) {
+        Item item = inventory.getItem(itemType);
+
+        if (!(item instanceof Gear gear)) {
+            throw new ItemNotAvailableException("The provided item is not gear!");
+        } else if (this.equippedItems.contains(itemType)) {
             throw new ItemTypeAlreadyEquippedException("This kind of item is already equipped by the ally character!");
         }
 
-        this.equippedItems.add(gear);
-        this.inventory.removeItem(gear);
+        this.equippedItems.add(itemType);
+        this.inventory.removeItem(itemType);
         gear.equip(this);
     }
 
-    public void unequipGear(Gear gear) {
-        if (!this.equippedItems.contains(gear)) {
+    public void unequipGear(ItemType itemType) {
+        Item item = ItemFactory.create(itemType);
+
+        if (!(item instanceof Gear gear)) {
+            throw new ItemNotAvailableException("The provided item is not gear!");
+        } else if (!this.equippedItems.contains(itemType)) {
             throw new EquipmentNotEquippedException("The provided item is not equipped!");
         }
-        this.equippedItems.remove(gear);
-        this.inventory.addItem(gear);
+
+        this.equippedItems.remove(itemType);
+        this.inventory.addItem(itemType);
         gear.unequip(this);
     }
 

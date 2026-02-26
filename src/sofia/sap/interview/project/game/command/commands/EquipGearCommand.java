@@ -2,13 +2,13 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.gameplay.GameContext;
-import sofia.sap.interview.project.game.items.Gear;
+import sofia.sap.interview.project.game.items.ItemType;
 
 public class EquipGearCommand implements Command {
     private final GameContext context;
-    private final Gear gear;
+    private final ItemType gear;
 
-    public EquipGearCommand(GameContext context, Gear gear) {
+    public EquipGearCommand(GameContext context, ItemType gear) {
         this.context = context;
         this.gear = gear;
     }

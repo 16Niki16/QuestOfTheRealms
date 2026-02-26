@@ -5,9 +5,10 @@ import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
-import sofia.sap.interview.project.game.exceptions.CharacterDeathException;
-import sofia.sap.interview.project.game.inventory.Inventory;
+import sofia.sap.interview.project.game.items.Consumable;
 import sofia.sap.interview.project.game.items.Item;
+import sofia.sap.interview.project.game.items.ItemFactory;
+import sofia.sap.interview.project.game.items.ItemType;
 
 public class CombatActions {
     public CommandResult attack(Character character, Enemy enemy) {
@@ -30,8 +31,9 @@ public class CombatActions {
         return CommandResult.withoutEvent(enemy.getDamageMessage(damage));
     }
 
-    public CommandResult useItem(Character character, String itemName) {
-        Inventory inventory = character.getInventory();
-        Item item = inventory.getItem(itemName);
+    public CommandResult useItem(Character character, ItemType itemType) {
+        character.applyPotion(itemType);
+        Item item = ItemFactory.create(itemType);
+        return CommandResult.withoutEvent(item.getMessage);
     }
 }
