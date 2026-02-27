@@ -8,4 +8,6 @@ public interface Quest {
     boolean isCompleted();
 
     void update(GameEvent event);
+
+    Reward getReward();
 }

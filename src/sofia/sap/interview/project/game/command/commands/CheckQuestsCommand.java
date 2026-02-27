@@ -1,12 +1,12 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 
 public class CheckQuestsCommand implements Command {
-    private final GameContext context;
+    private final GameSession context;
 
-    public CheckQuestsCommand(GameContext context) {
+    public CheckQuestsCommand(GameSession context) {
         this.context = context;
     }
 

@@ -1,14 +1,14 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
 import sofia.sap.interview.project.game.map.room.Chest;
 
 public class OpenChestCommand implements Command {
-    private final GameContext context;
+    private final GameSession context;
 
-    public OpenChestCommand(GameContext context) {
+    public OpenChestCommand(GameSession context) {
         this.context = context;
     }
 

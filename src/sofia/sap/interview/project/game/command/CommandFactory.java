@@ -9,7 +9,7 @@ import sofia.sap.interview.project.game.command.commands.LookCommand;
 import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
 
@@ -18,7 +18,7 @@ public class CommandFactory {
      * place to create the command, depends on client input??
      *
      */
-    public static Command createCommand(String input, GameContext context) {
+    public static Command createCommand(String input, GameSession context) {
         String[] commandSplit = input.split(" ", 2);
 
         String command = commandSplit[0].toLowerCase();

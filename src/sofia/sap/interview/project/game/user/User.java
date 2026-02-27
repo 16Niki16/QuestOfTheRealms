@@ -2,29 +2,35 @@ package sofia.sap.interview.project.game.user;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.gameplay.CombatActions;
+import sofia.sap.interview.project.game.gameplay.GameSession;
+import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
+import sofia.sap.interview.project.game.quests.FindIronKey;
+import sofia.sap.interview.project.game.quests.KillGoblinKing;
+import sofia.sap.interview.project.game.quests.QuestLog;
+import sofia.sap.interview.project.game.quests.Reward;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
 
 public class User {
     private String username;
-    private Set<Gameplay> gameplays;
+    private GameSession session;
 
-    private User(String username, Set<Gameplay> gameplays) {
+    private User(String username, GameSession session) {
         this.username = username;
-        this.gameplays = gameplays;
-    }
-
-    public static User loadUserWithCharacter(String username, Set<Gameplay> gameplays) {
-        return new User(username, gameplays);
+        this.session = session;
     }
 
     public static User createUser(String username) {
-        return new User(username, new HashSet<>());
+        return new User(username, null);
     }
 
-    public void createCharacter(String characterName, AllyCharacterType type) {
-        Character character = new Character(characterName, type);
+    public void createNewGame(String name, AllyCharacterType type) {
+        Gameplay gameplay = new Gameplay();
+        Character character = new Character(name, type);
+        QuestLog log = new QuestLog(Map.of(new FindIronKey(), Reward.BIG, new KillGoblinKing(), Reward.MEDIUM));
+        CombatActions actions = new CombatActions();
+        this.session = new GameSession(gameplay, character, log, actions, GameState.RUNNING);
     }
 }

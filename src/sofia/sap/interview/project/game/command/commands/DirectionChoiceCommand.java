@@ -1,15 +1,15 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.Direction;
 
 import java.util.Set;
 
 public class DirectionChoiceCommand implements Command {
-    private final GameContext context;
+    private final GameSession context;
 
-    public DirectionChoiceCommand(GameContext context) {
+    public DirectionChoiceCommand(GameSession context) {
         this.context = context;
     }
 

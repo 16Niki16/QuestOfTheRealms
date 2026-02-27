@@ -2,7 +2,7 @@ import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.gameplay.CombatActions;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.command.commands.AttackCommand;
 import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.command.commands.DefendCommand;
@@ -32,7 +32,7 @@ public class Main {
         Map<Quest, Reward> quests = Map.of(new KillGoblinKing(), Reward.BIG, new FindIronKey(), Reward.MEDIUM);
         QuestLog log = new QuestLog(quests);
         CombatActions actions = new CombatActions();
-        GameContext context = new GameContext(game, dummy, log, actions, GameState.RUNNING);
+        GameSession context = new GameSession(game, dummy, log, actions, GameState.RUNNING);
         //look
         Command command1 = new LookCommand(context);
         CommandResult result1 = command1.execute();

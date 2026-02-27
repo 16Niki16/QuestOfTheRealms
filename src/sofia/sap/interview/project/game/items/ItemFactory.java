@@ -9,10 +9,13 @@ import java.util.function.Supplier;
 public class ItemFactory {
     private static final Map<ItemType, Supplier<Item>> REGISTRY = new EnumMap<>(ItemType.class);
 
-    public ItemFactory() {
+    static {
         REGISTRY.put(ItemType.HEALING_HERB, HealingHerb::new);
         REGISTRY.put(ItemType.MANA_POTION, ManaPotion::new);
         REGISTRY.put(ItemType.IRON_DAGGER, IronDagger::new);
+    }
+
+    private ItemFactory() {
     }
 
     public static Item create(ItemType type) {

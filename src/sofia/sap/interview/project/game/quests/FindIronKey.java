@@ -5,6 +5,10 @@ import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class FindIronKey extends QuestBase {
+    public FindIronKey() {
+        super(Reward.BIG);
+    }
+
     @Override
     public String questDescription() {
         return "Your quest is to find the iron key!";

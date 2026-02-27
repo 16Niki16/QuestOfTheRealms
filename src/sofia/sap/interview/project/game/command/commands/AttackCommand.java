@@ -2,12 +2,12 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 
 public class AttackCommand implements Command {
-    private final GameContext context;
+    private final GameSession context;
 
-    public AttackCommand(GameContext context) {
+    public AttackCommand(GameSession context) {
         this.context = context;
     }
 

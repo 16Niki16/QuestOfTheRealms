@@ -1,14 +1,14 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
-import sofia.sap.interview.project.game.gameplay.GameContext;
+import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.ItemType;
 
 public class UseItemCommand implements Command {
-    private final GameContext context;
+    private final GameSession context;
     private final ItemType item;
 
-    public UseItemCommand(GameContext context, ItemType item) {
+    public UseItemCommand(GameSession context, ItemType item) {
         this.context = context;
         this.item = item;
     }

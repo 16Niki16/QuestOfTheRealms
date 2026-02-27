@@ -8,6 +8,7 @@ public class KillGoblinKing extends QuestBase {
     private final EnemyType target;
 
     public KillGoblinKing() {
+        super(Reward.MEDIUM);
         this.target = EnemyType.GOBLIN_KING;
     }
 
