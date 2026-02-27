@@ -45,6 +45,11 @@ public class Gameplay {
         }
     }
 
+    public RoomView lookAround() {
+        return new RoomView(getChestOnCharacterCoordinates() != null,
+                getEnemyOnCharacterCoordinates(), getSpecialItemOnPlayerCoordinates());
+    }
+
     public Set<Direction> getPossibleDirections() {
         return this.playground.possibleDirections(this.playerCoordinates);
     }

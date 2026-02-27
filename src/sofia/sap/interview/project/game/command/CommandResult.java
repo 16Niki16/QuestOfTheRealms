@@ -7,8 +7,8 @@ public record CommandResult<T>(String resultMessage, T obj, GameEvent event) {
         return new CommandResult<>(resultMessage, null, null);
     }
 
-    public static <T> CommandResult<T> withObject(String resultMessage, T obj) {
-        return new CommandResult<>(resultMessage, obj, null);
+    public static <T> CommandResult<T> withObject(T obj) {
+        return new CommandResult<>(null, obj, null);
     }
 
     public static <T> CommandResult<T> withEvent(String resultMessage, T obj, GameEvent event) {

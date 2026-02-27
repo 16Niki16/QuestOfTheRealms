@@ -14,14 +14,9 @@ public class DirectionChoiceCommand implements Command {
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult<Set<Direction>> execute() {
         Set<Direction> possibleDirections = context.gameplay().getPossibleDirections();
 
-        StringBuilder outputBuilder = new StringBuilder("The possible directions are: ");
-        for (Direction direction : possibleDirections) {
-            outputBuilder.append(direction).append(",");
-        }
-
-        return CommandResult.withoutEvent(outputBuilder.substring(0, outputBuilder.length() - 1));
+        return CommandResult.withObject(possibleDirections);
     }
 }

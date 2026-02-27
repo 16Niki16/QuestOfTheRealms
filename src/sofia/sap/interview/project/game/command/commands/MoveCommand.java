@@ -14,8 +14,8 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult<Void> execute() {
         this.context.gameplay().movePlayer(this.direction);
-        return CommandResult.withoutEvent("You successfully entered a new room!");
+        return CommandResult.messageResult("You successfully entered a new room!");
     }
 }

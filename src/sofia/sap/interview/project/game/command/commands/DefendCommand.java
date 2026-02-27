@@ -12,7 +12,7 @@ public class DefendCommand implements Command {
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult<Void> execute() {
         Enemy enemy = this.context.gameplay().getEnemyOnCharacterCoordinates();
 
         return this.context.combat().defend(this.context.character(), enemy);
