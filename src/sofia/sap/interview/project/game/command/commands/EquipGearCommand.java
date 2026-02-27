@@ -15,8 +15,6 @@ public class EquipGearCommand implements Command {
 
     @Override
     public CommandResult execute() {
-        this.context.character().equipGear(gear);
-
-        return CommandResult.withoutEvent(this.gear.equipMessage());
+        return this.context.combat().equip(this.context.character(), this.gear);
     }
 }

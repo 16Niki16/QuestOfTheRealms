@@ -18,7 +18,7 @@ public class KillGoblinKing extends QuestBase {
 
     @Override
     public void update(GameEvent event) {
-        if (event instanceof KillEnemyEvent e && e.getKilledEnemy().getType().equals(target)) {
+        if (event instanceof KillEnemyEvent e && e.enemy().getType().equals(target)) {
             completeQuest();
         }
     }

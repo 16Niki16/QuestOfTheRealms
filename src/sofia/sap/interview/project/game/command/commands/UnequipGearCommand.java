@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.gameplay.GameContext;
-import sofia.sap.interview.project.game.items.Gear;
 import sofia.sap.interview.project.game.items.ItemType;
 
 public class UnequipGearCommand implements Command {
@@ -16,8 +15,6 @@ public class UnequipGearCommand implements Command {
 
     @Override
     public CommandResult execute() {
-        this.context.character().unequipGear(gear);
-
-        return CommandResult.withoutEvent(this.gear.unequipMessage());
+        return this.context.combat().unequip(this.context.character(), gear);
     }
 }

@@ -1,6 +1,7 @@
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.command.CommandResult;
+import sofia.sap.interview.project.game.gameplay.CombatActions;
 import sofia.sap.interview.project.game.gameplay.GameContext;
 import sofia.sap.interview.project.game.command.commands.AttackCommand;
 import sofia.sap.interview.project.game.command.commands.Command;
@@ -11,7 +12,9 @@ import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
+import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
+import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.quests.FindIronKey;
 import sofia.sap.interview.project.game.quests.KillGoblinKing;
@@ -28,7 +31,8 @@ public class Main {
         System.out.println(game.getPossibleDirections());
         Map<Quest, Reward> quests = Map.of(new KillGoblinKing(), Reward.BIG, new FindIronKey(), Reward.MEDIUM);
         QuestLog log = new QuestLog(quests);
-        GameContext context = new GameContext(game, dummy, log);
+        CombatActions actions = new CombatActions();
+        GameContext context = new GameContext(game, dummy, log, actions, GameState.RUNNING);
         //look
         Command command1 = new LookCommand(context);
         CommandResult result1 = command1.execute();
@@ -38,15 +42,15 @@ public class Main {
         CommandResult result69 = command69.execute();
         System.out.println(result69.resultMessage());
         //equip gear
-        Command command68 = new EquipGearCommand(context, "iron dagger");
+        Command command68 = new EquipGearCommand(context, ItemType.IRON_DAGGER);
         CommandResult result68 = command68.execute();
         System.out.println(result68.resultMessage());
         //unequip gear
-        Command command67 = new UnequipGearCommand(context, "iron dagger");
+        Command command67 = new UnequipGearCommand(context, ItemType.IRON_DAGGER);
         CommandResult result67 = command67.execute();
         System.out.println(result67.resultMessage());
         //use item
-        Command command66 = new UseItemCommand(context, "healing herb");
+        Command command66 = new UseItemCommand(context, ItemType.HEALING_HERB);
         CommandResult result66 = command66.execute();
         System.out.println(result66.resultMessage());
         //move

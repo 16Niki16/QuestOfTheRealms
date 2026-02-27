@@ -21,13 +21,13 @@ public class Inventory {
         return this.items.containsKey(item);
     }
 
-    public void addItem(ItemType item) {
-        this.items.put(item, this.items.getOrDefault(item, 0) + 1);
+    public void addItem(Item item) {
+        this.items.put(item.getType(), this.items.getOrDefault(item, 0) + 1);
     }
 
     public void addAllItems(Collection<Item> items) {
         for (Item item : items) {
-            addItem(item.getType());
+            addItem(item);
         }
     }
 
@@ -40,13 +40,14 @@ public class Inventory {
         return ItemFactory.create(itemType);
     }
 
-    public void removeItem(ItemType item) {
-        int numberOfItems = this.items.get(item);
+    public void removeItem(Item item) {
+        ItemType type = item.getType();
+        int numberOfItems = this.items.get(item.getType());
 
         if (numberOfItems > LAST_ITEM) {
-            decrementItemNumber(item, numberOfItems);
+            decrementItemNumber(type, numberOfItems);
         } else {
-            removeItemTypeFromInventory(item);
+            removeItemTypeFromInventory(type);
         }
     }
 

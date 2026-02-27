@@ -12,7 +12,7 @@ public class FindIronKey extends QuestBase {
 
     @Override
     public void update(GameEvent event) {
-        if (event instanceof CollectSpecialItemEvent e && e.getItemCollected().equals(SpecialItem.IRON_KEY)) {
+        if (event instanceof CollectSpecialItemEvent e && e.item().equals(SpecialItem.IRON_KEY)) {
             completeQuest();
         }
     }

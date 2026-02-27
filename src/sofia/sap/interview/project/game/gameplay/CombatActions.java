@@ -5,9 +5,10 @@ import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
+import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.items.Consumable;
+import sofia.sap.interview.project.game.items.Gear;
 import sofia.sap.interview.project.game.items.Item;
-import sofia.sap.interview.project.game.items.ItemFactory;
 import sofia.sap.interview.project.game.items.ItemType;
 
 public class CombatActions {
@@ -32,8 +33,34 @@ public class CombatActions {
     }
 
     public CommandResult useItem(Character character, ItemType itemType) {
-        character.applyPotion(itemType);
-        Item item = ItemFactory.create(itemType);
-        return CommandResult.withoutEvent(item.getMessage);
+        Item item = character.getInventory().getItem(itemType);
+
+        if (!(item instanceof Consumable consumable)) {
+            throw new ItemNotAvailableException("The provided item is not consumable!");
+        }
+        character.applyPotion(consumable);
+        return CommandResult.withoutEvent(consumable.itemMessage());
+    }
+
+    public CommandResult equip(Character character, ItemType itemType) {
+        Item item = character.getInventory().getItem(itemType);
+
+        if (!(item instanceof Gear gear)) {
+            throw new ItemNotAvailableException("The provided item is not gear!");
+        }
+        character.equipGear(gear);
+
+        return CommandResult.withoutEvent(gear.equipMessage());
+    }
+
+    public CommandResult unequip(Character character, ItemType itemType) {
+        Item item = character.getEquippedItem(itemType);
+
+        if (!(item instanceof Gear gear)) {
+            throw new ItemNotAvailableException("The provided item is not gear!");
+        }
+        character.unequipGear(gear);
+
+        return CommandResult.withoutEvent(gear.unequipMessage());
     }
 }
