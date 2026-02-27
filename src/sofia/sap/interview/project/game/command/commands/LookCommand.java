@@ -2,8 +2,10 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.CommandResult;
+import sofia.sap.interview.project.game.events.CollectSpecialItemEvent;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.room.Chest;
+import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class LookCommand implements Command {
     private final GameSession context;
@@ -16,6 +18,7 @@ public class LookCommand implements Command {
     public CommandResult execute() {
         Chest chest = this.context.gameplay().getChestOnCharacterCoordinates();
         Enemy enemy = this.context.gameplay().getEnemyOnCharacterCoordinates();
+        SpecialItem specialItem = this.context.gameplay().getSpecialItemOnPlayerCoordinates();
 
         StringBuilder contain = new StringBuilder("The room contains:\n");
         if (chest != null) {
@@ -23,7 +26,12 @@ public class LookCommand implements Command {
         }
         if (enemy != null) {
             contain.append("- Enemy: ");
-            contain.append(enemy.getType().getName());
+            contain.append(enemy.getType().getName()).append("\n");
+        }
+        if (specialItem != null) {
+            contain.append("-Special item: ");
+            contain.append(specialItem.getName());
+            return CommandResult.withEvent(contain.toString(), new CollectSpecialItemEvent(specialItem));
         }
         return CommandResult.withoutEvent(contain.toString());
     }

@@ -9,7 +9,6 @@ import sofia.sap.interview.project.game.items.Gear;
 import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemFactory;
 import sofia.sap.interview.project.game.items.ItemType;
-import sofia.sap.interview.project.game.map.room.Chest;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -83,8 +82,7 @@ public class Character {
         gear.unequip(this);
     }
 
-    public void collectItems(Chest chest) {
-        Collection<Item> items = chest.collectItems();
+    public void collectItems(Collection<Item> items) {
         this.inventory.addAllItems(items);
     }
 
