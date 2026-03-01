@@ -1,10 +1,7 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
 import sofia.sap.interview.project.game.characters.ally.statistics.EnemyStatistics;
-import sofia.sap.interview.project.game.characters.attack.AttackRange;
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Enemy {
     private final EnemyType type;
@@ -31,8 +28,7 @@ public abstract class Enemy {
     }
 
     public int attackDamage() {
-        AttackRange attackRange = type.getAttackRange();
-        return ThreadLocalRandom.current().nextInt(attackRange.minDamage(), attackRange.maxDamage() + 1);
+        return enemyStats.attack();
     }
 
     public boolean defendAgainstAllyCharacter(int damage) {
