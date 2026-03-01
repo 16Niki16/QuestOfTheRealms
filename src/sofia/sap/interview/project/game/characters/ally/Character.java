@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.characters.ally;
 
+import sofia.sap.interview.project.game.characters.ally.statistics.CharacterStatistics;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
@@ -50,7 +51,7 @@ public class Character {
     }
 
     public int attackEnemy() {
-        return this.characterStats.attackEnemy();
+        return this.characterStats.attack();
     }
 
     public boolean defendAgainstEnemy(int damage) {
@@ -101,7 +102,7 @@ public class Character {
     }
 
     public void decreaseAttackDamage(int amount) {
-        this.characterStats.decreaseDamage(amount);
+        this.characterStats.decreaseAttackRange(amount);
     }
 
 }

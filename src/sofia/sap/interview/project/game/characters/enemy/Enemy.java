@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
+import sofia.sap.interview.project.game.characters.ally.statistics.EnemyStatistics;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
