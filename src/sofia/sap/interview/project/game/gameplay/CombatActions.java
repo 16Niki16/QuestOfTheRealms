@@ -12,37 +12,37 @@ import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemType;
 
 public class CombatActions {
-    public CommandResult attack(Character character, Enemy enemy) {
+    public CommandResult<Void> attack(Character character, Enemy enemy) {
         int damage = character.attackEnemy();
         boolean dead = enemy.defendAgainstAllyCharacter(damage);
 
         if (dead) {
-            return CommandResult.withEvent("The enemy has been eliminated!", new KillEnemyEvent(enemy));
+            return CommandResult.withEvent("The enemy has been eliminated!", null, new KillEnemyEvent(enemy));
         }
-        return CommandResult.withoutEvent(String.format("Your attack was successful and dealt %d damage!", damage));
+        return CommandResult.messageResult(String.format("Your attack was successful and dealt %d damage!", damage));
     }
 
-    public CommandResult defend(Character character, Enemy enemy) {
+    public CommandResult<Void> defend(Character character, Enemy enemy) {
         int damage = enemy.attackDamage();
         boolean dead = character.defendAgainstEnemy(damage);
 
         if (dead) {
-            return CommandResult.withEvent(enemy.getDamageMessage(damage), new CharacterDiedEvent(character));
+            return CommandResult.withEvent(enemy.getDamageMessage(damage), null, new CharacterDiedEvent(character));
         }
-        return CommandResult.withoutEvent(enemy.getDamageMessage(damage));
+        return CommandResult.messageResult(enemy.getDamageMessage(damage));
     }
 
-    public CommandResult useItem(Character character, ItemType itemType) {
+    public CommandResult<Void> useItem(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Consumable consumable)) {
             throw new ItemNotAvailableException("The provided item is not consumable!");
         }
         character.applyPotion(consumable);
-        return CommandResult.withoutEvent(consumable.itemMessage());
+        return CommandResult.messageResult(consumable.itemMessage());
     }
 
-    public CommandResult equip(Character character, ItemType itemType) {
+    public CommandResult<Void> equip(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Gear gear)) {
@@ -50,10 +50,10 @@ public class CombatActions {
         }
         character.equipGear(gear);
 
-        return CommandResult.withoutEvent(gear.equipMessage());
+        return CommandResult.messageResult(gear.equipMessage());
     }
 
-    public CommandResult unequip(Character character, ItemType itemType) {
+    public CommandResult<Void> unequip(Character character, ItemType itemType) {
         Item item = character.getEquippedItem(itemType);
 
         if (!(item instanceof Gear gear)) {
@@ -61,6 +61,6 @@ public class CombatActions {
         }
         character.unequipGear(gear);
 
-        return CommandResult.withoutEvent(gear.unequipMessage());
+        return CommandResult.messageResult(gear.unequipMessage());
     }
 }
