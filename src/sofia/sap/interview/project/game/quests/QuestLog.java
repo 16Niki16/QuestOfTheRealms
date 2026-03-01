@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.quests;
 import sofia.sap.interview.project.game.events.GameEvent;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,14 +27,16 @@ public class QuestLog {
     }
 
     public void handleEvent(GameEvent event) {
-        for (Map.Entry<Quest, Reward> quest : activeQuests.entrySet()) {
-            Quest currQuest = quest.getKey();
-            currQuest.update(event);
+        Iterator<Map.Entry<Quest, Reward>> it = activeQuests.entrySet().iterator();
+        while (it.hasNext()) {
+            var entry = it.next();
+            Quest quest = entry.getKey();
 
-            if (currQuest.isCompleted()) {
-                this.activeQuests.remove(currQuest);
-                this.completedQuests.add(currQuest);
-                this.collectedXP += quest.getValue().getRewardXP();
+            quest.update(event);
+            if (quest.isCompleted()) {
+                it.remove();
+                completedQuests.add(quest);
+                collectedXP += entry.getValue().getRewardXP();
             }
         }
     }
