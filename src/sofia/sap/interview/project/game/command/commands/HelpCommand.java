@@ -1,24 +1,27 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.command.result.ViewResult;
+import sofia.sap.interview.project.game.view.HelpInformation;
+
+import java.util.List;
 
 public class HelpCommand implements Command {
+
     @Override
-    public CommandResult<String> execute() {
-        return CommandResult.withObject("""
-                Available commands:
-                - move [north | south | east | west]
-                - look
-                - attack
-                - use [item]
-                - inventory
-                - equip [item]
-                - unequip [item]
-                - quests
-                - completed quests
-                - save
-                - load
-                - exit
-                """);
+    public CommandResult execute() {
+        List<CommandDTO> commands = List.of(
+            new CommandDTO("move [north | south | east | west]", "Choose direction to continue!"),
+            new CommandDTO("look", "Look to see what the current destination contains!"),
+            new CommandDTO("attack", "Attack the enemy at the current location!"),
+            new CommandDTO("use [item]", "Use some of the collected items in the inventory!"),
+            new CommandDTO("equip [item]", "Equip item from the inventory to increase your stats!"),
+            new CommandDTO("unequip [item]", "Unequip item!"),
+            new CommandDTO("quests", "Shows list with active and completed quests!"),
+            new CommandDTO("save", "Save the current game session!"),
+            new CommandDTO("exit", "Exit the game!")
+        );
+
+        return new ViewResult(new HelpInformation(commands));
     }
 }

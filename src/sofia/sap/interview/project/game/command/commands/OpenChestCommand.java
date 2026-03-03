@@ -15,7 +15,7 @@ public class OpenChestCommand implements Command {
     }
 
     @Override
-    public CommandResult<Collection<Item>> execute() {
+    public CommandResult execute() {
         Chest chest = this.context.gameplay().getChestOnCharacterCoordinates();
         return this.context.combat().collect(this.context.character(), chest);
     }

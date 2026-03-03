@@ -6,6 +6,7 @@ import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.EventResult;
 import sofia.sap.interview.project.game.events.CharacterDamagedEvent;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
+import sofia.sap.interview.project.game.events.CollectItemsEvent;
 import sofia.sap.interview.project.game.events.EnemyDamagedEvent;
 import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
@@ -73,13 +74,13 @@ public class CombatActions {
         return CommandResult.withObject(gear.unequipMessage());
     }
 
-    public CommandResult<Collection<Item>> collect(Character character, Chest chest) {
+    public CommandResult collect(Character character, Chest chest) {
         if (chest == null) {
             throw new ChestNotAvailableException("There isn't a chest in this room!");
         }
 
         Collection<Item> items = chest.collectItems();
         character.collectItems(items);
-        return CommandResult.withObject(items);
+        return new EventResult(CollectItemsEvent.collectEvent(items));
     }
 }
