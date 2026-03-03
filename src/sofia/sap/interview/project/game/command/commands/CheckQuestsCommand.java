@@ -11,7 +11,7 @@ public class CheckQuestsCommand implements Command {
     }
 
     @Override
-    public CommandResult<Void> execute() {
+    public CommandResult execute() {
         return CommandResult.messageResult(context.log().questsStatus());
     }
 }

@@ -9,6 +9,7 @@ import sofia.sap.interview.project.game.map.Coordinates;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.room.Chest;
+import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 import java.io.FileReader;
@@ -41,13 +42,13 @@ public class Gameplay {
             this.playerCoordinates = direction.move(this.playerCoordinates);
         } else {
             throw new DirectionNotAvailableException(
-                    "The provided direction is not correct, choose another direction!");
+                "The provided direction is not correct, choose another direction!");
         }
     }
 
     public RoomView lookAround() {
         return new RoomView(getChestOnCharacterCoordinates() != null,
-                getEnemyOnCharacterCoordinates(), getSpecialItemOnPlayerCoordinates());
+            getEnemyOnCharacterCoordinates(), getSpecialItemOnPlayerCoordinates());
     }
 
     public Set<Direction> getPossibleDirections() {
@@ -64,5 +65,9 @@ public class Gameplay {
 
     public SpecialItem getSpecialItemOnPlayerCoordinates() {
         return playground.getSpecialItemByPosition(playerCoordinates);
+    }
+
+    public Room getRoom() {
+        return this.playground.getRoomByCoordinates(this.playerCoordinates);
     }
 }

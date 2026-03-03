@@ -7,6 +7,7 @@ import sofia.sap.interview.project.game.command.result.EventResult;
 import sofia.sap.interview.project.game.events.CharacterDamagedEvent;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
 import sofia.sap.interview.project.game.events.EnemyDamagedEvent;
+import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
@@ -58,10 +59,10 @@ public class CombatActions {
         }
         character.equipGear(gear);
 
-        return CommandResult.messageResult(gear.equipMessage());
+        return new EventResult(ItemEquipEvent.equipEvent(item));
     }
 
-    public CommandResult<String> unequip(Character character, ItemType itemType) {
+    public CommandResult unequip(Character character, ItemType itemType) {
         Item item = character.getEquippedItem(itemType);
 
         if (!(item instanceof Gear gear)) {

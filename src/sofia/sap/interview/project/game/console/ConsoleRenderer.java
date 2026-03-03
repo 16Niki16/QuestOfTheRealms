@@ -1,29 +1,38 @@
 package sofia.sap.interview.project.game.console;
 
 import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.command.result.EventResult;
+import sofia.sap.interview.project.game.command.result.ViewResult;
 import sofia.sap.interview.project.game.events.CharacterMovedEvent;
 import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
+import sofia.sap.interview.project.game.view.View;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConsoleRenderer {
-    private final Map<Class<? extends GameEvent>, GameEventView<?>> views;
+    private final Map<Class<? extends GameEvent>, GameEventView<?>> eventViews;
+    private final Map<Class<?>, View<?>> basicViews;
 
     public ConsoleRenderer() {
-        views = new HashMap<>();
-        views.put(CharacterMovedEvent.class, new CharacterMovedView());
-        views.put(KillEnemyEvent.class, new EnemyKilledView());
+        this.eventViews = new HashMap<>();
+        this.eventViews.put(CharacterMovedEvent.class, new CharacterMovedView());
+        this.eventViews.put(KillEnemyEvent.class, new EnemyKilledView());
+
+        this.basicViews = new HashMap<>();
     }
 
     public void render(CommandResult result) {
-        GameEvent event = result.event();
-        if (event == null) return;
-
-        EventView view = views.get(event.getClass());
-        if (view != null) {
-            view.render(event);
+        if (result instanceof EventResult eventResult) {
+            GameEvent event = eventResult.event();
+        } else {
+            ViewResult view = views.get(event.getClass());
+            if (view != null) {
+                view.render(event);
+            }
         }
+
+
     }
 }

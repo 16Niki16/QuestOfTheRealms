@@ -1,6 +1,8 @@
 package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.command.result.EventResult;
+import sofia.sap.interview.project.game.events.CharacterMovedEvent;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.Direction;
 
@@ -14,8 +16,9 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public CommandResult<Void> execute() {
+    public CommandResult execute() {
         this.context.gameplay().movePlayer(this.direction);
-        return CommandResult.messageResult("You successfully entered a new room!");
+        return new EventResult(
+            CharacterMovedEvent.movedEvent(this.context.character(), this.context.gameplay().getRoom()));
     }
 }

@@ -41,7 +41,7 @@ public class Playground {
 
     private boolean isInside(Coordinates c) {
         return c.y() >= 0 && c.y() < rooms.length
-                && c.x() >= 0 && c.x() < rooms[c.y()].length;
+            && c.x() >= 0 && c.x() < rooms[c.y()].length;
     }
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {
@@ -54,5 +54,9 @@ public class Playground {
 
     public SpecialItem getSpecialItemByPosition(Coordinates coordinates) {
         return rooms[coordinates.x()][coordinates.y()].getSpecialItem();
+    }
+
+    public Room getRoomByCoordinates(Coordinates coordinates) {
+        return rooms[coordinates.x()][coordinates.y()];
     }
 }
