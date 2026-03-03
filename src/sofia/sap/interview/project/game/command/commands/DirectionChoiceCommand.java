@@ -4,7 +4,7 @@ import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.Direction;
-import sofia.sap.interview.project.game.view.PossibleDirectionInformation;
+import sofia.sap.interview.project.game.information.PossibleDirectionInformation;
 
 import java.util.Set;
 

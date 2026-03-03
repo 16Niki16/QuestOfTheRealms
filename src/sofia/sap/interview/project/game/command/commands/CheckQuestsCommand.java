@@ -4,7 +4,7 @@ import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.quests.Quest;
-import sofia.sap.interview.project.game.view.QuestInformation;
+import sofia.sap.interview.project.game.information.QuestInformation;
 
 import java.util.Set;
 

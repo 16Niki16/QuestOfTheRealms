@@ -11,8 +11,7 @@ import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
-import sofia.sap.interview.project.game.view.RoomInformation;
-import sofia.sap.interview.project.game.view.RoomView;
+import sofia.sap.interview.project.game.information.RoomInformation;
 
 import java.io.FileReader;
 import java.io.IOException;

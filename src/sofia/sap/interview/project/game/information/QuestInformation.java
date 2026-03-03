@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.view;
+package sofia.sap.interview.project.game.information;
 
 import sofia.sap.interview.project.game.quests.Quest;
 

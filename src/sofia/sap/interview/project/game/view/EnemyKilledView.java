@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.console;
+package sofia.sap.interview.project.game.view;
 
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 
