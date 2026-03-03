@@ -1,6 +1,8 @@
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.command.commands.HelpCommand;
 import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.console.ConsoleRenderer;
 import sofia.sap.interview.project.game.gameplay.CombatActions;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.command.commands.AttackCommand;
@@ -33,12 +35,20 @@ public class Main {
         QuestLog log = new QuestLog(quests);
         CombatActions actions = new CombatActions();
         GameSession context = new GameSession(game, dummy, log, actions, GameState.RUNNING);
+        ConsoleRenderer renderer = new ConsoleRenderer();
         //look
         Command command1 = new LookCommand(context);
         CommandResult result1 = command1.execute();
-        System.out.println(result1.resultMessage());
+        //move
+        Command command = new MoveCommand(context, Direction.EAST);
+        CommandResult result = command.execute();
+        renderer.render(result);
+        //help
+        Command command2 = new HelpCommand();
+        CommandResult result2 = command2.execute();
+        renderer.render(result2);
         //open chest
-        Command command69 = new OpenChestCommand(context);
+        /*Command command69 = new OpenChestCommand(context);
         CommandResult result69 = command69.execute();
         System.out.println(result69.resultMessage());
         //equip gear
@@ -53,10 +63,6 @@ public class Main {
         Command command66 = new UseItemCommand(context, ItemType.HEALING_HERB);
         CommandResult result66 = command66.execute();
         System.out.println(result66.resultMessage());
-        //move
-        Command command = new MoveCommand(context, Direction.EAST);
-        CommandResult result = command.execute();
-        System.out.println(result.resultMessage());
         //look
         CommandResult result2 = command1.execute();
         System.out.println(result2.resultMessage());

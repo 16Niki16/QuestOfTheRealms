@@ -11,7 +11,7 @@ public record HelpView() implements StatelessCommandView<HelpInformation> {
         List<CommandDTO> commands = information.commands();
         System.out.println("List of available commands:");
         for (CommandDTO command : commands) {
-            System.out.println(command.commandFormat() + " " + command.description());
+            System.out.println(command.commandFormat() + "  description: " + command.description());
         }
     }
 }
