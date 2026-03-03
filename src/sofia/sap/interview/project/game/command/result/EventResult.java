@@ -1,4 +1,6 @@
 package sofia.sap.interview.project.game.command.result;
 
-public class EventResult {
+import sofia.sap.interview.project.game.events.GameEvent;
+
+public record EventResult(GameEvent event) implements CommandResult {
 }

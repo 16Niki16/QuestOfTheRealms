@@ -3,7 +3,11 @@ package sofia.sap.interview.project.game.gameplay;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.command.result.EventResult;
+import sofia.sap.interview.project.game.events.CharacterDamagedEvent;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
+import sofia.sap.interview.project.game.events.EnemyDamagedEvent;
+import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
@@ -21,32 +25,32 @@ public class CombatActions {
         boolean dead = enemy.defendAgainstAllyCharacter(damage);
 
         if (dead) {
-            return CommandResult.withEvent("The enemy has been eliminated!", null, new KillEnemyEvent(enemy));
+            return new EventResult(new KillEnemyEvent(enemy));
         }
-        return CommandResult.messageResult(String.format("Your attack was successful and dealt %d damage!", damage));
+        return new EventResult(EnemyDamagedEvent.damageEnemy(enemy, damage));
     }
 
-    public CommandResult<Void> defend(Character character, Enemy enemy) {
+    public CommandResult defend(Character character, Enemy enemy) {
         int damage = enemy.attackDamage();
         boolean dead = character.defendAgainstEnemy(damage);
 
         if (dead) {
-            return CommandResult.withEvent(enemy.getDamageMessage(damage), null, new CharacterDiedEvent(character));
+            return new EventResult(new CharacterDiedEvent(character));
         }
-        return CommandResult.messageResult(enemy.getDamageMessage(damage));
+        return new EventResult(CharacterDamagedEvent.characterDefendEvent(character, damage, enemy));
     }
 
-    public CommandResult<String> useItem(Character character, ItemType itemType) {
+    public CommandResult useItem(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Consumable consumable)) {
             throw new ItemNotAvailableException("The provided item is not consumable!");
         }
         character.applyPotion(consumable);
-        return CommandResult.withObject(consumable.itemMessage());
+        return new EventResult(ItemUsedEvent.potionEffect(item));
     }
 
-    public CommandResult<Void> equip(Character character, ItemType itemType) {
+    public CommandResult equip(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Gear gear)) {

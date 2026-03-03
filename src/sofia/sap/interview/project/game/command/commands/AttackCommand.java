@@ -12,7 +12,7 @@ public class AttackCommand implements Command {
     }
 
     @Override
-    public CommandResult<Void> execute() {
+    public CommandResult execute() {
         Enemy enemy = this.context.gameplay().getEnemyOnCharacterCoordinates();
 
         return this.context.combat().attack(this.context.character(), enemy);

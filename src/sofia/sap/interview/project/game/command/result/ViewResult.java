@@ -1,4 +1,4 @@
 package sofia.sap.interview.project.game.command.result;
 
-public class ViewResult {
+public record ViewResult(String message) implements CommandResult {
 }

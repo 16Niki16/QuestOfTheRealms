@@ -11,6 +11,11 @@ public class IronDagger implements Gear {
     }
 
     @Override
+    public int getEffect() {
+        return EFFECT;
+    }
+
+    @Override
     public void equip(Character character) {
         character.increaseAttackDamage(EFFECT);
     }

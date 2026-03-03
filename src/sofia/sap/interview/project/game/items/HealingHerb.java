@@ -11,6 +11,11 @@ public class HealingHerb implements Consumable {
     }
 
     @Override
+    public int getEffect() {
+        return EFFECT;
+    }
+
+    @Override
     public void consume(Character character) {
         character.heal(EFFECT);
     }
