@@ -1,6 +1,6 @@
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
-import sofia.sap.interview.project.game.command.CommandResult;
+import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.gameplay.CombatActions;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.command.commands.AttackCommand;
