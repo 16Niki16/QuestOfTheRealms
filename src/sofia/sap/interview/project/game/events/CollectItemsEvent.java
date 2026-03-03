@@ -7,13 +7,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public record CollectItemsEvent(Map<ItemType, Long> items) implements GameEvent {
+public record CollectItemsEvent(Map<ItemType, Integer> items) implements GameEvent {
     public static CollectItemsEvent collectEvent(Collection<Item> items) {
 
-        Map<ItemType, Long> grouped = items.stream()
+        Map<ItemType, Integer> grouped = items.stream()
             .collect(Collectors.groupingBy(
                 Item::getType,
-                Collectors.counting()
+                Collectors.summingInt(i -> 1)
             ));
 
         return new CollectItemsEvent(grouped);

@@ -14,7 +14,7 @@ public class UseItemCommand implements Command {
     }
 
     @Override
-    public CommandResult<String> execute() {
+    public CommandResult execute() {
         return this.context.combat().useItem(this.context.character(), this.item);
     }
 }

@@ -11,6 +11,8 @@ import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
+import sofia.sap.interview.project.game.view.RoomInformation;
+import sofia.sap.interview.project.game.view.RoomView;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,8 +48,8 @@ public class Gameplay {
         }
     }
 
-    public RoomView lookAround() {
-        return new RoomView(getChestOnCharacterCoordinates() != null,
+    public RoomInformation lookAround() {
+        return new RoomInformation(getChestOnCharacterCoordinates() != null,
             getEnemyOnCharacterCoordinates(), getSpecialItemOnPlayerCoordinates());
     }
 

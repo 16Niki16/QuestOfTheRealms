@@ -26,6 +26,8 @@ public class ConsoleRenderer {
     public void render(CommandResult result) {
         if (result instanceof EventResult eventResult) {
             GameEvent event = eventResult.event();
+            GameEventView<?> view = this.eventViews.get(event.getClass());
+            view.render(event);
         } else {
             ViewResult view = views.get(event.getClass());
             if (view != null) {

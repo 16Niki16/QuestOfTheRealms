@@ -14,7 +14,7 @@ public class UnequipGearCommand implements Command {
     }
 
     @Override
-    public CommandResult<String> execute() {
+    public CommandResult execute() {
         return this.context.combat().unequip(this.context.character(), gear);
     }
 }
