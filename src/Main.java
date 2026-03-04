@@ -1,22 +1,17 @@
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.command.commands.CheckQuestsCommand;
+import sofia.sap.interview.project.game.command.commands.Command;
+import sofia.sap.interview.project.game.command.commands.DirectionChoiceCommand;
 import sofia.sap.interview.project.game.command.commands.HelpCommand;
+import sofia.sap.interview.project.game.command.commands.LookCommand;
+import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.console.ConsoleRenderer;
 import sofia.sap.interview.project.game.gameplay.CombatActions;
 import sofia.sap.interview.project.game.gameplay.GameSession;
-import sofia.sap.interview.project.game.command.commands.AttackCommand;
-import sofia.sap.interview.project.game.command.commands.Command;
-import sofia.sap.interview.project.game.command.commands.DefendCommand;
-import sofia.sap.interview.project.game.command.commands.EquipGearCommand;
-import sofia.sap.interview.project.game.command.commands.LookCommand;
-import sofia.sap.interview.project.game.command.commands.MoveCommand;
-import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
-import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
-import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
-import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.quests.FindIronKey;
 import sofia.sap.interview.project.game.quests.KillGoblinKing;
@@ -36,9 +31,14 @@ public class Main {
         CombatActions actions = new CombatActions();
         GameSession context = new GameSession(game, dummy, log, actions, GameState.RUNNING);
         ConsoleRenderer renderer = new ConsoleRenderer();
+        //possible directions
+        Command command4 = new DirectionChoiceCommand(context);
+        CommandResult result4 = command4.execute();
+        renderer.render(result4);
         //look
         Command command1 = new LookCommand(context);
         CommandResult result1 = command1.execute();
+        renderer.render(result1);
         //move
         Command command = new MoveCommand(context, Direction.EAST);
         CommandResult result = command.execute();
@@ -47,6 +47,10 @@ public class Main {
         Command command2 = new HelpCommand();
         CommandResult result2 = command2.execute();
         renderer.render(result2);
+        //quest information
+        Command command3 = new CheckQuestsCommand(context);
+        CommandResult result3 = command3.execute();
+        renderer.render(result3);
         //open chest
         /*Command command69 = new OpenChestCommand(context);
         CommandResult result69 = command69.execute();

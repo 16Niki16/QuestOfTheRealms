@@ -9,11 +9,15 @@ import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.information.HelpInformation;
 import sofia.sap.interview.project.game.information.PossibleDirectionInformation;
 import sofia.sap.interview.project.game.information.QuestInformation;
+import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.information.ViewInformation;
 import sofia.sap.interview.project.game.view.CharacterMovedView;
 import sofia.sap.interview.project.game.view.EnemyKilledView;
 import sofia.sap.interview.project.game.view.GameEventView;
 import sofia.sap.interview.project.game.view.HelpView;
+import sofia.sap.interview.project.game.view.PossibleDirectionView;
+import sofia.sap.interview.project.game.view.QuestView;
+import sofia.sap.interview.project.game.view.RoomView;
 import sofia.sap.interview.project.game.view.StatelessCommandView;
 
 import java.util.HashMap;
@@ -30,8 +34,9 @@ public class ConsoleRenderer {
 
         this.basicViews = new HashMap<>();
         this.basicViews.put(HelpInformation.class, new HelpView());
-        //this.basicViews.put(PossibleDirectionInformation.class, new InventoryView());
-        //this.basicViews.put(QuestInformation.class, new StatsView());
+        this.basicViews.put(PossibleDirectionInformation.class, new PossibleDirectionView());
+        this.basicViews.put(QuestInformation.class, new QuestView());
+        this.basicViews.put(RoomInformation.class, new RoomView());
 
     }
 

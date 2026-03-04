@@ -2,16 +2,17 @@ package sofia.sap.interview.project.game.gameplay;
 
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 import sofia.sap.interview.project.game.dto.PlaygroundDTO;
 import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
 import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
+import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.map.Coordinates;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
-import sofia.sap.interview.project.game.information.RoomInformation;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,13 +44,16 @@ public class Gameplay {
             this.playerCoordinates = direction.move(this.playerCoordinates);
         } else {
             throw new DirectionNotAvailableException(
-                "The provided direction is not correct, choose another direction!");
+                    "The provided direction is not correct, choose another direction!");
         }
     }
 
     public RoomInformation lookAround() {
+        Enemy enemy = getEnemyOnCharacterCoordinates();
+        EnemyType enemyType = enemy != null ? enemy.getType() : null;
+
         return new RoomInformation(getChestOnCharacterCoordinates() != null,
-            getEnemyOnCharacterCoordinates(), getSpecialItemOnPlayerCoordinates());
+                enemyType, getSpecialItemOnPlayerCoordinates());
     }
 
     public Set<Direction> getPossibleDirections() {
