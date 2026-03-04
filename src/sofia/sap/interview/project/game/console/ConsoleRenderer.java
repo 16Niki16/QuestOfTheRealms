@@ -3,34 +3,52 @@ package sofia.sap.interview.project.game.console;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.EventResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
+import sofia.sap.interview.project.game.events.CharacterDamagedEvent;
 import sofia.sap.interview.project.game.events.CharacterMovedEvent;
+import sofia.sap.interview.project.game.events.CollectItemsEvent;
+import sofia.sap.interview.project.game.events.EnemyDamagedEvent;
 import sofia.sap.interview.project.game.events.GameEvent;
+import sofia.sap.interview.project.game.events.ItemEquipEvent;
+import sofia.sap.interview.project.game.events.ItemUnequipEvent;
+import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.information.HelpInformation;
 import sofia.sap.interview.project.game.information.PossibleDirectionInformation;
 import sofia.sap.interview.project.game.information.QuestInformation;
 import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.information.ViewInformation;
+import sofia.sap.interview.project.game.view.CharacterDamagedView;
 import sofia.sap.interview.project.game.view.CharacterMovedView;
+import sofia.sap.interview.project.game.view.CollectItemsView;
+import sofia.sap.interview.project.game.view.EnemyDamagedView;
 import sofia.sap.interview.project.game.view.EnemyKilledView;
 import sofia.sap.interview.project.game.view.GameEventView;
 import sofia.sap.interview.project.game.view.HelpView;
+import sofia.sap.interview.project.game.view.ItemEquipView;
+import sofia.sap.interview.project.game.view.ItemUnequipView;
 import sofia.sap.interview.project.game.view.PossibleDirectionView;
 import sofia.sap.interview.project.game.view.QuestView;
 import sofia.sap.interview.project.game.view.RoomView;
-import sofia.sap.interview.project.game.view.StatelessCommandView;
+import sofia.sap.interview.project.game.view.UseItemView;
+import sofia.sap.interview.project.game.view.ViewCommand;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConsoleRenderer {
     private final Map<Class<? extends GameEvent>, GameEventView<?>> eventViews;
-    private final Map<Class<?>, StatelessCommandView<?>> basicViews;
+    private final Map<Class<?>, ViewCommand<?>> basicViews;
 
     public ConsoleRenderer() {
         this.eventViews = new HashMap<>();
         this.eventViews.put(CharacterMovedEvent.class, new CharacterMovedView());
         this.eventViews.put(KillEnemyEvent.class, new EnemyKilledView());
+        this.eventViews.put(CollectItemsEvent.class, new CollectItemsView());
+        this.eventViews.put(ItemEquipEvent.class, new ItemEquipView());
+        this.eventViews.put(ItemUnequipEvent.class, new ItemUnequipView());
+        this.eventViews.put(ItemUsedEvent.class, new UseItemView());
+        this.eventViews.put(CharacterDamagedEvent.class, new CharacterDamagedView());
+        this.eventViews.put(EnemyDamagedEvent.class, new EnemyDamagedView());
 
         this.basicViews = new HashMap<>();
         this.basicViews.put(HelpInformation.class, new HelpView());
@@ -47,7 +65,7 @@ public class ConsoleRenderer {
             view.render(event);
         } else if (result instanceof ViewResult viewResult) {
             ViewInformation information = viewResult.information();
-            StatelessCommandView view = this.basicViews.get(information.getClass());
+            ViewCommand view = this.basicViews.get(information.getClass());
             view.render(information);
         }
     }

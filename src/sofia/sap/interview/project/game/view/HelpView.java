@@ -5,7 +5,7 @@ import sofia.sap.interview.project.game.information.HelpInformation;
 
 import java.util.List;
 
-public record HelpView() implements StatelessCommandView<HelpInformation> {
+public record HelpView() implements ViewCommand<HelpInformation> {
     @Override
     public void render(HelpInformation information) {
         List<CommandDTO> commands = information.commands();

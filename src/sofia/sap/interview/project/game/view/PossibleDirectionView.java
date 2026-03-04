@@ -5,7 +5,7 @@ import sofia.sap.interview.project.game.map.Direction;
 
 import java.util.Set;
 
-public class PossibleDirectionView implements StatelessCommandView<PossibleDirectionInformation> {
+public class PossibleDirectionView implements ViewCommand<PossibleDirectionInformation> {
     @Override
     public void render(PossibleDirectionInformation information) {
         Set<Direction> directions = information.directions();

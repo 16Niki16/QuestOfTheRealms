@@ -72,7 +72,7 @@ public class CombatActions {
         }
         character.unequipGear(gear);
 
-        return new EventResult(ItemUnequipEvent.equipEvent(item));
+        return new EventResult(ItemUnequipEvent.unequipEvent(item));
     }
 
     public CommandResult collect(Character character, Chest chest) {

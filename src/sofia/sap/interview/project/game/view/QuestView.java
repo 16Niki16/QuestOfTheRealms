@@ -5,7 +5,7 @@ import sofia.sap.interview.project.game.quests.Quest;
 
 import java.util.Set;
 
-public class QuestView implements StatelessCommandView<QuestInformation> {
+public class QuestView implements ViewCommand<QuestInformation> {
     @Override
     public void render(QuestInformation information) {
         Set<Quest> active = information.active();

@@ -2,7 +2,7 @@ package sofia.sap.interview.project.game.view;
 
 import sofia.sap.interview.project.game.information.RoomInformation;
 
-public class RoomView implements StatelessCommandView<RoomInformation> {
+public class RoomView implements ViewCommand<RoomInformation> {
     @Override
     public void render(RoomInformation information) {
         System.out.println("At your destination you found:");
