@@ -5,11 +5,10 @@ import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 
 public class KillGoblinKing extends QuestBase {
-    private final EnemyType target;
+    private static final EnemyType TARGET = EnemyType.GOBLIN_KING;
 
     public KillGoblinKing() {
         super(Reward.MEDIUM);
-        this.target = EnemyType.GOBLIN_KING;
     }
 
     @Override
@@ -19,7 +18,7 @@ public class KillGoblinKing extends QuestBase {
 
     @Override
     public void update(GameEvent event) {
-        if (event instanceof KillEnemyEvent e && e.enemy().getType().equals(target)) {
+        if (event instanceof KillEnemyEvent e && e.enemy().getType().equals(TARGET)) {
             completeQuest();
         }
     }

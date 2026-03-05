@@ -22,21 +22,9 @@ public class Gameplay {
     private final Playground playground;
     private Coordinates playerCoordinates;
 
-    public Gameplay() {
-        this.playground = loadPlayground();
+    public Gameplay(Playground playground) {
+        this.playground = playground;
         this.playerCoordinates = Coordinates.startingCoordinates();
-    }
-
-    private Playground loadPlayground() {
-        Gson gson = new Gson();
-
-        try (FileReader reader = new FileReader("files\\CommonMap.json");) {
-            PlaygroundDTO dto = gson.fromJson(reader, PlaygroundDTO.class);
-            return PlaygroundMapper.map(dto);
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load playground", e);
-        }
     }
 
     public void movePlayer(Direction direction) {

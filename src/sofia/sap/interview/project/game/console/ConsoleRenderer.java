@@ -41,6 +41,12 @@ public class ConsoleRenderer {
 
     public ConsoleRenderer() {
         this.eventViews = new HashMap<>();
+        eventsViewsRegister();
+        this.basicViews = new HashMap<>();
+        basicViewsRegister();
+    }
+
+    private void eventsViewsRegister() {
         this.eventViews.put(CharacterMovedEvent.class, new CharacterMovedView());
         this.eventViews.put(KillEnemyEvent.class, new EnemyKilledView());
         this.eventViews.put(CollectItemsEvent.class, new CollectItemsView());
@@ -49,13 +55,13 @@ public class ConsoleRenderer {
         this.eventViews.put(ItemUsedEvent.class, new UseItemView());
         this.eventViews.put(CharacterDamagedEvent.class, new CharacterDamagedView());
         this.eventViews.put(EnemyDamagedEvent.class, new EnemyDamagedView());
+    }
 
-        this.basicViews = new HashMap<>();
+    private void basicViewsRegister() {
         this.basicViews.put(HelpInformation.class, new HelpView());
         this.basicViews.put(PossibleDirectionInformation.class, new PossibleDirectionView());
         this.basicViews.put(QuestInformation.class, new QuestView());
         this.basicViews.put(RoomInformation.class, new RoomView());
-
     }
 
     public void render(CommandResult result) {

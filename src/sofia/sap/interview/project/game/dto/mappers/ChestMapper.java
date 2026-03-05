@@ -15,9 +15,9 @@ public class ChestMapper {
         }
 
         List<Item> items = dto.items.stream()
-            .map(ItemType::getByName)
-            .map(ItemFactory::create)
-            .toList();
+                .map(ItemType::getByName)
+                .map(ItemFactory::create)
+                .toList();
 
         return Chest.createChest(items);
     }
