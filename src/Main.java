@@ -14,7 +14,7 @@ import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.console.ConsoleRenderer;
-import sofia.sap.interview.project.game.gameplay.CombatActions;
+import sofia.sap.interview.project.game.gameplay.CombatService;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
@@ -35,7 +35,7 @@ public class Main {
         System.out.println(game.getPossibleDirections());
         Map<Quest, Reward> quests = Map.of(new KillGoblinKing(), Reward.BIG, new FindIronKey(), Reward.MEDIUM);
         QuestLog log = new QuestLog(quests);
-        CombatActions actions = new CombatActions();
+        CombatService actions = new CombatService();
         GameSession context = new GameSession(game, dummy, log, actions, GameState.RUNNING);
         ConsoleRenderer renderer = new ConsoleRenderer();
         //possible directions

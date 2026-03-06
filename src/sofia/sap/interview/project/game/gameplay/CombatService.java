@@ -22,7 +22,7 @@ import sofia.sap.interview.project.game.map.room.Chest;
 
 import java.util.Collection;
 
-public class CombatActions {
+public class CombatService {
     public CommandResult attack(Character character, Enemy enemy) {
         int damage = character.attackEnemy();
         boolean dead = enemy.defendAgainstAllyCharacter(damage);

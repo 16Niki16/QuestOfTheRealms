@@ -3,7 +3,7 @@ package sofia.sap.interview.project.game.user;
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.files.NewGame;
-import sofia.sap.interview.project.game.gameplay.CombatActions;
+import sofia.sap.interview.project.game.gameplay.CombatService;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.gameplay.Gameplay;
@@ -26,7 +26,7 @@ public class User {
         Gameplay gameplay = new Gameplay(NewGame.createPlayground());
         Character character = new Character(name, type);
         QuestLog log = new QuestLog();
-        CombatActions actions = new CombatActions();
+        CombatService actions = new CombatService();
         this.session = new GameSession(gameplay, character, log, actions, GameState.RUNNING);
     }
 }

@@ -12,7 +12,7 @@ public class GameSessionCreator {
         Playground playground = NewGame.createPlayground();
         Gameplay gameplay = new Gameplay(playground);
         QuestLog log = new QuestLog();
-        CombatActions actions = new CombatActions();
+        CombatService actions = new CombatService();
         return new GameSession(gameplay, character, log, actions, GameState.RUNNING);
     }
 }
