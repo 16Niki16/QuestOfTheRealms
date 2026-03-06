@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.files;
 import com.google.gson.Gson;
 import sofia.sap.interview.project.game.dto.PlaygroundDTO;
 import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
+import sofia.sap.interview.project.game.exceptions.NewGameFileException;
 import sofia.sap.interview.project.game.map.Playground;
 
 import java.io.FileReader;
@@ -17,7 +18,7 @@ public class NewGame {
             return PlaygroundMapper.map(dto);
 
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load playground", e);
+            throw new NewGameFileException("Failed to load playground", e);
         }
     }
 }

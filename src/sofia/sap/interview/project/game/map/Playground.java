@@ -45,18 +45,18 @@ public class Playground {
     }
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()].getEnemy();
+        return rooms[coordinates.y()][coordinates.x()].getEnemy();
     }
 
     public Chest getChestByPosition(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()].getChest();
+        return rooms[coordinates.y()][coordinates.x()].getChest();
     }
 
     public SpecialItem getSpecialItemByPosition(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()].getSpecialItem();
+        return rooms[coordinates.y()][coordinates.x()].getSpecialItem();
     }
 
     public Room getRoomByCoordinates(Coordinates coordinates) {
-        return rooms[coordinates.x()][coordinates.y()];
+        return rooms[coordinates.y()][coordinates.x()];
     }
 }

@@ -4,10 +4,10 @@ import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.EventResult;
-import sofia.sap.interview.project.game.events.CharacterDamagedEvent;
+import sofia.sap.interview.project.game.events.DefendEvent;
 import sofia.sap.interview.project.game.events.CharacterDiedEvent;
 import sofia.sap.interview.project.game.events.CollectItemsEvent;
-import sofia.sap.interview.project.game.events.EnemyDamagedEvent;
+import sofia.sap.interview.project.game.events.AttackEvent;
 import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUnequipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
@@ -30,7 +30,7 @@ public class CombatActions {
         if (dead) {
             return new EventResult(new KillEnemyEvent(enemy));
         }
-        return new EventResult(EnemyDamagedEvent.damageEnemy(enemy, damage));
+        return new EventResult(AttackEvent.damageEnemy(enemy, damage, character));
     }
 
     public CommandResult defend(Character character, Enemy enemy) {
@@ -40,7 +40,7 @@ public class CombatActions {
         if (dead) {
             return new EventResult(new CharacterDiedEvent(character));
         }
-        return new EventResult(CharacterDamagedEvent.characterDefendEvent(character, damage, enemy));
+        return new EventResult(DefendEvent.characterDefendEvent(character, damage, enemy));
     }
 
     public CommandResult useItem(Character character, ItemType itemType) {
