@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game;
 
+import sofia.sap.interview.project.game.exceptions.UserNotKnownException;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.user.User;
 
@@ -17,5 +18,12 @@ public class GameManager {
         if (!games.containsKey(user)) {
             games.put(user, null);
         }
+    }
+
+    public void addSession(User user, GameSession session) {
+        if (!games.containsKey(user)) {
+            throw new UserNotKnownException("You can not initialize session with the provided user!");
+        }
+        games.put(user, session);
     }
 }
