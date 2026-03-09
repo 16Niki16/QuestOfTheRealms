@@ -3,6 +3,7 @@ package sofia.sap.interview.project.game.command.commands;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.EventResult;
+import sofia.sap.interview.project.game.dto.events.NewGameDTO;
 import sofia.sap.interview.project.game.events.NewGameEvent;
 import sofia.sap.interview.project.game.user.User;
 
@@ -20,6 +21,6 @@ public class NewGameCommand implements Command {
     @Override
     public CommandResult execute() {
         this.user.createNewGame(name, type);
-        return new EventResult(new NewGameEvent(NewGameDTO.create(this.user.getSession().character())));
+        return new EventResult(new NewGameEvent(NewGameDTO.from(this.user.getSession().character())));
     }
 }

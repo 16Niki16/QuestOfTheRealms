@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.dto;
+package sofia.sap.interview.project.game.dto.newgame;
 
 import java.util.List;
 

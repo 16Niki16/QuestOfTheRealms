@@ -1,6 +1,6 @@
-package sofia.sap.interview.project.game.dto.mappers;
+package sofia.sap.interview.project.game.dto.newgame.mappers;
 
-import sofia.sap.interview.project.game.dto.RoomDTO;
+import sofia.sap.interview.project.game.dto.newgame.RoomDTO;
 import sofia.sap.interview.project.game.map.room.Room;
 
 public class RoomMapper {

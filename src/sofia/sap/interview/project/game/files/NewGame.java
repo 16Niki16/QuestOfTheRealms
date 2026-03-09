@@ -1,8 +1,8 @@
 package sofia.sap.interview.project.game.files;
 
 import com.google.gson.Gson;
-import sofia.sap.interview.project.game.dto.PlaygroundDTO;
-import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
+import sofia.sap.interview.project.game.dto.newgame.PlaygroundDTO;
+import sofia.sap.interview.project.game.dto.newgame.mappers.PlaygroundMapper;
 import sofia.sap.interview.project.game.exceptions.NewGameFileException;
 import sofia.sap.interview.project.game.map.Playground;
 

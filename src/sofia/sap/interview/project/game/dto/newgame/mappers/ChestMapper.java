@@ -1,6 +1,6 @@
-package sofia.sap.interview.project.game.dto.mappers;
+package sofia.sap.interview.project.game.dto.newgame.mappers;
 
-import sofia.sap.interview.project.game.dto.ChestDTO;
+import sofia.sap.interview.project.game.dto.newgame.ChestDTO;
 import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemFactory;
 import sofia.sap.interview.project.game.items.ItemType;

@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.dto.mappers;
+package sofia.sap.interview.project.game.dto.newgame.mappers;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 

@@ -1,6 +1,6 @@
 package sofia.sap.interview.project.game.information;
 
-import sofia.sap.interview.project.game.command.commands.CommandDTO;
+import sofia.sap.interview.project.game.dto.events.CommandDTO;
 
 import java.util.List;
 

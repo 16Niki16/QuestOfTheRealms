@@ -2,6 +2,7 @@ package sofia.sap.interview.project.game.command.commands;
 
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
+import sofia.sap.interview.project.game.dto.events.CommandDTO;
 import sofia.sap.interview.project.game.information.HelpInformation;
 
 import java.util.List;

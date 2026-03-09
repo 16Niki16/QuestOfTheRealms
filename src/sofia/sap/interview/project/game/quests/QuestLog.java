@@ -2,6 +2,7 @@ package sofia.sap.interview.project.game.quests;
 
 import sofia.sap.interview.project.game.events.GameEvent;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -18,11 +19,11 @@ public class QuestLog {
     }
 
     public Set<Quest> getActiveQuests() {
-        return activeQuests;
+        return Collections.unmodifiableSet(activeQuests);
     }
 
     public Set<Quest> getCompletedQuests() {
-        return completedQuests;
+        return Collections.unmodifiableSet(completedQuests);
     }
 
     public boolean handleEvent(GameEvent event) {
