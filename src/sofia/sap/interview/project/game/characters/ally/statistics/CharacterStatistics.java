@@ -13,6 +13,10 @@ public class CharacterStatistics extends BaseStatistics {
         this.mana = type.getMana();
     }
 
+    public int getMana() {
+        return this.mana;
+    }
+
     public boolean decreaseMana(int amount) {
         if (this.mana - amount < MIN_STAT) {
             return false;

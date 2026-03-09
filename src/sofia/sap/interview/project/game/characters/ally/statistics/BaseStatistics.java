@@ -13,7 +13,11 @@ public abstract class BaseStatistics implements Statistics {
         this.health = health;
     }
 
-    protected AttackRange getAttackRange() {
+    public int getHealth() {
+        return this.health;
+    }
+
+    public AttackRange getAttackRange() {
         return this.attackRange;
     }
 

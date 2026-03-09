@@ -3,18 +3,20 @@ package sofia.sap.interview.project.game.command.commands;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.ItemType;
+import sofia.sap.interview.project.game.user.User;
 
 public class UseItemCommand implements Command {
-    private final GameSession context;
+    private final User user;
     private final ItemType item;
 
-    public UseItemCommand(GameSession context, ItemType item) {
-        this.context = context;
+    public UseItemCommand(User user, ItemType item) {
+        this.user = user;
         this.item = item;
     }
 
     @Override
     public CommandResult execute() {
-        return this.context.combat().useItem(this.context.character(), this.item);
+        GameSession session = this.user.getSession();
+        return session.combat().useItem(session.character(), this.item);
     }
 }

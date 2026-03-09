@@ -19,6 +19,7 @@ public class QuestList {
         QUESTS.put(QuestType.FIND_IRON_KEY, FindIronKey::new);
         QUESTS.put(QuestType.KILL_GOBLIN_KING, KillGoblinKing::new);
         QUESTS.put(QuestType.KILL_BOSS, KillBoss::new);
+        QUESTS.put(QuestType.COLLECT_THREE_HERBS, CollectThreeHerbs::new);
 
     }
 
@@ -29,8 +30,8 @@ public class QuestList {
         int numberOfQuests = ThreadLocalRandom.current().nextInt(MIN_QUESTS, MAX_QUESTS);
 
         return quests.stream()
-            .limit(numberOfQuests)
-            .map(Supplier::get)
-            .collect(Collectors.toSet());
+                .limit(numberOfQuests)
+                .map(Supplier::get)
+                .collect(Collectors.toSet());
     }
 }

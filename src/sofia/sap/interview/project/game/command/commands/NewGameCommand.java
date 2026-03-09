@@ -19,6 +19,7 @@ public class NewGameCommand implements Command {
 
     @Override
     public CommandResult execute() {
-        return new EventResult(new NewGameEvent(this.user.createNewGame(name, type));
+        this.user.createNewGame(name, type);
+        return new EventResult(new NewGameEvent(NewGameDTO.create(this.user.getSession().character())));
     }
 }

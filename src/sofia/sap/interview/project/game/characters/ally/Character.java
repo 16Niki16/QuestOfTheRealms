@@ -38,6 +38,10 @@ public class Character {
         return this.type;
     }
 
+    public CharacterStatistics getCharacterStats() {
+        return this.characterStats;
+    }
+
     public Inventory getInventory() {
         return this.inventory;
     }
