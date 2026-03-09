@@ -13,24 +13,29 @@ import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CommandFactory {
-    /***
-     * place to create the command, depends on client input??
-     *
-     */
+    private final Map<String, CommandParser> parser = new HashMap<>();
+
+    public CommandFactory() {
+        parser.
+    }
+
     public static Command createCommand(String input, User user) {
         String[] commandSplit = input.split(" ", 2);
 
         String command = commandSplit[0].toLowerCase();
         CommandOptions option = CommandOptions.getOption(command);
         return switch (option) {
-            case ATTACK -> new AttackCommand(user);
-            case DEFEND -> new DefendCommand(user);
-            case USE_ITEM -> new UseItemCommand(user, itemType(commandSplit[1]));
-            case MOVE -> new MoveCommand(user, Direction.getDirection(commandSplit[1]));
-            case LOOK -> new LookCommand(user);
-            case EQUIP -> new EquipGearCommand(user, itemType(commandSplit[1]));
-            case UNEQUIP -> new UnequipGearCommand(user, itemType(commandSplit[1]));
+            case ATTACK -> new AttackCommand();
+            case DEFEND -> new DefendCommand();
+            case USE_ITEM -> new UseItemCommand(itemType(commandSplit[1]));
+            case MOVE -> new MoveCommand(Direction.getDirection(commandSplit[1]));
+            case LOOK -> new LookCommand();
+            case EQUIP -> new EquipGearCommand(itemType(commandSplit[1]));
+            case UNEQUIP -> new UnequipGearCommand(itemType(commandSplit[1]));
             case HELP -> new HelpCommand();
         };
     }

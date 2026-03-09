@@ -6,17 +6,15 @@ import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.user.User;
 
 public class UnequipGearCommand implements Command {
-    private final User user;
     private final ItemType gear;
 
-    public UnequipGearCommand(User user, ItemType gear) {
-        this.user = user;
+    public UnequipGearCommand(ItemType gear) {
         this.gear = gear;
     }
 
     @Override
-    public CommandResult execute() {
-        GameSession session = this.user.getSession();
+    public CommandResult execute(User user) {
+        GameSession session = user.getSession();
         return session.combat().unequip(session.character(), gear);
     }
 }

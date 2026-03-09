@@ -6,15 +6,9 @@ import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.user.User;
 
 public class DefendCommand implements Command {
-    private final User user;
-
-    public DefendCommand(User user) {
-        this.user = user;
-    }
-
     @Override
-    public CommandResult execute() {
-        GameSession session = this.user.getSession();
+    public CommandResult execute(User user) {
+        GameSession session = user.getSession();
         Enemy enemy = session.gameplay().getEnemyOnCharacterCoordinates();
 
         return session.combat().defend(session.character(), enemy);

@@ -9,15 +9,9 @@ import sofia.sap.interview.project.game.user.User;
 import java.util.Set;
 
 public class DirectionChoiceCommand implements Command {
-    private final User user;
-
-    public DirectionChoiceCommand(User user) {
-        this.user = user;
-    }
-
     @Override
-    public CommandResult execute() {
-        Set<Direction> possibleDirections = this.user.getSession().gameplay().getPossibleDirections();
+    public CommandResult execute(User user) {
+        Set<Direction> possibleDirections = user.getSession().gameplay().getPossibleDirections();
 
         return new ViewResult(new PossibleDirectionInformation(possibleDirections));
     }

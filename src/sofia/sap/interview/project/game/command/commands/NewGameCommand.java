@@ -8,19 +8,17 @@ import sofia.sap.interview.project.game.events.NewGameEvent;
 import sofia.sap.interview.project.game.user.User;
 
 public class NewGameCommand implements Command {
-    private final User user;
     private final String name;
     private final AllyCharacterType type;
 
-    public NewGameCommand(User user, String name, AllyCharacterType type) {
-        this.user = user;
+    public NewGameCommand(String name, AllyCharacterType type) {
         this.name = name;
         this.type = type;
     }
 
     @Override
-    public CommandResult execute() {
-        this.user.createNewGame(name, type);
-        return new EventResult(new NewGameEvent(NewGameDTO.from(this.user.getSession().character())));
+    public CommandResult execute(User user) {
+        user.createNewGame(name, type);
+        return new EventResult(new NewGameEvent(NewGameDTO.from(user.getSession().character())));
     }
 }

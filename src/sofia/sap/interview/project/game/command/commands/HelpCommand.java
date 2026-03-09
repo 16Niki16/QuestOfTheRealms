@@ -4,13 +4,14 @@ import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
 import sofia.sap.interview.project.game.dto.events.CommandDTO;
 import sofia.sap.interview.project.game.information.HelpInformation;
+import sofia.sap.interview.project.game.user.User;
 
 import java.util.List;
 
 public class HelpCommand implements Command {
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute(User user) {
         List<CommandDTO> commands = List.of(
             new CommandDTO("move [north | south | east | west]", "Choose direction to continue!"),
             new CommandDTO("look", "Look to see what the current destination contains!"),
