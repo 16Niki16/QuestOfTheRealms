@@ -9,28 +9,28 @@ import sofia.sap.interview.project.game.command.commands.LookCommand;
 import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
-import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
+import sofia.sap.interview.project.game.user.User;
 
 public class CommandFactory {
     /***
      * place to create the command, depends on client input??
      *
      */
-    public static Command createCommand(String input, GameSession context) {
+    public static Command createCommand(String input, User user) {
         String[] commandSplit = input.split(" ", 2);
 
         String command = commandSplit[0].toLowerCase();
         CommandOptions option = CommandOptions.getOption(command);
         return switch (option) {
-            case ATTACK -> new AttackCommand(context);
-            case DEFEND -> new DefendCommand(context);
-            case USE_ITEM -> new UseItemCommand(context, itemType(commandSplit[1]));
-            case MOVE -> new MoveCommand(context, Direction.getDirection(commandSplit[1]));
-            case LOOK -> new LookCommand(context);
-            case EQUIP -> new EquipGearCommand(context, itemType(commandSplit[1]));
-            case UNEQUIP -> new UnequipGearCommand(context, itemType(commandSplit[1]));
+            case ATTACK -> new AttackCommand(user);
+            case DEFEND -> new DefendCommand(user);
+            case USE_ITEM -> new UseItemCommand(user, itemType(commandSplit[1]));
+            case MOVE -> new MoveCommand(user, Direction.getDirection(commandSplit[1]));
+            case LOOK -> new LookCommand(user);
+            case EQUIP -> new EquipGearCommand(user, itemType(commandSplit[1]));
+            case UNEQUIP -> new UnequipGearCommand(user, itemType(commandSplit[1]));
             case HELP -> new HelpCommand();
         };
     }

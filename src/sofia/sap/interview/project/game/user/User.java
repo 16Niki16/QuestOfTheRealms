@@ -1,13 +1,10 @@
 package sofia.sap.interview.project.game.user;
 
-import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.events.GameEvent;
-import sofia.sap.interview.project.game.files.NewGame;
-import sofia.sap.interview.project.game.gameplay.CombatService;
+import sofia.sap.interview.project.game.gameplay.GameFactory;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.gameplay.GameState;
-import sofia.sap.interview.project.game.gameplay.Gameplay;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
 public class User {
@@ -21,20 +18,32 @@ public class User {
         this.log = log;
     }
 
+    public String getUsername() {
+        return this.username;
+    }
+
+    public GameSession getSession() {
+        return this.session;
+    }
+
+    public QuestLog getLog() {
+        return this.log;
+    }
+
     public static User createUser(String username) {
         return new User(username, null, null);
     }
 
     public void createNewGame(String name, AllyCharacterType type) {
-        Gameplay gameplay = new Gameplay(NewGame.createPlayground());
-        Character character = new Character(name, type);
         this.log = new QuestLog();
-        CombatService actions = new CombatService();
-        this.session = new GameSession(gameplay, character, actions, GameState.RUNNING);
+        this.session = GameFactory.createSession(name, type);
     }
 
-    public void handleEvent(GameEvent event) {
-        log.handleEvent(event);
+    public boolean handleEvent(GameEvent event) {
+        if (log == null) {
+            throw new IllegalArgumentException("The log is null!");
+        }
+        return log.handleEvent(event);
     }
 
     public void endGame() {

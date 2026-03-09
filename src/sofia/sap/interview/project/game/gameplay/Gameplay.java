@@ -1,10 +1,11 @@
 package sofia.sap.interview.project.game.gameplay;
 
-import com.google.gson.Gson;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
-import sofia.sap.interview.project.game.dto.PlaygroundDTO;
-import sofia.sap.interview.project.game.dto.mappers.PlaygroundMapper;
+import sofia.sap.interview.project.game.command.result.CommandResult;
+import sofia.sap.interview.project.game.command.result.EventResult;
+import sofia.sap.interview.project.game.command.result.ViewResult;
+import sofia.sap.interview.project.game.events.CollectSpecialItemEvent;
 import sofia.sap.interview.project.game.exceptions.DirectionNotAvailableException;
 import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.map.Coordinates;
@@ -13,9 +14,8 @@ import sofia.sap.interview.project.game.map.Playground;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
+import sofia.sap.interview.project.game.user.User;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Set;
 
 public class Gameplay {
@@ -36,12 +36,16 @@ public class Gameplay {
         }
     }
 
-    public RoomInformation lookAround() {
+    public CommandResult lookAround(User user) {
         Enemy enemy = getEnemyOnCharacterCoordinates();
         EnemyType enemyType = enemy != null ? enemy.getType() : null;
+        SpecialItem specialItem = getSpecialItemOnPlayerCoordinates();
 
-        return new RoomInformation(getChestOnCharacterCoordinates() != null,
-                enemyType, getSpecialItemOnPlayerCoordinates());
+        if (specialItem != null && user.handleEvent(new CollectSpecialItemEvent(specialItem))) {
+            return new EventResult(new CollectSpecialItemEvent(specialItem));
+        }
+        return new ViewResult(new RoomInformation(getChestOnCharacterCoordinates() != null,
+                enemyType, getSpecialItemOnPlayerCoordinates()));
     }
 
     public Set<Direction> getPossibleDirections() {

@@ -25,7 +25,7 @@ public class QuestLog {
         return completedQuests;
     }
 
-    public void handleEvent(GameEvent event) {
+    public boolean handleEvent(GameEvent event) {
         Iterator<Quest> it = activeQuests.iterator();
         while (it.hasNext()) {
             Quest quest = it.next();
@@ -35,8 +35,10 @@ public class QuestLog {
                 it.remove();
                 completedQuests.add(quest);
                 collectedXP += quest.getReward().getRewardXP();
+                return true;
             }
         }
+        return false;
     }
 
     public int getCollectedXP() {

@@ -6,9 +6,10 @@ import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class FindIronKey extends QuestBase {
     private static final SpecialItem SPECIAL_ITEM = SpecialItem.IRON_KEY;
+    private static final Reward REWARD = Reward.BIG;
 
     public FindIronKey() {
-        super(Reward.BIG);
+        super(REWARD);
     }
 
     @Override

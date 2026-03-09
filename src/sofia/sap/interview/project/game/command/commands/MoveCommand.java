@@ -5,20 +5,22 @@ import sofia.sap.interview.project.game.command.result.EventResult;
 import sofia.sap.interview.project.game.events.CharacterMovedEvent;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.Direction;
+import sofia.sap.interview.project.game.user.User;
 
 public class MoveCommand implements Command {
-    private final GameSession context;
+    private final User user;
     private final Direction direction;
 
-    public MoveCommand(GameSession context, Direction direction) {
-        this.context = context;
+    public MoveCommand(User user, Direction direction) {
+        this.user = user;
         this.direction = direction;
     }
 
     @Override
     public CommandResult execute() {
-        this.context.gameplay().movePlayer(this.direction);
+        GameSession session = this.user.getSession();
+        session.gameplay().movePlayer(this.direction);
         return new EventResult(
-            CharacterMovedEvent.movedEvent(this.context.character(), this.context.gameplay().getRoom()));
+                CharacterMovedEvent.movedEvent(session.character(), session.gameplay().getRoom()));
     }
 }

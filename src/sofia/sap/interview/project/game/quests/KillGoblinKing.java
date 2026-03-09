@@ -6,9 +6,10 @@ import sofia.sap.interview.project.game.events.KillEnemyEvent;
 
 public class KillGoblinKing extends QuestBase {
     private static final EnemyType TARGET = EnemyType.GOBLIN_KING;
+    private static final Reward REWARD = Reward.MEDIUM;
 
     public KillGoblinKing() {
-        super(Reward.MEDIUM);
+        super(REWARD);
     }
 
     @Override

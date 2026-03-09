@@ -2,12 +2,14 @@ package sofia.sap.interview.project.game.quests;
 
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 import sofia.sap.interview.project.game.events.GameEvent;
+import sofia.sap.interview.project.game.events.KillEnemyEvent;
 
 public class KillBoss extends QuestBase {
-    private static final EnemyType BOSS = EnemyType.BOSS;
+    private static final EnemyType TARGET = EnemyType.BOSS;
+    private static final Reward REWARD = Reward.GRAND;
 
     public KillBoss() {
-        super(Reward.GRAND);
+        super(REWARD);
     }
 
     @Override
@@ -17,6 +19,8 @@ public class KillBoss extends QuestBase {
 
     @Override
     public void update(GameEvent event) {
-
+        if (event instanceof KillEnemyEvent e && e.enemy().getType().equals(TARGET)) {
+            completeQuest();
+        }
     }
 }
