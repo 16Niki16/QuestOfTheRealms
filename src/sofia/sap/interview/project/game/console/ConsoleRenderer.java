@@ -3,10 +3,11 @@ package sofia.sap.interview.project.game.console;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.command.result.EventResult;
 import sofia.sap.interview.project.game.command.result.ViewResult;
-import sofia.sap.interview.project.game.events.DefendEvent;
+import sofia.sap.interview.project.game.events.AttackEvent;
 import sofia.sap.interview.project.game.events.CharacterMovedEvent;
 import sofia.sap.interview.project.game.events.CollectItemsEvent;
-import sofia.sap.interview.project.game.events.AttackEvent;
+import sofia.sap.interview.project.game.events.CollectSpecialItemEvent;
+import sofia.sap.interview.project.game.events.DefendEvent;
 import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUnequipEvent;
@@ -17,10 +18,11 @@ import sofia.sap.interview.project.game.information.PossibleDirectionInformation
 import sofia.sap.interview.project.game.information.QuestInformation;
 import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.information.ViewInformation;
-import sofia.sap.interview.project.game.view.DefendView;
+import sofia.sap.interview.project.game.view.AttackView;
 import sofia.sap.interview.project.game.view.CharacterMovedView;
 import sofia.sap.interview.project.game.view.CollectItemsView;
-import sofia.sap.interview.project.game.view.AttackView;
+import sofia.sap.interview.project.game.view.CollectSpecialItemView;
+import sofia.sap.interview.project.game.view.DefendView;
 import sofia.sap.interview.project.game.view.EnemyKilledView;
 import sofia.sap.interview.project.game.view.GameEventView;
 import sofia.sap.interview.project.game.view.HelpView;
@@ -55,6 +57,7 @@ public class ConsoleRenderer {
         this.eventViews.put(ItemUsedEvent.class, new UseItemView());
         this.eventViews.put(DefendEvent.class, new DefendView());
         this.eventViews.put(AttackEvent.class, new AttackView());
+        this.eventViews.put(CollectSpecialItemEvent.class, new CollectSpecialItemView());
     }
 
     private void basicViewsRegister() {
