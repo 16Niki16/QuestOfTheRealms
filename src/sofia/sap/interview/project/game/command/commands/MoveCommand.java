@@ -7,6 +7,8 @@ import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class MoveCommand implements Command {
     private final Direction direction;
 
@@ -15,10 +17,10 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         GameSession session = user.getSession();
         session.gameplay().movePlayer(this.direction);
-        return new EventResult(
-            CharacterMovedEvent.movedEvent(session.character(), session.gameplay().getRoom()));
+        return List.of(new EventResult(
+            CharacterMovedEvent.movedEvent(session.character(), session.gameplay().getRoom())));
     }
 }

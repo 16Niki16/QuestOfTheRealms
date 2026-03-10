@@ -14,7 +14,7 @@ import sofia.sap.interview.project.game.events.ItemUnequipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 import sofia.sap.interview.project.game.information.HelpInformation;
-import sofia.sap.interview.project.game.information.PossibleDirectionInformation;
+import sofia.sap.interview.project.game.information.PathsInformation;
 import sofia.sap.interview.project.game.information.QuestInformation;
 import sofia.sap.interview.project.game.information.RoomInformation;
 import sofia.sap.interview.project.game.information.ViewInformation;
@@ -28,7 +28,7 @@ import sofia.sap.interview.project.game.view.GameEventView;
 import sofia.sap.interview.project.game.view.HelpView;
 import sofia.sap.interview.project.game.view.ItemEquipView;
 import sofia.sap.interview.project.game.view.ItemUnequipView;
-import sofia.sap.interview.project.game.view.PossibleDirectionView;
+import sofia.sap.interview.project.game.view.PathsView;
 import sofia.sap.interview.project.game.view.QuestView;
 import sofia.sap.interview.project.game.view.RoomView;
 import sofia.sap.interview.project.game.view.UseItemView;
@@ -62,7 +62,7 @@ public class ConsoleRenderer {
 
     private void basicViewsRegister() {
         this.basicViews.put(HelpInformation.class, new HelpView());
-        this.basicViews.put(PossibleDirectionInformation.class, new PossibleDirectionView());
+        this.basicViews.put(PathsInformation.class, new PathsView());
         this.basicViews.put(QuestInformation.class, new QuestView());
         this.basicViews.put(RoomInformation.class, new RoomView());
     }

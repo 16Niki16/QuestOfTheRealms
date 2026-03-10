@@ -5,10 +5,12 @@ import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class AttackCommand implements Command {
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         GameSession session = user.getSession();
         Enemy enemy = session.gameplay().getEnemyOnCharacterCoordinates();
 

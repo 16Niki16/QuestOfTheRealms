@@ -16,6 +16,8 @@ import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class Gameplay {
@@ -32,20 +34,22 @@ public class Gameplay {
             this.playerCoordinates = direction.move(this.playerCoordinates);
         } else {
             throw new DirectionNotAvailableException(
-                    "The provided direction is not correct, choose another direction!");
+                "The provided direction is not correct, choose another direction!");
         }
     }
 
-    public CommandResult lookAround(User user) {
+    public List<CommandResult> lookAround(User user) {
+        List<CommandResult> resultList = new ArrayList<>();
         Enemy enemy = getEnemyOnCharacterCoordinates();
         EnemyType enemyType = enemy != null ? enemy.getType() : null;
         SpecialItem specialItem = getSpecialItemOnPlayerCoordinates();
+        resultList.add(new ViewResult(new RoomInformation(getChestOnCharacterCoordinates() != null,
+            enemyType, specialItem)));
 
         if (specialItem != null && user.handleEvent(new CollectSpecialItemEvent(specialItem))) {
-            return new EventResult(new CollectSpecialItemEvent(specialItem));
+            resultList.add(new EventResult(new CollectSpecialItemEvent(specialItem)));
         }
-        return new ViewResult(new RoomInformation(getChestOnCharacterCoordinates() != null,
-                enemyType, getSpecialItemOnPlayerCoordinates()));
+        return resultList;
     }
 
     public Set<Direction> getPossibleDirections() {

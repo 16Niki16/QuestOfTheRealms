@@ -11,7 +11,7 @@ import java.util.List;
 public class HelpCommand implements Command {
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         List<CommandDTO> commands = List.of(
             new CommandDTO("move [north | south | east | west]", "Choose direction to continue!"),
             new CommandDTO("look", "Look to see what the current destination contains!"),
@@ -24,6 +24,6 @@ public class HelpCommand implements Command {
             new CommandDTO("exit", "Exit the game!")
         );
 
-        return new ViewResult(new HelpInformation(commands));
+        return List.of(new ViewResult(new HelpInformation(commands)));
     }
 }

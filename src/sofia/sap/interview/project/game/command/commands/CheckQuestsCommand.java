@@ -6,12 +6,14 @@ import sofia.sap.interview.project.game.information.QuestInformation;
 import sofia.sap.interview.project.game.quests.QuestLog;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class CheckQuestsCommand implements Command {
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         QuestLog log = user.getLog();
 
-        return new ViewResult(new QuestInformation(log.getActiveQuests(), log.getCompletedQuests()));
+        return List.of(new ViewResult(new QuestInformation(log.getActiveQuests(), log.getCompletedQuests())));
     }
 }

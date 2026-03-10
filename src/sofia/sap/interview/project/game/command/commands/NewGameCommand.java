@@ -7,6 +7,8 @@ import sofia.sap.interview.project.game.dto.events.NewGameDTO;
 import sofia.sap.interview.project.game.events.NewGameEvent;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class NewGameCommand implements Command {
     private final String name;
     private final AllyCharacterType type;
@@ -17,8 +19,8 @@ public class NewGameCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         user.createNewGame(name, type);
-        return new EventResult(new NewGameEvent(NewGameDTO.from(user.getSession().character())));
+        return List.of(new EventResult(new NewGameEvent(NewGameDTO.from(user.getSession().character()))));
     }
 }

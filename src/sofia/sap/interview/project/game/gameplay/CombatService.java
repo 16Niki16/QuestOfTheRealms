@@ -21,29 +21,34 @@ import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.room.Chest;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class CombatService {
-    public CommandResult attack(Character character, Enemy enemy) {
+    public List<CommandResult> attack(Character character, Enemy enemy) {
+        List<CommandResult> results = new ArrayList<>();
         int damage = character.attackEnemy();
         boolean dead = enemy.defendAgainstAllyCharacter(damage);
-
-        if (dead) {
-            return new EventResult(new KillEnemyEvent(enemy));
-        }
         InteractionDTO dto = InteractionDTO.from(character, damage, enemy);
-        return new EventResult(new AttackEvent(dto));
+        results.add(new EventResult(new AttackEvent(dto)));
+        if (dead) {
+            results.add(new EventResult(new KillEnemyEvent(enemy)));
+        }
+        return results;
     }
 
-    public CommandResult defend(Character character, Enemy enemy) {
+    public List<CommandResult> defend(Character character, Enemy enemy) {
+        List<CommandResult> results = new ArrayList<>();
         int damage = enemy.attackDamage();
         boolean dead = character.defendAgainstEnemy(damage);
+        InteractionDTO dto = InteractionDTO.from(character, damage, enemy);
+        results.add(new EventResult(new DefendEvent(dto)));
 
         if (dead) {
-            return new EventResult(new CharacterDiedEvent(character));
+            results.add(new EventResult(new CharacterDiedEvent(character)));
         }
-        InteractionDTO dto = InteractionDTO.from(character, damage, enemy);
-        return new EventResult(new DefendEvent(dto));
+        return results;
     }
 
     public CommandResult useItem(Character character, ItemType itemType) {
@@ -78,13 +83,13 @@ public class CombatService {
         return new EventResult(ItemUnequipEvent.unequipEvent(item));
     }
 
-    public CommandResult collect(Character character, Chest chest) {
+    public List<CommandResult> collect(Character character, Chest chest) {
         if (chest == null) {
             throw new ChestNotAvailableException("There isn't a chest in this room!");
         }
 
         Collection<Item> items = chest.collectItems();
         character.collectItems(items);
-        return new EventResult(CollectItemsEvent.collectEvent(items));
+        return List.of(new EventResult(CollectItemsEvent.collectEvent(items)));
     }
 }

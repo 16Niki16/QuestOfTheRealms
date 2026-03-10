@@ -1,7 +1,5 @@
 package sofia.sap.interview.project.game.command;
 
-import sofia.sap.interview.project.game.exceptions.CommandNotAvailableException;
-
 public enum CommandOptions {
     ATTACK("attack"),
     DEFEND("defend"),
@@ -10,19 +8,17 @@ public enum CommandOptions {
     MOVE("move"),
     EQUIP("equip"),
     UNEQUIP("unequip"),
-    HELP("help");
+    HELP("help"),
+    QUESTS("quests"),
+    PATHS("paths"),
+    OPEN("open");
     private final String command;
 
     CommandOptions(String command) {
         this.command = command;
     }
 
-    public static CommandOptions getOption(String command) {
-        for (CommandOptions option : values()) {
-            if (option.command.equals(command)) {
-                return option;
-            }
-        }
-        throw new CommandNotAvailableException("The provided command line is not available!");
+    public String getCommand() {
+        return this.command;
     }
 }

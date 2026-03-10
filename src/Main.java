@@ -3,7 +3,7 @@ import sofia.sap.interview.project.game.command.commands.AttackCommand;
 import sofia.sap.interview.project.game.command.commands.CheckQuestsCommand;
 import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.command.commands.DefendCommand;
-import sofia.sap.interview.project.game.command.commands.DirectionChoiceCommand;
+import sofia.sap.interview.project.game.command.commands.PathsCommand;
 import sofia.sap.interview.project.game.command.commands.EquipGearCommand;
 import sofia.sap.interview.project.game.command.commands.HelpCommand;
 import sofia.sap.interview.project.game.command.commands.LookCommand;
@@ -33,7 +33,7 @@ public class Main {
 
         ConsoleRenderer renderer = new ConsoleRenderer();
         //possible directions
-        Command command4 = new DirectionChoiceCommand();
+        Command command4 = new PathsCommand();
         CommandResult result4 = command4.execute(user);
         renderer.render(result4);
         //look
@@ -94,7 +94,7 @@ public class Main {
         CommandResult result10 = command23.execute(user);
         renderer.render(result10);
         //Direction choice
-        Command command43 = new DirectionChoiceCommand();
+        Command command43 = new PathsCommand();
         CommandResult result0 = command43.execute(user);
         renderer.render(result0);
         //move

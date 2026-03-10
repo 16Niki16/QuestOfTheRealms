@@ -5,9 +5,11 @@ import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class OpenChestCommand implements Command {
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         GameSession session = user.getSession();
         Chest chest = session.gameplay().getChestOnCharacterCoordinates();
         return session.combat().collect(session.character(), chest);

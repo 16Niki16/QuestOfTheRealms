@@ -5,6 +5,8 @@ import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
+
 public class EquipGearCommand implements Command {
     private final ItemType gear;
 
@@ -13,8 +15,8 @@ public class EquipGearCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(User user) {
+    public List<CommandResult> execute(User user) {
         GameSession session = user.getSession();
-        return session.combat().equip(session.character(), this.gear);
+        return List.of(session.combat().equip(session.character(), this.gear));
     }
 }
