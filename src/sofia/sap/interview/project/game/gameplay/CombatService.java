@@ -51,14 +51,14 @@ public class CombatService {
         return results;
     }
 
-    public CommandResult useItem(Character character, ItemType itemType) {
+    public List<CommandResult> useItem(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Consumable consumable)) {
             throw new ItemNotAvailableException("The provided item is not consumable!");
         }
         character.applyPotion(consumable);
-        return new EventResult(ItemUsedEvent.potionEffect(item));
+        return List.of(new EventResult(ItemUsedEvent.potionEffect(item)));
     }
 
     public CommandResult equip(Character character, ItemType itemType) {
