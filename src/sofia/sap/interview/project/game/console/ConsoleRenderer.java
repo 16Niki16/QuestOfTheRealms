@@ -35,6 +35,7 @@ import sofia.sap.interview.project.game.view.UseItemView;
 import sofia.sap.interview.project.game.view.ViewCommand;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ConsoleRenderer {
@@ -67,15 +68,17 @@ public class ConsoleRenderer {
         this.basicViews.put(RoomInformation.class, new RoomView());
     }
 
-    public void render(CommandResult result) {
-        if (result instanceof EventResult eventResult) {
-            GameEvent event = eventResult.event();
-            GameEventView view = this.eventViews.get(event.getClass());
-            view.render(event);
-        } else if (result instanceof ViewResult viewResult) {
-            ViewInformation information = viewResult.information();
-            ViewCommand view = this.basicViews.get(information.getClass());
-            view.render(information);
+    public void render(List<CommandResult> results) {
+        for (CommandResult result : results) {
+            if (result instanceof EventResult eventResult) {
+                GameEvent event = eventResult.event();
+                GameEventView view = this.eventViews.get(event.getClass());
+                view.render(event);
+            } else if (result instanceof ViewResult viewResult) {
+                ViewInformation information = viewResult.information();
+                ViewCommand view = this.basicViews.get(information.getClass());
+                view.render(information);
+            }
         }
     }
 }

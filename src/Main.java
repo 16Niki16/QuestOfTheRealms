@@ -22,6 +22,7 @@ import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.Reward;
 import sofia.sap.interview.project.game.user.User;
 
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -34,7 +35,7 @@ public class Main {
         ConsoleRenderer renderer = new ConsoleRenderer();
         //possible directions
         Command command4 = new PathsCommand();
-        CommandResult result4 = command4.execute(user);
+        List<CommandResult> result4 = command4.execute(user);
         renderer.render(result4);
         //look
         Command command1 = new LookCommand();
