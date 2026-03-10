@@ -29,6 +29,10 @@ public class Gameplay {
         this.playerCoordinates = Coordinates.startingCoordinates();
     }
 
+    public Coordinates getPlayerCoordinates() {
+        return this.playerCoordinates;
+    }
+
     public void movePlayer(Direction direction) {
         if (playground.canMove(this.playerCoordinates, direction)) {
             this.playerCoordinates = direction.move(this.playerCoordinates);

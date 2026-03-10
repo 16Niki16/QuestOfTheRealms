@@ -46,6 +46,10 @@ public class Character {
         return this.inventory;
     }
 
+    public Set<ItemType> getEquippedItems() {
+        return this.equippedItems;
+    }
+
     public Item getEquippedItem(ItemType itemType) {
         if (this.equippedItems.contains(itemType)) {
             return ItemFactory.create(itemType);
