@@ -21,6 +21,9 @@ public class Playground {
      * |
      * raste nadolu
      */
+    public Room[][] getRooms() {
+        return this.rooms;
+    }
 
     public boolean canMove(Coordinates playerPosition, Direction direction) {
         Coordinates next = direction.move(playerPosition);
@@ -41,7 +44,7 @@ public class Playground {
 
     private boolean isInside(Coordinates c) {
         return c.y() >= 0 && c.y() < rooms.length
-            && c.x() >= 0 && c.x() < rooms[c.y()].length;
+                && c.x() >= 0 && c.x() < rooms[c.y()].length;
     }
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {

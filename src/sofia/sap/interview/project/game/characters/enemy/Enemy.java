@@ -31,6 +31,10 @@ public abstract class Enemy {
         return enemyStats.attack();
     }
 
+    public int health() {
+        return enemyStats.getHealth();
+    }
+
     public boolean defendAgainstAllyCharacter(int damage) {
         return this.enemyStats.decreaseHealth(damage);
     }

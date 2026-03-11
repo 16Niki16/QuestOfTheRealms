@@ -33,12 +33,16 @@ public class Gameplay {
         return this.playerCoordinates;
     }
 
+    public Playground getPlayground() {
+        return this.playground;
+    }
+
     public void movePlayer(Direction direction) {
         if (playground.canMove(this.playerCoordinates, direction)) {
             this.playerCoordinates = direction.move(this.playerCoordinates);
         } else {
             throw new DirectionNotAvailableException(
-                "The provided direction is not correct, choose another direction!");
+                    "The provided direction is not correct, choose another direction!");
         }
     }
 
@@ -48,7 +52,7 @@ public class Gameplay {
         EnemyType enemyType = enemy != null ? enemy.getType() : null;
         SpecialItem specialItem = getSpecialItemOnPlayerCoordinates();
         resultList.add(new ViewResult(new RoomInformation(getChestOnCharacterCoordinates() != null,
-            enemyType, specialItem)));
+                enemyType, specialItem)));
 
         if (specialItem != null && user.handleEvent(new CollectSpecialItemEvent(specialItem))) {
             resultList.add(new EventResult(new CollectSpecialItemEvent(specialItem)));

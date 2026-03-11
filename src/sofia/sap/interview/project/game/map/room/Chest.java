@@ -17,6 +17,10 @@ public class Chest {
         return new Chest(content);
     }
 
+    public Collection<Item> getContent() {
+        return this.content;
+    }
+
     public Collection<Item> collectItems() {
         Collection<Item> items = List.copyOf(this.content);
         this.content.clear();
