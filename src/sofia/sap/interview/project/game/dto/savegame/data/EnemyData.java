@@ -1,14 +1,16 @@
-package sofia.sap.interview.project.game.dto.savegame;
+package sofia.sap.interview.project.game.dto.savegame.data;
+
+import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
 public class EnemyData {
-    private String enemy;
+    private EnemyType enemy;
     private int health;
 
-    public String getEnemy() {
+    public EnemyType getEnemy() {
         return enemy;
     }
 
-    public void setEnemy(String enemy) {
+    public void setEnemy(EnemyType enemy) {
         this.enemy = enemy;
     }
 

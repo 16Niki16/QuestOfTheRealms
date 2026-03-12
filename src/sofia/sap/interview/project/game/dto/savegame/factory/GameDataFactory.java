@@ -1,13 +1,15 @@
-package sofia.sap.interview.project.game.dto.savegame;
+package sofia.sap.interview.project.game.dto.savegame.factory;
 
-import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.dto.savegame.data.CharacterData;
+import sofia.sap.interview.project.game.dto.savegame.data.GameData;
+import sofia.sap.interview.project.game.dto.savegame.data.MapData;
+import sofia.sap.interview.project.game.dto.savegame.data.QuestsData;
+import sofia.sap.interview.project.game.dto.savegame.data.RoomData;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Coordinates;
-import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
-import sofia.sap.interview.project.game.map.room.SpecialItem;
 import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
@@ -22,11 +24,11 @@ public class GameDataFactory {
         CharacterData character = game.getCharacter();
 
         character.setCharacterName(session.character().getCharacterName());
-        character.setCharacterType(session.character().getCharacterType().name());
+        character.setCharacterType(session.character().getCharacterType());
         character.setHealth(session.character().getCharacterStats().getHealth());
         character.setMana(session.character().getCharacterStats().getMana());
         character.setInventory(saveInventory(session.character().getInventory().getItems()));
-        character.setEquipped(saveEquipped(session.character().getEquippedItems()));
+        character.setEquipped(session.character().getEquippedItems());
 
         MapData map = game.getMap();
         Coordinates playerCoordinates = session.gameplay().getPlayerCoordinates();
@@ -38,18 +40,12 @@ public class GameDataFactory {
         quests.setActive();
     }
 
-    private static Map<String, Integer> saveInventory(Map<ItemType, List<Item>> inventory) {
+    private static Map<ItemType, Integer> saveInventory(Map<ItemType, List<Item>> inventory) {
         return inventory.entrySet().stream()
                 .collect(Collectors.toMap(
-                        e -> e.getKey().name(),
+                        Map.Entry::getKey,
                         e -> e.getValue().size()
                 ));
-    }
-
-    private static Set<String> saveEquipped(Set<ItemType> equipped) {
-        return equipped.stream()
-                .map(ItemType::getName)
-                .collect(Collectors.toSet());
     }
 
     private static RoomData[][] saveRooms(Room[][] rooms) {
@@ -57,41 +53,15 @@ public class GameDataFactory {
 
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[i].length; j++) {
-                result[i][j] = saveRoom(rooms[i][j]);
+                result[i][j] = RoomDataFactory.create(rooms[i][j]);
             }
         }
 
         return result;
     }
 
-    private static RoomData saveRoom(Room room) {
-        RoomData data = new RoomData();
-        Chest chest = room.getChest();
-        Enemy enemy = room.getEnemy();
-        SpecialItem item = room.getSpecialItem();
-
-        if (chest != null) {
-            ChestData chestData = new;
-            chestData.setItems(fromChest(chest));
-        }
-        if (enemy != null) {
-            EnemyData enemyData = data.getEnemy();
-            enemyData.setEnemy(enemy.getType().getName());
-            enemyData.setHealth(enemy.health());
-        }
-        if (item != null) {
-            data.setSpecialItem(room.getSpecialItem().getName());
-        }
-        return data;
-    }
-
-    private static List<String> fromChest(Chest chest) {
-        return chest.getContent().stream()
-                .map(e -> e.getType().getName())
-                .collect(Collectors.toList());
-    }
-
     private static List<String> quests(Set<Quest> quests) {
-
+        return quests.stream()
+                .map()
     }
 }

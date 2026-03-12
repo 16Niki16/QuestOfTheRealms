@@ -1,9 +1,11 @@
-package sofia.sap.interview.project.game.dto.savegame;
+package sofia.sap.interview.project.game.dto.savegame.data;
+
+import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class RoomData {
     private ChestData chest;
     private EnemyData enemy;
-    private String specialItem;
+    private SpecialItem specialItem;
 
     public ChestData getChest() {
         return chest;
@@ -17,11 +19,11 @@ public class RoomData {
         return enemy;
     }
 
-    public String getSpecialItem() {
+    public SpecialItem getSpecialItem() {
         return specialItem;
     }
 
-    public void setSpecialItem(String specialItem) {
+    public void setSpecialItem(SpecialItem specialItem) {
         this.specialItem = specialItem;
     }
 

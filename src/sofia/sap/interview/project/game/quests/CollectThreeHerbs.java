@@ -17,7 +17,7 @@ public class CollectThreeHerbs extends QuestBase {
 
     @Override
     public String questDescription() {
-        return null;
+        return "You need to collect 3 herbs!";
     }
 
     @Override

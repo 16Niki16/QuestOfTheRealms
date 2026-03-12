@@ -1,4 +1,4 @@
-package sofia.sap.interview.project.game.dto.savegame;
+package sofia.sap.interview.project.game.dto.savegame.data;
 
 public class GameData {
     private CharacterData character;

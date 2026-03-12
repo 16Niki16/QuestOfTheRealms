@@ -1,15 +1,18 @@
-package sofia.sap.interview.project.game.dto.savegame;
+package sofia.sap.interview.project.game.dto.savegame.data;
+
+import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
+import sofia.sap.interview.project.game.items.ItemType;
 
 import java.util.Map;
 import java.util.Set;
 
 public class CharacterData {
     private String characterName;
-    private String characterType;
+    private AllyCharacterType characterType;
     private int health;
     private int mana;
-    private Map<String, Integer> inventory;
-    private Set<String> equipped;
+    private Map<ItemType, Integer> inventory;
+    private Set<ItemType> equipped;
 
     public String getCharacterName() {
         return characterName;
@@ -19,11 +22,11 @@ public class CharacterData {
         this.characterName = characterName;
     }
 
-    public String getCharacterType() {
+    public AllyCharacterType getCharacterType() {
         return characterType;
     }
 
-    public void setCharacterType(String characterType) {
+    public void setCharacterType(AllyCharacterType characterType) {
         this.characterType = characterType;
     }
 
@@ -43,19 +46,19 @@ public class CharacterData {
         this.mana = mana;
     }
 
-    public Map<String, Integer> getInventory() {
+    public Map<ItemType, Integer> getInventory() {
         return inventory;
     }
 
-    public void setInventory(Map<String, Integer> inventory) {
+    public void setInventory(Map<ItemType, Integer> inventory) {
         this.inventory = inventory;
     }
 
-    public Set<String> getEquipped() {
+    public Set<ItemType> getEquipped() {
         return equipped;
     }
 
-    public void setEquipped(Set<String> equipped) {
+    public void setEquipped(Set<ItemType> equipped) {
         this.equipped = equipped;
     }
 }
