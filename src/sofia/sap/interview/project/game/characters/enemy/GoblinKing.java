@@ -3,8 +3,8 @@ package sofia.sap.interview.project.game.characters.enemy;
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
 public class GoblinKing extends Enemy {
-    public GoblinKing(EnemyType type) {
-        super(type);
+    public GoblinKing() {
+        super(EnemyType.GOBLIN_KING);
     }
 
     @Override

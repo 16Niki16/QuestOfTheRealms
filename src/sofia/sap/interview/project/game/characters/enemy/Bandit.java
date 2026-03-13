@@ -4,8 +4,8 @@ import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
 
 public class Bandit extends Enemy {
 
-    public Bandit(EnemyType type) {
-        super(type);
+    public Bandit() {
+        super(EnemyType.BANDIT);
     }
 
     @Override

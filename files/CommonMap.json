@@ -5,8 +5,8 @@
         "name" : "dark forest",
         "chest": {
           "items": [
-            "healing herb",
-            "iron dagger"
+            "HEALING_HERB",
+            "IRON_DAGGER"
           ]
         },
         "enemy": null,
@@ -16,17 +16,17 @@
         "name" : "misty mountains",
         "chest": {
           "items": [
-            "healing herb",
-            "iron dagger"
+            "HEALING_HERB",
+            "IRON_DAGGER"
           ]
         },
-        "enemy": "goblin king",
+        "enemy": "GOBLIN_KING",
         "specialItem": "IRON_KEY"
       },
       {
         "name" : "salty springs",
         "chest": null,
-        "enemy": "goblin",
+        "enemy": "GOBLIN",
         "specialItem": null
       }
     ],
@@ -34,14 +34,14 @@
       {
         "name" : "tilted towers",
         "chest": null,
-        "enemy": "boss",
+        "enemy": "BOSS",
         "specialItem": "IRON_KEY"
       },
       {
         "name" : "pleasant park",
         "chest": {
           "items": [
-            "iron dagger"
+            "IRON_DAGGER"
           ]
         },
         "enemy": null,
@@ -51,11 +51,11 @@
         "name" : "flush factory",
         "chest": {
           "items": [
-            "mana potion",
-            "healing herb"
+            "MANA_POTION",
+            "HEALING_HERB"
           ]
         },
-        "enemy": "bandit",
+        "enemy": "BANDIT",
         "specialItem": "TORCH"
       }
     ]

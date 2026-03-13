@@ -12,17 +12,6 @@ public abstract class Enemy {
         this.type = type;
     }
 
-    public static Enemy createEnemy(String type) {
-        EnemyType enemy = EnemyType.getByName(type);
-
-        return switch (enemy) {
-            case GOBLIN -> new Goblin(enemy);
-            case BOSS -> new Boss(enemy);
-            case BANDIT -> new Bandit(enemy);
-            case GOBLIN_KING -> new GoblinKing(enemy);
-        };
-    }
-
     public EnemyType getType() {
         return this.type;
     }
