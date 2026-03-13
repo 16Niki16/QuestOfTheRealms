@@ -11,6 +11,6 @@ public class RoomMapper {
         }
 
         return new Room(content.name, EnemyMapper.map(content.enemy), ChestMapper.map(content.chest),
-            SpecialItemMapper.map(content.specialItem));
+                content.specialItem);
     }
 }

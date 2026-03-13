@@ -1,9 +1,0 @@
-package sofia.sap.interview.project.game.dto.newgame.mappers;
-
-import sofia.sap.interview.project.game.map.room.SpecialItem;
-
-public class SpecialItemMapper {
-    public static SpecialItem map(String specialItem) {
-        return specialItem == null ? null : SpecialItem.valueOf(specialItem);
-    }
-}

@@ -18,13 +18,14 @@ public class QuestLog {
         this.collectedXP = 0;
     }
 
-    private QuestLog(Set<Quest> active, Set<Quest> completed) {
+    private QuestLog(Set<Quest> active, Set<Quest> completed, int collectedXP) {
         this.activeQuests = active;
         this.completedQuests = completed;
+        this.collectedXP = collectedXP;
     }
 
-    public static QuestLog load(Set<Quest> active, Set<Quest> completed) {
-        return new QuestLog(active, completed);
+    public static QuestLog load(Set<Quest> active, Set<Quest> completed, int collectedXP) {
+        return new QuestLog(active, completed, collectedXP);
     }
 
     public Set<Quest> getActiveQuests() {

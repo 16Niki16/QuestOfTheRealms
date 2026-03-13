@@ -2,8 +2,8 @@ package sofia.sap.interview.project.game.dto.newgame;
 
 import sofia.sap.interview.project.game.items.ItemType;
 
-import java.util.List;
+import java.util.Map;
 
 public class ChestDTO {
-    public List<ItemType> items;
+    public Map<ItemType, Integer> items;
 }

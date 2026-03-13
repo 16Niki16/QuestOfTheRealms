@@ -13,6 +13,11 @@ public class CharacterStatistics extends BaseStatistics {
         this.mana = type.getMana();
     }
 
+    public CharacterStatistics(int health, AttackRange attackRange, int mana) {
+        super(health, attackRange);
+        this.mana = mana;
+    }
+
     public int getMana() {
         return this.mana;
     }

@@ -15,8 +15,7 @@ public class CharacterDataFactory {
 
         characterData.setCharacterName(character.getCharacterName());
         characterData.setCharacterType(character.getCharacterType());
-        characterData.setHealth(character.getCharacterStats().getHealth());
-        characterData.setMana(character.getCharacterStats().getMana());
+        characterData.setCharacterStatisticsData(CharacterStatisticsDataFactory.create(character.getCharacterStats()));
         characterData.setInventory(saveInventory(character.getInventory().getItems()));
         characterData.setEquipped(character.getEquippedItems());
 
@@ -25,10 +24,10 @@ public class CharacterDataFactory {
 
     private static Map<ItemType, Integer> saveInventory(Map<ItemType, List<Item>> inventory) {
         return inventory.entrySet().stream()
-            .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                e -> e.getValue().size()
-            ));
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> e.getValue().size()
+                ));
     }
 
 }

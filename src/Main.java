@@ -3,18 +3,17 @@ import sofia.sap.interview.project.game.command.commands.AttackCommand;
 import sofia.sap.interview.project.game.command.commands.CheckQuestsCommand;
 import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.command.commands.DefendCommand;
-import sofia.sap.interview.project.game.command.commands.PathsCommand;
 import sofia.sap.interview.project.game.command.commands.EquipGearCommand;
 import sofia.sap.interview.project.game.command.commands.HelpCommand;
 import sofia.sap.interview.project.game.command.commands.LookCommand;
 import sofia.sap.interview.project.game.command.commands.MoveCommand;
 import sofia.sap.interview.project.game.command.commands.NewGameCommand;
 import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
+import sofia.sap.interview.project.game.command.commands.PathsCommand;
 import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
 import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.console.ConsoleRenderer;
-import sofia.sap.interview.project.game.files.LoadGame;
 import sofia.sap.interview.project.game.files.SaveGame;
 import sofia.sap.interview.project.game.items.ItemType;
 import sofia.sap.interview.project.game.map.Direction;
@@ -24,7 +23,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-       // User user = LoadGame.loadGame("Niki");
+        // User user = LoadGame.loadGame("Niki");
         User user = User.createUser("Niki");
         NewGameCommand newGame = new NewGameCommand("kaisa", AllyCharacterType.MAGE);
         List<CommandResult> result231 = newGame.execute(user);

@@ -9,8 +9,16 @@ import java.util.Set;
 public class CharacterData {
     private String characterName;
     private AllyCharacterType characterType;
-    private int health;
-    private int mana;
+    private CharacterStatisticsData characterStatisticsData;
+
+    public CharacterStatisticsData getCharacterStatisticsData() {
+        return characterStatisticsData;
+    }
+
+    public void setCharacterStatisticsData(CharacterStatisticsData characterStatisticsData) {
+        this.characterStatisticsData = characterStatisticsData;
+    }
+
     private Map<ItemType, Integer> inventory;
     private Set<ItemType> equipped;
 
@@ -28,22 +36,6 @@ public class CharacterData {
 
     public void setCharacterType(AllyCharacterType characterType) {
         this.characterType = characterType;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
     }
 
     public Map<ItemType, Integer> getInventory() {
