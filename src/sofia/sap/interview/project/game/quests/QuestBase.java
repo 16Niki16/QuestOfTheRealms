@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.quests;
 
+import sofia.sap.interview.project.game.dto.savegame.data.QuestData;
 import sofia.sap.interview.project.game.events.GameEvent;
 
 public abstract class QuestBase implements Quest {
@@ -30,4 +31,12 @@ public abstract class QuestBase implements Quest {
     public Reward getReward() {
         return this.reward;
     }
+
+    @Override
+    public void load(QuestData data) {
+        this.completed = data.isCompleted();
+    }
+
+    @Override
+    public abstract QuestData toSave();
 }

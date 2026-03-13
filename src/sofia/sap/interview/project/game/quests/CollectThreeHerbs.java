@@ -38,6 +38,12 @@ public class CollectThreeHerbs extends QuestBase {
     }
 
     @Override
+    public void load(QuestData data) {
+        super.load(data);
+        this.numberOfCollectedHerbs = data.getProgress();
+    }
+
+    @Override
     public QuestData toSave() {
         QuestData questData = new QuestData();
 

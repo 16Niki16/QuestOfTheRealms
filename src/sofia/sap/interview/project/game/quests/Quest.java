@@ -15,4 +15,6 @@ public interface Quest {
     Reward getReward();
 
     QuestData toSave();
+
+    void load(QuestData data);
 }

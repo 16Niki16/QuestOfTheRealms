@@ -14,13 +14,14 @@ public class QuestsDataFactory {
 
         questsData.setActive(createQuest(log.getActiveQuests()));
         questsData.setCompleted(createQuest(log.getCompletedQuests()));
+        questsData.setCollectedXP(log.getCollectedXP());
 
         return questsData;
     }
 
     private static Set<QuestData> createQuest(Set<Quest> quests) {
         return quests.stream()
-            .map(Quest::toSave)
-            .collect(Collectors.toSet());
+                .map(Quest::toSave)
+                .collect(Collectors.toSet());
     }
 }

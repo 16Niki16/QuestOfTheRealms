@@ -1,11 +1,19 @@
 package sofia.sap.interview.project.game.dto.savegame.data;
 
-import java.util.List;
 import java.util.Set;
 
 public class QuestsData {
     private Set<QuestData> active;
     private Set<QuestData> completed;
+    private int collectedXP;
+
+    public int getCollectedXP() {
+        return collectedXP;
+    }
+
+    public void setCollectedXP(int collectedXP) {
+        this.collectedXP = collectedXP;
+    }
 
     public Set<QuestData> getActive() {
         return active;
