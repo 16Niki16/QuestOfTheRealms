@@ -20,7 +20,7 @@ public class RoomDataFactory {
             data.setEnemy(EnemyDataFactory.create(enemy));
         }
         if (item != null) {
-            data.setSpecialItem(room.getSpecialItem());
+            data.setSpecialItem(item);
         }
         return data;
     }

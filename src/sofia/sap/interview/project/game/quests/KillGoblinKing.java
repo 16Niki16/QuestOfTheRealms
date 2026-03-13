@@ -1,6 +1,7 @@
 package sofia.sap.interview.project.game.quests;
 
 import sofia.sap.interview.project.game.characters.enemy.type.EnemyType;
+import sofia.sap.interview.project.game.dto.savegame.data.QuestData;
 import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
 
@@ -13,6 +14,11 @@ public class KillGoblinKing extends QuestBase {
     }
 
     @Override
+    public QuestType getType() {
+        return QuestType.KILL_GOBLIN_KING;
+    }
+
+    @Override
     public String questDescription() {
         return "Kill the goblin king!";
     }
@@ -22,6 +28,16 @@ public class KillGoblinKing extends QuestBase {
         if (event instanceof KillEnemyEvent e && e.enemy().getType().equals(TARGET)) {
             completeQuest();
         }
+    }
+
+    @Override
+    public QuestData toSave() {
+        QuestData questData = new QuestData();
+
+        questData.setType(getType());
+        questData.setCompleted(this.isCompleted());
+
+        return questData;
     }
 
 }

@@ -1,5 +1,6 @@
 package sofia.sap.interview.project.game.quests;
 
+import sofia.sap.interview.project.game.dto.savegame.data.QuestData;
 import sofia.sap.interview.project.game.events.CollectSpecialItemEvent;
 import sofia.sap.interview.project.game.events.GameEvent;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
@@ -13,6 +14,11 @@ public class FindIronKey extends QuestBase {
     }
 
     @Override
+    public QuestType getType() {
+        return QuestType.FIND_IRON_KEY;
+    }
+
+    @Override
     public String questDescription() {
         return "Your quest is to find the iron key!";
     }
@@ -22,5 +28,15 @@ public class FindIronKey extends QuestBase {
         if (event instanceof CollectSpecialItemEvent e && e.item().equals(SPECIAL_ITEM)) {
             completeQuest();
         }
+    }
+
+    @Override
+    public QuestData toSave() {
+        QuestData questData = new QuestData();
+
+        questData.setType(getType());
+        questData.setCompleted(this.isCompleted());
+
+        return questData;
     }
 }

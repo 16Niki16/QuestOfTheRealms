@@ -1,9 +1,10 @@
 package sofia.sap.interview.project.game.dto.savegame.data;
 
+import sofia.sap.interview.project.game.map.Coordinates;
+
 public class MapData {
     private RoomData[][] rooms;
-    private int characterX;
-    private int characterY;
+    private Coordinates coordinates;
 
     public RoomData[][] getRooms() {
         return rooms;
@@ -13,19 +14,11 @@ public class MapData {
         this.rooms = rooms;
     }
 
-    public int getCharacterX() {
-        return characterX;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    public void setCharacterX(int characterX) {
-        this.characterX = characterX;
-    }
-
-    public int getCharacterY() {
-        return characterY;
-    }
-
-    public void setCharacterY(int characterY) {
-        this.characterY = characterY;
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
 }

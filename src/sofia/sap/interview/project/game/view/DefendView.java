@@ -6,7 +6,7 @@ public class DefendView implements GameEventView<DefendEvent> {
     @Override
     public void render(DefendEvent event) {
         String formatted = String.format("%s dealt %d damage to your %s",
-            event.type().getName(), event.damage(), event.characterName());
+            event.dto().type(), event.dto().damage(), event.dto().characterName());
         System.out.println(formatted);
     }
 }

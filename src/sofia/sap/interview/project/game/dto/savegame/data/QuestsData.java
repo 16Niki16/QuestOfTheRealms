@@ -1,24 +1,25 @@
 package sofia.sap.interview.project.game.dto.savegame.data;
 
 import java.util.List;
+import java.util.Set;
 
 public class QuestsData {
-    private List<String> active;
-    private List<String> completed;
+    private Set<QuestData> active;
+    private Set<QuestData> completed;
 
-    public List<String> getActive() {
+    public Set<QuestData> getActive() {
         return active;
     }
 
-    public void setActive(List<String> active) {
+    public void setActive(Set<QuestData> active) {
         this.active = active;
     }
 
-    public List<String> getCompleted() {
+    public Set<QuestData> getCompleted() {
         return completed;
     }
 
-    public void setCompleted(List<String> completed) {
+    public void setCompleted(Set<QuestData> completed) {
         this.completed = completed;
     }
 }

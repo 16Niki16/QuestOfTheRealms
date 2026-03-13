@@ -72,7 +72,7 @@ public class CombatService {
         return new EventResult(ItemEquipEvent.equipEvent(item));
     }
 
-    public CommandResult unequip(Character character, ItemType itemType) {
+    public List<CommandResult> unequip(Character character, ItemType itemType) {
         Item item = character.getEquippedItem(itemType);
 
         if (!(item instanceof Gear gear)) {
@@ -80,7 +80,7 @@ public class CombatService {
         }
         character.unequipGear(gear);
 
-        return new EventResult(ItemUnequipEvent.unequipEvent(item));
+        return List.of(new EventResult(ItemUnequipEvent.unequipEvent(item)));
     }
 
     public List<CommandResult> collect(Character character, Chest chest) {
