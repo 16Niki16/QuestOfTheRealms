@@ -12,6 +12,7 @@ public class RoomDataFactory {
         Chest chest = room.getChest();
         Enemy enemy = room.getEnemy();
         SpecialItem item = room.getSpecialItem();
+        data.setName(room.getName());
 
         if (chest != null) {
             data.setChest(ChestDataFactory.create(chest));

@@ -3,15 +3,16 @@ package sofia.sap.interview.project.game.dto.savegame.data;
 import sofia.sap.interview.project.game.map.Coordinates;
 
 public class MapData {
-    private RoomData[][] rooms;
+
+    private PlaygroundData playgroundData;
     private Coordinates coordinates;
 
-    public RoomData[][] getRooms() {
-        return rooms;
+    public PlaygroundData getPlaygroundData() {
+        return playgroundData;
     }
 
-    public void setRooms(RoomData[][] rooms) {
-        this.rooms = rooms;
+    public void setPlaygroundData(PlaygroundData playgroundData) {
+        this.playgroundData = playgroundData;
     }
 
     public Coordinates getCoordinates() {

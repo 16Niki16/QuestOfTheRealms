@@ -8,12 +8,7 @@ import sofia.sap.interview.project.game.map.room.SpecialItem;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Playground {
-    private final Room[][] rooms;
-
-    public Playground(Room[][] rooms) {
-        this.rooms = rooms;
-    }
+public record Playground(Room[][] rooms) {
 
     /**
      * (0,0) x -->
@@ -21,7 +16,8 @@ public class Playground {
      * |
      * raste nadolu
      */
-    public Room[][] getRooms() {
+    @Override
+    public Room[][] rooms() {
         return this.rooms;
     }
 

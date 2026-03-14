@@ -29,6 +29,11 @@ public class Gameplay {
         this.playerCoordinates = Coordinates.startingCoordinates();
     }
 
+    public Gameplay(Playground playground, Coordinates coordinates) {
+        this.playground = playground;
+        this.playerCoordinates = coordinates;
+    }
+
     public Coordinates getPlayerCoordinates() {
         return this.playerCoordinates;
     }

@@ -5,6 +5,7 @@ import sofia.sap.interview.project.game.dto.savegame.data.QuestsData;
 import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,6 @@ public class QuestLogFactory {
     private static Set<Quest> transform(Set<QuestData> quests) {
         return quests.stream()
                 .map(QuestFactory::create)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toCollection(HashSet::new));
     }
 }

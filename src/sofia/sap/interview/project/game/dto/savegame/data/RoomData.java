@@ -3,9 +3,18 @@ package sofia.sap.interview.project.game.dto.savegame.data;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
 
 public class RoomData {
+    private String name;
     private ChestData chest;
     private EnemyData enemy;
     private SpecialItem specialItem;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public ChestData getChest() {
         return chest;

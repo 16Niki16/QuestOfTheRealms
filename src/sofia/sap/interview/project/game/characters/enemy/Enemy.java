@@ -29,4 +29,8 @@ public abstract class Enemy {
     }
 
     public abstract String getDamageMessage(int damage);
+
+    public void load(int health) {
+        this.enemyStats.updateHealth(health);
+    }
 }

@@ -17,6 +17,14 @@ public abstract class BaseStatistics implements Statistics {
         return this.health;
     }
 
+    public void updateHealth(int health) {
+        this.health = health;
+    }
+
+    public boolean isDead() {
+        return health <= MIN_STAT;
+    }
+
     public AttackRange getAttackRange() {
         return this.attackRange;
     }

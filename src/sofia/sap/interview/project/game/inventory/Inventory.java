@@ -6,7 +6,6 @@ import sofia.sap.interview.project.game.items.ItemType;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +17,17 @@ public class Inventory {
         this.items = new EnumMap<>(ItemType.class);
     }
 
+    public Inventory(Map<ItemType, List<Item>> items) {
+        this.items = items;
+    }
+
     public Map<ItemType, List<Item>> getItems() {
-        return Collections.unmodifiableMap(this.items);
+        return this.items;
     }
 
     public void addItem(Item item) {
         this.items.computeIfAbsent(item.getType(), k -> new ArrayList<>())
-            .add(item);
+                .add(item);
     }
 
     public void addAllItems(Collection<Item> items) {

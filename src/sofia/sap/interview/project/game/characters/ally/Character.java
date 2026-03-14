@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.characters.ally;
 
 import sofia.sap.interview.project.game.characters.ally.statistics.CharacterStatistics;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
-import sofia.sap.interview.project.game.dto.savegame.data.CharacterData;
 import sofia.sap.interview.project.game.exceptions.EquipmentNotEquippedException;
 import sofia.sap.interview.project.game.exceptions.ItemTypeAlreadyEquippedException;
 import sofia.sap.interview.project.game.inventory.Inventory;
@@ -31,19 +30,14 @@ public class Character {
         this.equippedItems = new HashSet<>();
     }
 
-    /*private Character(String name, AllyCharacterType type, CharacterStatistics stats,
-                      Inventory inventory, Set<ItemType> equipped) {
+    public Character(String name, AllyCharacterType type, CharacterStatistics stats,
+                     Inventory inventory, Set<ItemType> equipped) {
         this.name = name;
         this.type = type;
         this.characterStats = stats;
         this.inventory = inventory;
         this.equippedItems = equipped;
     }
-
-    public static Character load(CharacterData data) {
-        return new Character(data.getCharacterName(), data.getCharacterType(),
-                data.getCharacterStatisticsData())
-    }*/
 
     public String getCharacterName() {
         return this.name;
@@ -124,6 +118,10 @@ public class Character {
 
     public void decreaseAttackDamage(int amount) {
         this.characterStats.decreaseAttackRange(amount);
+    }
+
+    public boolean isCharacterDead() {
+        return this.characterStats.isDead();
     }
 
 }

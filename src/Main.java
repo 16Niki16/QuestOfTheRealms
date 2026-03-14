@@ -23,6 +23,26 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        User user = User.createUser("Niki");
+        user.loadGame();
+        ConsoleRenderer renderer = new ConsoleRenderer();
+        //possible directions
+        Command command4 = new PathsCommand();
+        List<CommandResult> result4 = command4.execute(user);
+        renderer.render(result4);
+        //look
+        Command command1 = new LookCommand();
+        List<CommandResult> result1 = command1.execute(user);
+        renderer.render(result1);
+        //open chest
+        Command command69 = new OpenChestCommand();
+        List<CommandResult> result69 = command69.execute(user);
+        renderer.render(result69);
+        //move
+        Command command = new MoveCommand(Direction.EAST);
+        List<CommandResult> result = command.execute(user);
+        renderer.render(result);
+        /*
         // User user = LoadGame.loadGame("Niki");
         User user = User.createUser("Niki");
         NewGameCommand newGame = new NewGameCommand("kaisa", AllyCharacterType.MAGE);
@@ -94,6 +114,6 @@ public class Main {
         Command command43 = new PathsCommand();
         List<CommandResult> result0 = command43.execute(user);
         renderer.render(result0);
-        SaveGame.saveGame(user);
+        SaveGame.saveGame(user);*/
     }
 }
