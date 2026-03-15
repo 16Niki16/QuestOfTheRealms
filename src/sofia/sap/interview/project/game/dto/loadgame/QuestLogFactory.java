@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class QuestLogFactory {
     public static QuestLog create(QuestsData data) {
-        Set<QuestData> active = data.getActive();
-        Set<QuestData> completed = data.getCompleted();
+        Set<QuestData> active = data.active();
+        Set<QuestData> completed = data.completed();
 
         Set<Quest> activeQuests = transform(active);
         Set<Quest> completedQuests = transform(completed);
 
-        return QuestLog.load(activeQuests, completedQuests, data.getCollectedXP());
+        return QuestLog.load(activeQuests, completedQuests, data.collectedXP());
     }
 
     private static Set<Quest> transform(Set<QuestData> quests) {

@@ -5,6 +5,6 @@ import sofia.sap.interview.project.game.dto.savegame.data.CharacterStatisticsDat
 
 public class CharacterStatisticsFactory {
     public static CharacterStatistics create(CharacterStatisticsData data) {
-        return new CharacterStatistics(data.getHealth(), data.getAttackRange(), data.getMana());
+        return new CharacterStatistics(data.health(), data.attackRange(), data.mana());
     }
 }

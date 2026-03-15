@@ -10,12 +10,12 @@ public class RoomFactory {
         Enemy enemy = null;
         Chest chest = null;
 
-        if (data.getEnemy() != null) {
-            enemy = EnemyFactory.create(data.getEnemy());
+        if (data.enemy() != null) {
+            enemy = EnemyFactory.create(data.enemy());
         }
-        if (data.getChest() != null) {
-            chest = ChestFactory.create(data.getChest());
+        if (data.chest() != null) {
+            chest = ChestFactory.create(data.chest());
         }
-        return new Room(data.getName(), enemy, chest, data.getSpecialItem());
+        return new Room(data.name(), enemy, chest, data.specialItem());
     }
 }

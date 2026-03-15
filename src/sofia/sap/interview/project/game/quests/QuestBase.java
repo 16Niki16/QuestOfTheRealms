@@ -34,7 +34,7 @@ public abstract class QuestBase implements Quest {
 
     @Override
     public void load(QuestData data) {
-        this.completed = data.isCompleted();
+        this.completed = data.completed();
     }
 
     @Override

@@ -6,10 +6,7 @@ import sofia.sap.interview.project.game.quests.QuestLog;
 
 public class GameDataFactory {
     public static GameData save(GameSession session, QuestLog log) {
-        GameData game = new GameData();
-        game.setCharacter(CharacterDataFactory.create(session.character()));
-        game.setMap(MapDataFactory.create(session.gameplay()));
-        game.setQuests(QuestsDataFactory.create(log));
-        return game;
+        return new GameData(CharacterDataFactory.create(session.character()),
+            MapDataFactory.create(session.gameplay()), QuestsDataFactory.create(log));
     }
 }

@@ -40,17 +40,11 @@ public class CollectThreeHerbs extends QuestBase {
     @Override
     public void load(QuestData data) {
         super.load(data);
-        this.numberOfCollectedHerbs = data.getProgress();
+        this.numberOfCollectedHerbs = data.progress();
     }
 
     @Override
     public QuestData toSave() {
-        QuestData questData = new QuestData();
-
-        questData.setType(getType());
-        questData.setCompleted(this.isCompleted());
-        questData.setProgress(this.numberOfCollectedHerbs);
-
-        return questData;
+        return new QuestData(getType(), this.isCompleted(), this.numberOfCollectedHerbs);
     }
 }

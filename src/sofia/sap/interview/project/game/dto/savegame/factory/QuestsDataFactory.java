@@ -10,18 +10,13 @@ import java.util.stream.Collectors;
 
 public class QuestsDataFactory {
     public static QuestsData create(QuestLog log) {
-        QuestsData questsData = new QuestsData();
-
-        questsData.setActive(createQuest(log.getActiveQuests()));
-        questsData.setCompleted(createQuest(log.getCompletedQuests()));
-        questsData.setCollectedXP(log.getCollectedXP());
-
-        return questsData;
+        return new QuestsData(createQuest(log.getActiveQuests()),
+            createQuest(log.getCompletedQuests()), log.getCollectedXP());
     }
 
     private static Set<QuestData> createQuest(Set<Quest> quests) {
         return quests.stream()
-                .map(Quest::toSave)
-                .collect(Collectors.toSet());
+            .map(Quest::toSave)
+            .collect(Collectors.toSet());
     }
 }

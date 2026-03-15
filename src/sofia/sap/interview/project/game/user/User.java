@@ -11,7 +11,7 @@ import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
 public class User {
-    private String username;
+    private final String username;
     private GameSession session;
     private QuestLog log;
 

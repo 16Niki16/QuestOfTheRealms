@@ -6,8 +6,8 @@ import sofia.sap.interview.project.game.quests.QuestLog;
 
 public record LoadedInformation(GameSession session, QuestLog log) {
     public static LoadedInformation load(GameData data) {
-        QuestLog log = QuestLogFactory.create(data.getQuests());
-        GameSession session = GameSessionFactory.create(data.getCharacter(), data.getMap());
+        QuestLog log = QuestLogFactory.create(data.quests());
+        GameSession session = GameSessionFactory.create(data.character(), data.map());
         return new LoadedInformation(session, log);
     }
 }

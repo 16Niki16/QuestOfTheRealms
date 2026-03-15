@@ -7,7 +7,6 @@ import sofia.sap.interview.project.game.map.room.Room;
 
 public class PlaygroundDataFactory {
     public static PlaygroundData create(Playground playground) {
-        PlaygroundData data = new PlaygroundData();
         Room[][] rooms = playground.rooms();
         RoomData[][] result = new RoomData[rooms.length][rooms[0].length];
 
@@ -16,7 +15,7 @@ public class PlaygroundDataFactory {
                 result[i][j] = RoomDataFactory.create(rooms[i][j]);
             }
         }
-        data.setRoom(result);
-        return data;
+
+        return new PlaygroundData(result);
     }
 }
