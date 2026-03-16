@@ -26,19 +26,22 @@ import java.util.Collection;
 import java.util.List;
 
 public class CombatService {
-    public List<CommandResult> attack(Character character, Enemy enemy) {
+    public List<CommandResult> attack(GameSession session, Enemy enemy) {
+        Character character = session.character();
         List<CommandResult> results = new ArrayList<>();
         int damage = character.attackEnemy();
         boolean dead = enemy.defendAgainstAllyCharacter(damage);
         InteractionDTO dto = InteractionDTO.from(character, damage, enemy);
         results.add(new EventResult(new AttackEvent(dto)));
         if (dead) {
+            session.gameplay().getRoom().killEnemy();
             results.add(new EventResult(new KillEnemyEvent(enemy)));
         }
         return results;
     }
 
-    public List<CommandResult> defend(Character character, Enemy enemy) {
+    public List<CommandResult> defend(GameSession session, Enemy enemy) {
+        Character character = session.character();
         List<CommandResult> results = new ArrayList<>();
         int damage = enemy.attackDamage();
         boolean dead = character.defendAgainstEnemy(damage);

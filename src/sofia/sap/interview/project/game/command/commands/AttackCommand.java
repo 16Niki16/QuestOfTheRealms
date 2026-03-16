@@ -14,7 +14,7 @@ public class AttackCommand implements Command {
         GameSession session = user.getSession();
         Enemy enemy = session.gameplay().getEnemyOnCharacterCoordinates();
 
-        return session.combat().attack(session.character(), enemy);
+        return session.combat().attack(session, enemy);
     }
 
 }

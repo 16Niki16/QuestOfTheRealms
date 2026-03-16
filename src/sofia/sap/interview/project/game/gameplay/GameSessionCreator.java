@@ -11,6 +11,6 @@ public class GameSessionCreator {
         Playground playground = NewGame.createPlayground();
         Gameplay gameplay = new Gameplay(playground);
         CombatService actions = new CombatService();
-        return new GameSession(gameplay, character, actions, GameState.RUNNING);
+        return new GameSession(gameplay, character, actions);
     }
 }

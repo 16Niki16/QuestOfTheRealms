@@ -13,6 +13,6 @@ public class DefendCommand implements Command {
         GameSession session = user.getSession();
         Enemy enemy = session.gameplay().getEnemyOnCharacterCoordinates();
 
-        return session.combat().defend(session.character(), enemy);
+        return session.combat().defend(session, enemy);
     }
 }

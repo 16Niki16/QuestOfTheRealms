@@ -9,6 +9,6 @@ public class GameFactory {
         Gameplay gameplay = new Gameplay(NewGame.createPlayground());
         Character character = new Character(characterName, type);
         CombatService actions = new CombatService();
-        return new GameSession(gameplay, character, actions, GameState.RUNNING);
+        return new GameSession(gameplay, character, actions);
     }
 }

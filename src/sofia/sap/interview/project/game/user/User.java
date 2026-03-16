@@ -3,15 +3,13 @@ package sofia.sap.interview.project.game.user;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.dto.loadgame.LoadedInformation;
 import sofia.sap.interview.project.game.events.GameEvent;
-import sofia.sap.interview.project.game.exceptions.InvalidSessionException;
 import sofia.sap.interview.project.game.files.LoadGame;
 import sofia.sap.interview.project.game.gameplay.GameFactory;
 import sofia.sap.interview.project.game.gameplay.GameSession;
-import sofia.sap.interview.project.game.gameplay.GameState;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
 public class User {
-    private String username;
+    private final String username;
     private GameSession session;
     private QuestLog log;
 
@@ -44,23 +42,18 @@ public class User {
 
     public boolean handleEvent(GameEvent event) {
         if (log == null) {
-            throw new IllegalArgumentException("The log is null!");
+            throw new IllegalArgumentException("There is not active log yet!");
         }
         return log.handleEvent(event);
     }
 
     public void endGame() {
-        if (session.state().equals(GameState.GAME_OVER)) {
-            this.session = null;
-            this.log = null;
-        }
+        this.session = null;
+        this.log = null;
     }
 
     public void loadGame() {
         LoadedInformation info = LoadGame.loadGame(this.username);
-        if (info.session().state().equals(GameState.GAME_OVER)) {
-            throw new InvalidSessionException("The loaded game is already over, start a new one");
-        }
         this.session = info.session();
         this.log = info.log();
     }

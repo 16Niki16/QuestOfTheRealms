@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        User user = User.createUser("Niki");
+        /*User user = User.createUser("Niki");
         user.loadGame();
         ConsoleRenderer renderer = new ConsoleRenderer();
         //possible directions
@@ -41,8 +41,8 @@ public class Main {
         //move
         Command command = new MoveCommand(Direction.EAST);
         List<CommandResult> result = command.execute(user);
-        renderer.render(result);
-        /*
+        renderer.render(result);*/
+
         // User user = LoadGame.loadGame("Niki");
         User user = User.createUser("Niki");
         NewGameCommand newGame = new NewGameCommand("kaisa", AllyCharacterType.MAGE);
@@ -114,6 +114,6 @@ public class Main {
         Command command43 = new PathsCommand();
         List<CommandResult> result0 = command43.execute(user);
         renderer.render(result0);
-        SaveGame.saveGame(user);*/
+        SaveGame.saveGame(user);
     }
 }
