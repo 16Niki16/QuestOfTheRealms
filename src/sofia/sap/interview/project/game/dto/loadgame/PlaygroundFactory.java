@@ -6,11 +6,11 @@ import sofia.sap.interview.project.game.map.room.Room;
 
 public class PlaygroundFactory {
     public static Playground create(PlaygroundData data) {
-        Room[][] result = new Room[data.getRoom().length][data.getRoom()[0].length];
+        Room[][] result = new Room[data.rooms().length][data.rooms()[0].length];
 
-        for (int i = 0; i < data.getRoom().length; i++) {
-            for (int j = 0; j < data.getRoom()[i].length; j++) {
-                result[i][j] = RoomFactory.create(data.getRoom()[i][j]);
+        for (int i = 0; i < data.rooms().length; i++) {
+            for (int j = 0; j < data.rooms()[i].length; j++) {
+                result[i][j] = RoomFactory.create(data.rooms()[i][j]);
             }
         }
 

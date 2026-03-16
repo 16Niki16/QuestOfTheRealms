@@ -5,11 +5,6 @@ import sofia.sap.interview.project.game.gameplay.Gameplay;
 
 public class MapDataFactory {
     public static MapData create(Gameplay gameplay) {
-        MapData map = new MapData();
-
-        map.setPlaygroundData(PlaygroundDataFactory.create(gameplay.getPlayground()));
-        map.setCoordinates(gameplay.getPlayerCoordinates());
-
-        return map;
+        return new MapData(PlaygroundDataFactory.create(gameplay.getPlayground()), gameplay.getPlayerCoordinates());
     }
 }

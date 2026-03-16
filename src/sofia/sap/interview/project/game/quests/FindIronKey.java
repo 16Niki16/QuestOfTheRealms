@@ -32,11 +32,6 @@ public class FindIronKey extends QuestBase {
 
     @Override
     public QuestData toSave() {
-        QuestData questData = new QuestData();
-
-        questData.setType(getType());
-        questData.setCompleted(this.isCompleted());
-
-        return questData;
+        return new QuestData(getType(), this.isCompleted(), null);
     }
 }

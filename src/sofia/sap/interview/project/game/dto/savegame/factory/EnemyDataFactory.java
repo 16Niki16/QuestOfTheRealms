@@ -5,9 +5,6 @@ import sofia.sap.interview.project.game.dto.savegame.data.EnemyData;
 
 public class EnemyDataFactory {
     public static EnemyData create(Enemy enemy) {
-        EnemyData enemyData = new EnemyData();
-        enemyData.setEnemy(enemy.getType());
-        enemyData.setHealth(enemy.health());
-        return enemyData;
+        return new EnemyData(enemy.getType(), enemy.health());
     }
 }

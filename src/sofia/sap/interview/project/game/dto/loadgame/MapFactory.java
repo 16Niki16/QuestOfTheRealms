@@ -7,8 +7,8 @@ import sofia.sap.interview.project.game.map.Playground;
 
 public class MapFactory {
     public static Gameplay create(MapData data) {
-        Coordinates playerCoordinates = data.getCoordinates();
-        Playground playground = PlaygroundFactory.create(data.getPlaygroundData());
+        Coordinates playerCoordinates = data.coordinates();
+        Playground playground = PlaygroundFactory.create(data.playgroundData());
         return new Gameplay(playground, playerCoordinates);
     }
 }
