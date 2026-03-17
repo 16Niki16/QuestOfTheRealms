@@ -2,6 +2,7 @@ package sofia.sap.interview.project.game.map.room;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
 import sofia.sap.interview.project.game.items.Item;
 
 import java.util.Collection;
@@ -40,10 +41,14 @@ public class Room {
         return new Room(SAFE_PATH, null, null, null);
     }
 
-    public void collectItems(Character character) {
+    public Collection<Item> collectItems() {
+        if (this.chest == null) {
+            throw new ChestNotAvailableException("There is not a chest in this room!");
+        }
+
         Collection<Item> items = this.chest.collectItems();
         this.chest = null;
-        character.collectItems(items);
+        return items;
     }
 
     public void collectSpecialItem() {
@@ -59,6 +64,6 @@ public class Room {
     }
 
     public boolean hasChest() {
-        return !(this.chest == null);
+        return this.chest != null;
     }
 }

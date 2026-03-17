@@ -124,4 +124,8 @@ public class Character {
         return this.characterStats.isDead();
     }
 
+    public void regen(int amount) {
+        this.characterStats.regenerate(amount);
+    }
+
 }

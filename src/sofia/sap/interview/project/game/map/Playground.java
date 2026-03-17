@@ -1,7 +1,6 @@
 package sofia.sap.interview.project.game.map;
 
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
-import sofia.sap.interview.project.game.map.room.Chest;
 import sofia.sap.interview.project.game.map.room.Room;
 import sofia.sap.interview.project.game.map.room.SpecialItem;
 
@@ -30,8 +29,7 @@ public record Playground(Room[][] rooms) {
         Set<Direction> directions = new HashSet<>();
 
         for (Direction direction : Direction.values()) {
-            Coordinates next = direction.move(playerCoordinates);
-            if (isInside(next)) {
+            if (canMove(playerCoordinates, direction)) {
                 directions.add(direction);
             }
         }
@@ -40,15 +38,11 @@ public record Playground(Room[][] rooms) {
 
     private boolean isInside(Coordinates c) {
         return c.y() >= 0 && c.y() < rooms.length
-                && c.x() >= 0 && c.x() < rooms[c.y()].length;
+            && c.x() >= 0 && c.x() < rooms[c.y()].length;
     }
 
     public Enemy getEnemyByPosition(Coordinates coordinates) {
         return rooms[coordinates.y()][coordinates.x()].getEnemy();
-    }
-
-    public Chest getChestByPosition(Coordinates coordinates) {
-        return rooms[coordinates.y()][coordinates.x()].getChest();
     }
 
     public SpecialItem getSpecialItemByPosition(Coordinates coordinates) {

@@ -61,4 +61,9 @@ public class CharacterStatistics extends BaseStatistics {
 
         setAttackRange(new AttackRange(min, max, getAttackRange().manaCost()));
     }
+
+    public void regenerate(int amount) {
+        increaseHealth(amount);
+        increaseMana(amount);
+    }
 }

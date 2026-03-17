@@ -19,7 +19,7 @@ import sofia.sap.interview.project.game.items.Consumable;
 import sofia.sap.interview.project.game.items.Gear;
 import sofia.sap.interview.project.game.items.Item;
 import sofia.sap.interview.project.game.items.ItemType;
-import sofia.sap.interview.project.game.map.room.Chest;
+import sofia.sap.interview.project.game.map.room.Room;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -86,12 +86,8 @@ public class CombatService {
         return List.of(new EventResult(ItemUnequipEvent.unequipEvent(item)));
     }
 
-    public List<CommandResult> collect(Character character, Chest chest) {
-        if (chest == null) {
-            throw new ChestNotAvailableException("There isn't a chest in this room!");
-        }
-
-        Collection<Item> items = chest.collectItems();
+    public List<CommandResult> collect(Character character, Room room) {
+        Collection<Item> items = room.collectItems();
         character.collectItems(items);
         return List.of(new EventResult(CollectItemsEvent.collectEvent(items)));
     }

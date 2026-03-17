@@ -13,8 +13,7 @@ public record CollectItemsEvent(Map<ItemType, Integer> items) implements GameEve
         Map<ItemType, Integer> grouped = items.stream()
             .collect(Collectors.groupingBy(
                 Item::getType,
-                Collectors.summingInt(i -> 1)
-            ));
+                Collectors.summingInt(i -> 1)));
 
         return new CollectItemsEvent(grouped);
     }
