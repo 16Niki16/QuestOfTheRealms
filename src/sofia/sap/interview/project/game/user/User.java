@@ -8,17 +8,23 @@ import sofia.sap.interview.project.game.gameplay.GameFactory;
 import sofia.sap.interview.project.game.gameplay.GameSession;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class User {
     private final String username;
     private boolean activeSession;
     private GameSession session;
     private QuestLog log;
+    private final Queue<GameEvent> eventQueue;
 
     private User(String username, GameSession session, QuestLog log, boolean activeSession) {
         this.username = username;
         this.session = session;
         this.log = log;
         this.activeSession = activeSession;
+        this.eventQueue = new ConcurrentLinkedQueue<>();
     }
 
     public boolean isActiveSession() {
@@ -47,9 +53,16 @@ public class User {
         this.activeSession = true;
     }
 
+    public void processEvents() {
+        GameEvent event;
+        while ((event = eventQueue.poll()) != null) {
+            handleEvent(event);
+        }
+    }
+
     public boolean handleEvent(GameEvent event) {
         if (log == null) {
-            throw new IllegalArgumentException("There is not active log yet!");
+            return false;
         }
         return log.handleEvent(event);
     }
@@ -65,5 +78,9 @@ public class User {
         this.session = info.session();
         this.log = info.log();
         this.activeSession = true;
+    }
+
+    public void addEvents(List<GameEvent> events) {
+        this.eventQueue.addAll(events);
     }
 }

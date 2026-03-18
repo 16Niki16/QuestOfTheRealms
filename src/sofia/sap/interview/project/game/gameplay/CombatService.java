@@ -13,7 +13,6 @@ import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUnequipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
-import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
 import sofia.sap.interview.project.game.exceptions.ItemNotAvailableException;
 import sofia.sap.interview.project.game.items.Consumable;
 import sofia.sap.interview.project.game.items.Gear;

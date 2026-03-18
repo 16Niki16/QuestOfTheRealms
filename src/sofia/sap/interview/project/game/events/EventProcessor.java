@@ -20,7 +20,7 @@ public class EventProcessor {
                 }
 
                 if (questCompleted) {
-                    System.out.println("Quest completed!");
+
                 }
             }
         }

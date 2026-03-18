@@ -1,16 +1,10 @@
 package sofia.sap.interview.project.game.characters.enemy;
 
-import sofia.sap.interview.project.game.command.result.CommandResult;
-
-import java.util.List;
-
-public class EnemyAttackTiming {
+public class EnemyState {
     private static final int COOLDOWN = 8000;
-    private Enemy enemy;
     private long lastAttack;
 
-    public EnemyAttackTiming(Enemy enemy) {
-        this.enemy = enemy;
+    public EnemyState() {
         this.lastAttack = System.currentTimeMillis();
     }
 
@@ -18,5 +12,7 @@ public class EnemyAttackTiming {
         return System.currentTimeMillis() - lastAttack >= COOLDOWN;
     }
 
-    public List<CommandResult>
+    public void attacked() {
+        this.lastAttack = System.currentTimeMillis();
+    }
 }

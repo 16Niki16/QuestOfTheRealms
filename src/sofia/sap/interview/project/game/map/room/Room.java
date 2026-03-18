@@ -1,7 +1,7 @@
 package sofia.sap.interview.project.game.map.room;
 
-import sofia.sap.interview.project.game.characters.ally.Character;
 import sofia.sap.interview.project.game.characters.enemy.Enemy;
+import sofia.sap.interview.project.game.characters.enemy.EnemyState;
 import sofia.sap.interview.project.game.exceptions.ChestNotAvailableException;
 import sofia.sap.interview.project.game.items.Item;
 
@@ -11,6 +11,7 @@ public class Room {
     private static final String SAFE_PATH = "Safe path";
     private final String name;
     private Enemy enemy;
+    private final EnemyState state;
     private Chest chest;
     private SpecialItem specialItem;
 
@@ -19,6 +20,11 @@ public class Room {
         this.chest = chest;
         this.specialItem = specialItem;
         this.name = name;
+        this.state = enemy == null ? null : new EnemyState();
+    }
+
+    public EnemyState getState() {
+        return this.state;
     }
 
     public String getName() {
