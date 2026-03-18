@@ -7,7 +7,7 @@ import sofia.sap.interview.project.game.user.User;
 
 import java.util.List;
 
-public class DefendCommand implements Command {
+public class EnemyAttackCommand implements Command {
     @Override
     public List<CommandResult> execute(User user) {
         GameSession session = user.getSession();

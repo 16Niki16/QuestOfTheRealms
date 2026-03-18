@@ -2,7 +2,6 @@ package sofia.sap.interview.project.game.command;
 
 public enum CommandOptions {
     ATTACK("attack"),
-    DEFEND("defend"),
     USE_ITEM("use"),
     LOOK("look"),
     MOVE("move"),
