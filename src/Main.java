@@ -5,7 +5,6 @@ import sofia.sap.interview.project.game.command.commands.Command;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.console.ConsoleRenderer;
 import sofia.sap.interview.project.game.events.EventProcessor;
-import sofia.sap.interview.project.game.files.SaveGame;
 import sofia.sap.interview.project.game.user.User;
 
 import java.util.List;
@@ -15,8 +14,11 @@ public class Main {
     public static void main(String[] args) {
         GameController controller = new GameController();
         User user = User.createUser("Niki");
+        User user1 = User.createUser("Kali");
         controller.addUser(user);
+        controller.addUser(user1);
         user.createNewGame("kaisa", AllyCharacterType.MAGE);
+        user1.createNewGame("koki", AllyCharacterType.ROGUE);
         ConsoleRenderer renderer = new ConsoleRenderer();
         /*User user = User.createUser("Niki");
         user.loadGame();
@@ -107,7 +109,7 @@ public class Main {
         renderer.render(result0);*/
         Scanner scan = new Scanner(System.in);
         int i = 0;
-        while (i < 5) {
+        while (i < 10) {
             String input = scan.nextLine();
             Command command = CommandFactory.createCommand(input);
             List<CommandResult> results = command.execute(user);
@@ -115,6 +117,6 @@ public class Main {
             renderer.render(results);
             i++;
         }
-        SaveGame.saveGame(user);
+        controller.closeServer();
     }
 }

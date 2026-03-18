@@ -8,14 +8,19 @@ import java.util.Set;
 
 public class GameController {
     private final Set<User> users;
+    private final SystemsStarter starter;
 
     public GameController() {
         this.users = new HashSet<>();
-        SystemsStarter starter = new SystemsStarter(this.users);
+        this.starter = new SystemsStarter(this.users);
         starter.start();
     }
 
     public void addUser(User user) {
         users.add(user);
+    }
+
+    public void closeServer() {
+        this.starter.stop();
     }
 }

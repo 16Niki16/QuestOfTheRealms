@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CharacterStatistics extends BaseStatistics {
-    private AtomicInteger mana;
+    private final AtomicInteger mana;
 
     public CharacterStatistics(AllyCharacterType type) {
         super(type.getHealth(), type.getAttackRange());

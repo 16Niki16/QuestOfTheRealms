@@ -12,7 +12,6 @@ public class EventProcessor {
         for (CommandResult result : results) {
 
             if (result instanceof EventResult eventResult) {
-
                 GameEvent event = eventResult.event();
                 boolean questCompleted = user.handleEvent(event);
 

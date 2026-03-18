@@ -59,6 +59,7 @@ public class Gameplay {
             enemyType, specialItem)));
 
         if (specialItem != null) {
+
             resultList.add(new EventResult(new CollectSpecialItemEvent(specialItem)));
         }
         return resultList;
