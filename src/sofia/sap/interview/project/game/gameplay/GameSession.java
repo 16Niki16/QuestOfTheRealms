@@ -1,6 +1,10 @@
 package sofia.sap.interview.project.game.gameplay;
 
 import sofia.sap.interview.project.game.characters.ally.Character;
+import sofia.sap.interview.project.game.systems.RegenerationSystem;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class GameSession {
     private final Gameplay gameplay;

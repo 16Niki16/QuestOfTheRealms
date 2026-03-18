@@ -29,7 +29,7 @@ public class CommandFactory {
     private static final Command PATHS = new PathsCommand();
     private static final Command OPEN = new OpenChestCommand();
 
-    public CommandFactory() {
+    static {
         COMMANDS.put(CommandOptions.HELP.getCommand(), args -> HELP);
         COMMANDS.put(CommandOptions.ATTACK.getCommand(), args -> ATTACK);
         COMMANDS.put(CommandOptions.QUESTS.getCommand(), args -> QUESTS);

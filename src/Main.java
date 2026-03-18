@@ -1,28 +1,23 @@
+import sofia.sap.interview.project.game.GameController;
 import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
-import sofia.sap.interview.project.game.command.commands.AttackCommand;
-import sofia.sap.interview.project.game.command.commands.CheckQuestsCommand;
+import sofia.sap.interview.project.game.command.CommandFactory;
 import sofia.sap.interview.project.game.command.commands.Command;
-import sofia.sap.interview.project.game.command.commands.DefendCommand;
-import sofia.sap.interview.project.game.command.commands.EquipGearCommand;
-import sofia.sap.interview.project.game.command.commands.HelpCommand;
-import sofia.sap.interview.project.game.command.commands.LookCommand;
-import sofia.sap.interview.project.game.command.commands.MoveCommand;
-import sofia.sap.interview.project.game.command.commands.NewGameCommand;
-import sofia.sap.interview.project.game.command.commands.OpenChestCommand;
-import sofia.sap.interview.project.game.command.commands.PathsCommand;
-import sofia.sap.interview.project.game.command.commands.UnequipGearCommand;
-import sofia.sap.interview.project.game.command.commands.UseItemCommand;
 import sofia.sap.interview.project.game.command.result.CommandResult;
 import sofia.sap.interview.project.game.console.ConsoleRenderer;
+import sofia.sap.interview.project.game.events.EventProcessor;
 import sofia.sap.interview.project.game.files.SaveGame;
-import sofia.sap.interview.project.game.items.ItemType;
-import sofia.sap.interview.project.game.map.Direction;
 import sofia.sap.interview.project.game.user.User;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        GameController controller = new GameController();
+        User user = User.createUser("Niki");
+        controller.addUser(user);
+        user.createNewGame("kaisa", AllyCharacterType.MAGE);
+        ConsoleRenderer renderer = new ConsoleRenderer();
         /*User user = User.createUser("Niki");
         user.loadGame();
         ConsoleRenderer renderer = new ConsoleRenderer();
@@ -44,11 +39,7 @@ public class Main {
         renderer.render(result);*/
 
         // User user = LoadGame.loadGame("Niki");
-        User user = User.createUser("Niki");
-        NewGameCommand newGame = new NewGameCommand("kaisa", AllyCharacterType.MAGE);
-        List<CommandResult> result231 = newGame.execute(user);
-
-        ConsoleRenderer renderer = new ConsoleRenderer();
+        /*
         //possible directions
         Command command4 = new PathsCommand();
         List<CommandResult> result4 = command4.execute(user);
@@ -113,7 +104,17 @@ public class Main {
         //Direction choice
         Command command43 = new PathsCommand();
         List<CommandResult> result0 = command43.execute(user);
-        renderer.render(result0);
+        renderer.render(result0);*/
+        Scanner scan = new Scanner(System.in);
+        int i = 0;
+        while (i < 5) {
+            String input = scan.nextLine();
+            Command command = CommandFactory.createCommand(input);
+            List<CommandResult> results = command.execute(user);
+            EventProcessor.process(user, results);
+            renderer.render(results);
+            i++;
+        }
         SaveGame.saveGame(user);
     }
 }

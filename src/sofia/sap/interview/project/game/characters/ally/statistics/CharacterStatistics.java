@@ -4,39 +4,35 @@ import sofia.sap.interview.project.game.characters.ally.type.AllyCharacterType;
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CharacterStatistics extends BaseStatistics {
-    private int mana;
+    private AtomicInteger mana;
 
     public CharacterStatistics(AllyCharacterType type) {
         super(type.getHealth(), type.getAttackRange());
-        this.mana = type.getMana();
+        this.mana = new AtomicInteger(type.getMana());
     }
 
     public CharacterStatistics(int health, AttackRange attackRange, int mana) {
         super(health, attackRange);
-        this.mana = mana;
+        this.mana = new AtomicInteger(mana);
     }
 
     public int getMana() {
-        return this.mana;
+        return this.mana.get();
     }
 
     public boolean decreaseMana(int amount) {
-        if (this.mana - amount < MIN_STAT) {
-            return false;
-        }
+        int prev = mana.getAndUpdate(current ->
+                current >= amount ? current - amount : current
+        );
 
-        this.mana -= amount;
-        return true;
+        return prev >= amount;
     }
 
     public void increaseMana(int amount) {
-        this.mana += amount;
-
-        if (this.mana > MAX_STAT) {
-            this.mana = MAX_STAT;
-        }
+        this.mana.updateAndGet(h -> Math.min(h + amount, MAX_STAT));
     }
 
     @Override

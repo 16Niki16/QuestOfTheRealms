@@ -2,27 +2,29 @@ package sofia.sap.interview.project.game.characters.ally.statistics;
 
 import sofia.sap.interview.project.game.characters.attack.AttackRange;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class BaseStatistics implements Statistics {
     protected static final int MAX_STAT = 100;
     protected static final int MIN_STAT = 0;
-    private int health;
+    private final AtomicInteger health;
     private AttackRange attackRange;
 
     public BaseStatistics(int health, AttackRange attackRange) {
         this.attackRange = attackRange;
-        this.health = health;
+        this.health = new AtomicInteger(health);
     }
 
     public int getHealth() {
-        return this.health;
+        return this.health.get();
     }
 
     public void updateHealth(int health) {
-        this.health = health;
+        this.health.set(health);
     }
 
     public boolean isDead() {
-        return health <= MIN_STAT;
+        return health.get() <= MIN_STAT;
     }
 
     public AttackRange getAttackRange() {
@@ -35,18 +37,12 @@ public abstract class BaseStatistics implements Statistics {
 
     @Override
     public boolean decreaseHealth(int amount) {
-        this.health -= amount;
-
-        return this.health <= MIN_STAT;
+        return health.updateAndGet(currentHealth -> Math.max(currentHealth - amount, 0)) == 0;
     }
 
     @Override
     public void increaseHealth(int amount) {
-        this.health += amount;
-
-        if (this.health > MAX_STAT) {
-            this.health = MAX_STAT;
-        }
+        health.updateAndGet(currentHealth -> Math.min(currentHealth + amount, MAX_STAT));
     }
 
     @Override
