@@ -13,6 +13,7 @@ import sofia.sap.interview.project.game.events.ItemEquipEvent;
 import sofia.sap.interview.project.game.events.ItemUnequipEvent;
 import sofia.sap.interview.project.game.events.ItemUsedEvent;
 import sofia.sap.interview.project.game.events.KillEnemyEvent;
+import sofia.sap.interview.project.game.events.QuestCompletedEvent;
 import sofia.sap.interview.project.game.information.HelpInformation;
 import sofia.sap.interview.project.game.information.PathsInformation;
 import sofia.sap.interview.project.game.information.QuestInformation;
@@ -29,6 +30,7 @@ import sofia.sap.interview.project.game.view.HelpView;
 import sofia.sap.interview.project.game.view.ItemEquipView;
 import sofia.sap.interview.project.game.view.ItemUnequipView;
 import sofia.sap.interview.project.game.view.PathsView;
+import sofia.sap.interview.project.game.view.QuestCompletedView;
 import sofia.sap.interview.project.game.view.QuestView;
 import sofia.sap.interview.project.game.view.RoomView;
 import sofia.sap.interview.project.game.view.UseItemView;
@@ -59,6 +61,7 @@ public class ConsoleRenderer {
         this.eventViews.put(DefendEvent.class, new DefendView());
         this.eventViews.put(AttackEvent.class, new AttackView());
         this.eventViews.put(CollectSpecialItemEvent.class, new CollectSpecialItemView());
+        this.eventViews.put(QuestCompletedEvent.class, new QuestCompletedView());
     }
 
     private void basicViewsRegister() {

@@ -5,13 +5,12 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class QuestList {
-    private static final int MAX_QUESTS = 3;
+    private static final int MAX_QUESTS = 4;
     private static final int MIN_QUESTS = 1;
     private static final Map<QuestType, Supplier<Quest>> QUESTS = new EnumMap<>(QuestType.class);
 
@@ -23,7 +22,7 @@ public class QuestList {
 
     }
 
-    public static Set<Quest> createQuests() {
+    public static List<Quest> createQuests() {
         List<Supplier<Quest>> quests = new ArrayList<>(QUESTS.values());
         Collections.shuffle(quests);
 
@@ -32,6 +31,6 @@ public class QuestList {
         return quests.stream()
                 .limit(numberOfQuests)
                 .map(Supplier::get)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 }

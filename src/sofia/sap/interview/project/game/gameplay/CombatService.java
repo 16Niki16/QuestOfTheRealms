@@ -63,7 +63,7 @@ public class CombatService {
         return List.of(new EventResult(ItemUsedEvent.potionEffect(item)));
     }
 
-    public CommandResult equip(Character character, ItemType itemType) {
+    public List<CommandResult> equip(Character character, ItemType itemType) {
         Item item = character.getInventory().getItem(itemType);
 
         if (!(item instanceof Gear gear)) {
@@ -71,7 +71,7 @@ public class CombatService {
         }
         character.equipGear(gear);
 
-        return new EventResult(ItemEquipEvent.equipEvent(item));
+        return List.of(new EventResult(ItemEquipEvent.equipEvent(item)));
     }
 
     public List<CommandResult> unequip(Character character, ItemType itemType) {

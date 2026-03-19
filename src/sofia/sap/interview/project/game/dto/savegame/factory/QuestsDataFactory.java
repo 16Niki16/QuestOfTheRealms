@@ -5,7 +5,7 @@ import sofia.sap.interview.project.game.dto.savegame.data.QuestsData;
 import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class QuestsDataFactory {
@@ -14,9 +14,9 @@ public class QuestsDataFactory {
             createQuest(log.getCompletedQuests()), log.getCollectedXP());
     }
 
-    private static Set<QuestData> createQuest(Set<Quest> quests) {
+    private static List<QuestData> createQuest(List<Quest> quests) {
         return quests.stream()
             .map(Quest::toSave)
-            .collect(Collectors.toSet());
+            .collect(Collectors.toList());
     }
 }

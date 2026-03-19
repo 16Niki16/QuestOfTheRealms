@@ -5,24 +5,26 @@ import sofia.sap.interview.project.game.dto.savegame.data.QuestsData;
 import sofia.sap.interview.project.game.quests.Quest;
 import sofia.sap.interview.project.game.quests.QuestLog;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class QuestLogFactory {
     public static QuestLog create(QuestsData data) {
-        Set<QuestData> active = data.active();
-        Set<QuestData> completed = data.completed();
+        List<QuestData> active = data.active();
+        List<QuestData> completed = data.completed();
 
-        Set<Quest> activeQuests = transform(active);
-        Set<Quest> completedQuests = transform(completed);
+        List<Quest> activeQuests = transform(active);
+        List<Quest> completedQuests = transform(completed);
 
         return QuestLog.load(activeQuests, completedQuests, data.collectedXP());
     }
 
-    private static Set<Quest> transform(Set<QuestData> quests) {
+    private static List<Quest> transform(List<QuestData> quests) {
         return quests.stream()
                 .map(QuestFactory::create)
-                .collect(Collectors.toCollection(HashSet::new));
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

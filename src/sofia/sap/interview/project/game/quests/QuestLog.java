@@ -2,38 +2,44 @@ package sofia.sap.interview.project.game.quests;
 
 import sofia.sap.interview.project.game.events.GameEvent;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class QuestLog {
-    private final Set<Quest> activeQuests;
-    private final Set<Quest> completedQuests;
+    private final List<Quest> activeQuests;
+    private final List<Quest> completedQuests;
     private int collectedXP;
 
     public QuestLog() {
         this.activeQuests = QuestList.createQuests();
-        this.completedQuests = new HashSet<>();
+        this.completedQuests = new ArrayList<>();
         this.collectedXP = 0;
     }
 
-    private QuestLog(Set<Quest> active, Set<Quest> completed, int collectedXP) {
+    private QuestLog(List<Quest> active, List<Quest> completed, int collectedXP) {
         this.activeQuests = active;
         this.completedQuests = completed;
         this.collectedXP = collectedXP;
     }
 
-    public static QuestLog load(Set<Quest> active, Set<Quest> completed, int collectedXP) {
+    public static QuestLog load(List<Quest> active, List<Quest> completed, int collectedXP) {
         return new QuestLog(active, completed, collectedXP);
     }
 
-    public Set<Quest> getActiveQuests() {
-        return Collections.unmodifiableSet(activeQuests);
+    public List<Quest> getActiveQuests() {
+        return Collections.unmodifiableList(activeQuests);
     }
 
-    public Set<Quest> getCompletedQuests() {
-        return Collections.unmodifiableSet(completedQuests);
+    public List<Quest> getCompletedQuests() {
+        return Collections.unmodifiableList(completedQuests);
+    }
+
+    public Quest getLastCompletedQuest() {
+        return this.completedQuests.getLast();
     }
 
     public boolean handleEvent(GameEvent event) {
@@ -44,6 +50,7 @@ public class QuestLog {
 
             if (quest.isCompleted()) {
                 it.remove();
+                activeQuests.remove(quest);
                 completedQuests.add(quest);
                 collectedXP += quest.getReward().getRewardXP();
                 return true;

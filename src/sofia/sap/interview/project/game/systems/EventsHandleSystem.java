@@ -11,10 +11,10 @@ public class EventsHandleSystem implements GameSystem {
 
     @Override
     public void start(ScheduledExecutorService scheduler, Set<User> activeUsers) {
-        scheduler.scheduleAtFixedRate(() -> {
+       /* scheduler.scheduleAtFixedRate(() -> {
             for (User user : activeUsers) {
                 user.processEvents();
             }
-        })
+        })*/
     }
 }

@@ -53,20 +53,6 @@ public class User {
         this.activeSession = true;
     }
 
-    public void processEvents() {
-        GameEvent event;
-        while ((event = eventQueue.poll()) != null) {
-            handleEvent(event);
-        }
-    }
-
-    public boolean handleEvent(GameEvent event) {
-        if (log == null) {
-            return false;
-        }
-        return log.handleEvent(event);
-    }
-
     public void endGame() {
         this.activeSession = false;
         this.session = null;
